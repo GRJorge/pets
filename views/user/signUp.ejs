@@ -7,6 +7,44 @@
 </head>
 <body>
     <h1>Registrarse</h1>
+    <form action="" method="post">
+        <div>
+            <input type="text" name="name" id="name" placeholder="Nombre(s)">
+            <input type="text" name="lastname" id="lastname" placeholder="Apellido(s)">
+        </div>
+        <input type="email" name="email" id="email" placeholder="Correo">
+        <div>
+            <select name="day" id="day">
+                <% for( let i = 1; i <= 31; i++ ) { %>
+                    <option value="<%= i %>"><%= i %></option>
+                <% } %>
+            </select>
+            <select name="month" id="month">
+                <option value="enero">Enero</option>
+                <option value="febrero">Febrero</option>
+                <option value="marzo">Marzo</option>
+                <option value="abril">Abril</option>
+                <option value="mayo">Mayo</option>
+                <option value="junio">Junio</option>
+                <option value="julio">Julio</option>
+                <option value="agosto">Agosto</option>
+                <option value="septiembre">Septiembre</option>
+                <option value="octubre">Octubre</option>
+                <option value="noviembre">Noviembre</option>
+                <option value="diciembre">Diciembre</option>
+            </select>
+            <select name="year" id="year">
+            <% for( let i = new Date().getFullYear(); i >= 1900; i--) { %>
+                <option value="<%= i %>"><%= i %></option>
+            <% } %>
+            </select>
+        </div>
+        <div>
+            <input type="password" name="password" id="password" placeholder="Contraseña">
+            <input type="password" name="password" id="password" placeholder="Confirmar contraseña">
+        </div>
+        <input type="submit" value="Registrarse">
+    </form>
     <a href="/">Iniciar sesion</a>
 </body>
 </html>
