@@ -1,14 +1,12 @@
-const { connect } = require('mongoose')
+const { connect } = require("mongoose");
 
-const url = 'mongodb://localhost:27017/'
-const dbName = 'pets'
+const url = "mongodb://localhost:27017/";
+const dbName = "pets";
 
-async function connection() {
+(async () => {
     try {
-        const db = await connect(url + dbName)
+        await connect(url + dbName);
     } catch (error) {
-        console.log("Error DB:\n" + error)
+        console.log("Error DB:\n" + error);
     }
-}
-
-module.exports = connection()
+})();
