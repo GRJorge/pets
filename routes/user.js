@@ -5,5 +5,6 @@ const controller = require('../controllers/user')
 
 router.get('/',controller.viewSignIn);
 router.get('/signUp',controller.viewSignUp)
+router.post('/insertUser',controller.insertUser)
 
 module.exports = router
