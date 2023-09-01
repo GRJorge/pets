@@ -9,12 +9,21 @@ module.exports = {
         res.render("user/signUp");
     },
     insertUser: async function (req, res) {
-        await newUserSchema(req.body).save();
+        const user = newUserSchema(req.body);
+        await user.save();
 
-        res.send("Guardado");
+        res.send(req.body);
     },
 };
 
 function newUserSchema(body) {
-    return new User(body);
+    const { name, lastname, email, day, month, year, password } = body;
+
+    return new User({
+        name: name,
+        lastname: lastname,
+        email: email,
+        birthday: new Date(day + "/" + month + "/" + year),
+        password: password,
+    });
 }
