@@ -9,11 +9,12 @@
     <h1>Registrarse</h1>
     <form action="/insertUser" method="post">
         <div>
-            <input type="text" name="name" id="name" placeholder="Nombre(s)">
-            <input type="text" name="lastname" id="lastname" placeholder="Apellido(s)">
+            <input type="text" maxL="3" name="name" id="name" placeholder="Nombre(s)">
+            <input type="text" maxL="3" name="lastname" id="lastname" placeholder="Apellido(s)">
         </div>
-        <input type="email" name="email" id="email" placeholder="Correo">
+        <input type="email" maxL="5" name="email" id="email" placeholder="Correo">
         <div>
+            <span>Fecha de nacimiento:</span>
             <select name="day" id="day">
                 <% for( let i = 1; i <= 31; i++ ) { %>
                     <option value="<%= i %>"><%= i %></option>
@@ -40,11 +41,13 @@
             </select>
         </div>
         <div>
-            <input type="password" name="password" id="password" placeholder="Contraseña">
+            <input type="password" maxL="6" name="password" id="password" placeholder="Contraseña">
             <input type="password" id="confirmPassword" placeholder="Confirmar contraseña">
         </div>
         <input type="submit" value="Registrarse">
     </form>
     <a href="/">Iniciar sesion</a>
+
+    <script src="/javascripts/validateForms.js"></script>
 </body>
 </html>
