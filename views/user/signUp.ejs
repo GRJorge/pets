@@ -1,53 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/stylesheets/user/signUp.css">
+
     <title>Registrarse</title>
 </head>
-<body>
-    <h1>Registrarse</h1>
-    <form action="/insertUser" method="post">
-        <div>
-            <input type="text" maxL="3" name="name" id="name" placeholder="Nombre(s)">
-            <input type="text" maxL="3" name="lastname" id="lastname" placeholder="Apellido(s)">
-        </div>
-        <input type="email" maxL="5" name="email" id="email" placeholder="Correo">
-        <div>
-            <span>Fecha de nacimiento:</span>
-            <select name="day" id="day">
-                <% for( let i = 1; i <= 31; i++ ) { %>
-                    <option value="<%= i %>"><%= i %></option>
-                <% } %>
-            </select>
-            <select name="month" id="month">
-                <option value="01">Enero</option>
-                <option value="02">Febrero</option>
-                <option value="03">Marzo</option>
-                <option value="04">Abril</option>
-                <option value="05">Mayo</option>
-                <option value="06">Junio</option>
-                <option value="07">Julio</option>
-                <option value="08">Agosto</option>
-                <option value="09">Septiembre</option>
-                <option value="10">Octubre</option>
-                <option value="11">Noviembre</option>
-                <option value="12">Diciembre</option>
-            </select>
-            <select name="year" id="year">
-            <% for( let i = new Date().getFullYear(); i >= 1900; i--) { %>
-                <option value="<%= i %>"><%= i %></option>
-            <% } %>
-            </select>
-        </div>
-        <div>
-            <input type="password" maxL="6" name="password" id="password" placeholder="Contraseña">
-            <input type="password" id="confirmPassword" placeholder="Confirmar contraseña">
-        </div>
-        <input type="submit" value="Registrarse">
-    </form>
-    <a href="/">Iniciar sesion</a>
 
+<body>
+    <div class="page">
+        <div class="info">
+            <div>
+                <h1>Registrate</h1>
+                <p>Es facil y rapido</p>
+            </div>
+            <img src="/images/Cat.png" alt="">
+        </div>
+        <div class="box">
+            <form class="shadow" action="/insertUser" method="post">
+                <div>
+                    <input class="text" type="text" maxL="3" name="name" id="name" placeholder="Nombre(s)">
+                    <input class="text" type="text" maxL="3" name="lastname" id="lastname" placeholder="Apellido(s)">
+                </div>
+                <div>
+                    <input class="text" type="email" maxL="5" name="email" id="email" placeholder="Correo">
+                </div>
+                <div class="birthday">
+                    <div>
+                        <span>Fecha de nacimiento:</span>
+                    </div>
+                    <div>
+                        <select class="text" name="day" id="day">
+                            <% for( let i=1; i <=31; i++ ) { %>
+                                <option value="<%= i %>">
+                                    <%= i %>
+                                </option>
+                                <% } %>
+                        </select>
+                        <select class="text" name="month" id="month">
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                        <select class="text" name="year" id="year">
+                            <% for( let i=new Date().getFullYear(); i>= 1900; i--) { %>
+                                <option value="<%= i %>">
+                                    <%= i %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <input class="text" type="password" maxL="6" name="password" id="password" placeholder="Contraseña">
+                    <input class="text" type="password" id="confirmPassword" placeholder="Confirmar contraseña">
+                </div>
+                <div>
+                    <input class="btn btnAccent" type="submit" value="Crear nueva cuenta">
+                    
+                    <a class="btn btnPrimary" href="">Iniciar sesion</a>
+                </div>
+            </form>
+        </div>
+        <div class="svg">
+            <div>
+                <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><path d="M 0,400 C 0,400 0,80 0,80 C 61.18309859154928,72.85949845413947 122.36619718309856,65.71899690827895 194,70 C 265.63380281690144,74.28100309172105 347.7183098591549,89.9835108210237 427,91 C 506.2816901408451,92.0164891789763 582.7605633802817,78.34695980762625 654,80 C 725.2394366197183,81.65304019237375 791.2394366197183,98.6286499484713 849,105 C 906.7605633802817,111.3713500515287 956.2816901408451,107.13844039848848 1027,100 C 1097.718309859155,92.86155960151152 1189.6338028169014,82.81758845757473 1262,79 C 1334.3661971830986,75.18241154242527 1387.1830985915494,77.59120577121263 1440,80 C 1440,80 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="#00d4aa" fill-opacity="0.265" class="transition-all duration-300 ease-in-out delay-150 path-0"></path><path d="M 0,400 C 0,400 0,160 0,160 C 52.76193747852972,165.5328065956716 105.52387495705943,171.06561319134318 177,165 C 248.47612504294057,158.93438680865682 338.666437650292,141.27035383029886 410,141 C 481.333562349708,140.72964616970114 533.8103744417725,157.85297148746136 601,154 C 668.1896255582275,150.14702851253864 750.0920645826178,125.31776021985573 832,131 C 913.9079354173822,136.68223978014427 995.8213672277566,172.87598763311578 1060,186 C 1124.1786327722434,199.12401236688422 1170.6224665063553,189.1782892476812 1231,181 C 1291.3775334936447,172.8217107523188 1365.6887667468222,166.41085537615942 1440,160 C 1440,160 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="#00d4aa" fill-opacity="0.4" class="transition-all duration-300 ease-in-out delay-150 path-1"></path><path d="M 0,400 C 0,400 0,240 0,240 C 62.25970456887667,238.30367571281346 124.51940913775334,236.60735142562694 187,238 C 249.48059086224666,239.39264857437306 312.18206801786334,243.87427001030568 395,250 C 477.81793198213666,256.1257299896943 580.7523187907934,263.89556853315014 653,266 C 725.2476812092066,268.10443146684986 766.8086568189626,264.5434558570938 817,257 C 867.1913431810374,249.45654414290618 926.0130539333563,237.93060803847473 1004,240 C 1081.9869460666437,242.06939196152527 1179.1391274476125,257.7341119890072 1255,260 C 1330.8608725523875,262.2658880109928 1385.4304362761936,251.1329440054964 1440,240 C 1440,240 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="#00d4aa" fill-opacity="0.53" class="transition-all duration-300 ease-in-out delay-150 path-2"></path><path d="M 0,400 C 0,400 0,320 0,320 C 66.87255238749572,326.1992442459636 133.74510477499143,332.3984884919272 202,332 C 270.25489522500857,331.6015115080728 339.89213328753,324.6052902782549 404,320 C 468.10786671247,315.3947097217451 526.6863620748885,313.18035039505327 594,308 C 661.3136379251115,302.81964960494673 737.3624184129164,294.6733081415322 813,299 C 888.6375815870836,303.3266918584678 963.8639642734456,320.1264170388182 1038,319 C 1112.1360357265544,317.8735829611818 1185.181724493301,298.8210237031948 1252,296 C 1318.818275506699,293.1789762968052 1379.4091377533496,306.5894881484026 1440,320 C 1440,320 1440,400 1440,400 Z" stroke="none" stroke-width="0" fill="#00d4aa" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-3"></path></svg>
+            </div>
+        </div>
+    </div>
     <script src="/javascripts/validateForms.js"></script>
 </body>
+
 </html>
