@@ -57,6 +57,10 @@ form {
     border-radius: 16px;
     min-width: 350px;
 }
+form a{
+    width: 50%;
+    align-self: center;
+}
 /* FECHA DE CUMPLEAÑOS */
 form .birthday select{
     flex-grow: 1;
