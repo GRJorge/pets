@@ -1,0 +1,68 @@
+@import url("../global.css");
+
+.page {
+    width: 100%;
+    height: 100vh;
+}
+/* SVG DE FONDO */
+.svg {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    justify-content: end;
+    align-items: end;
+    z-index: -1;
+}
+.svg div {
+    width: 100%;
+}
+/* CAJA DE LOGIN */
+.box {
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+form,
+form > div {
+    flex-direction: column;
+    gap: 16px;
+}
+form {
+    background-color: var(--light);
+    padding: 32px;
+    border-radius: 16px;
+    min-width: 350px;
+}
+form a {
+    width: 50%;
+    align-self: center;
+}
+/* INFORMACION Y FOTO DEL PERRO */
+.info {
+    max-width: max-content;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: end;
+    align-items: flex-end;
+    margin-right: 16px;
+}
+.info div {
+    width: 280px;
+    position: relative;
+    text-align: center;
+    flex-direction: column;
+    align-self: flex-start;
+    right: 120px;
+    top: 70px;
+}
+.info h1{
+    color: var(--accent);
+}
+.info h1,
+.info p {
+    margin: 0;
+}
+.info img {
+    width: 450px;
+    transform: scaleX(-1);
+}
