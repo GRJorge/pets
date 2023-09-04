@@ -5,7 +5,7 @@
     height: 100vh;
 }
 /* SVG DE FONDO */
-.svg{
+.svg {
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -13,29 +13,29 @@
     align-items: flex-end;
     z-index: -1;
 }
-.svg div{
+.svg div {
     width: 100%;
 }
 /* INFORMACION Y FOTO DE GATO */
 .info {
     max-width: max-content;
-    flex-grow: 1;
-}
-.info div{
-    position: absolute;
     flex-direction: column;
-    top: 80px;
-    left: 300px;
-    
+    flex-grow: 1;
+    align-items: flex-end;
+    justify-content: end;
 }
-.info div h1{
+.info div {
+    flex-direction: column;
+    text-align: right;
+}
+.info div h1 {
     color: var(--primary);
     margin: 0;
 }
-.info div p{
+.info div p {
     margin: 0;
 }
-.info img{
+.info img {
     width: 512px;
     align-self: flex-end;
     transform: scaleX(-1);
@@ -57,11 +57,15 @@ form {
     border-radius: 16px;
     min-width: 350px;
 }
-form .birthday div:last-child{
+/* FECHA DE CUMPLEAÑOS */
+form .birthday select{
+    flex-grow: 1;
+}
+form .birthday div:last-child {
     gap: 8px;
 }
 
-hr{
+hr {
     width: 20%;
     margin: 0;
     border: 1px solid var(--dark);
