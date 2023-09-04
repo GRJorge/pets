@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 require("../config/db");
 
@@ -14,14 +15,18 @@ module.exports = {
         //GUARDADO DE USUARIOS
         const { name, lastname, email, day, month, year, password } = req.body;
 
-        await new User({
-            name: name,
-            lastname: lastname,
-            email: email,
-            birthday: new Date(year + "-" + month + "-" + day),
-            password: password,
-        }).save();
+        await bcrypt.hash(password, 8, (err, hash) => {
+            if (err) throw err;
 
-        res.send(req.body);
+            new User({
+                name: name,
+                lastname: lastname,
+                email: email,
+                birthday: new Date(year + "-" + month + "-" + day),
+                password: hash,
+            }).save();
+
+            res.send(req.body);
+        });
     },
 };
