@@ -11,14 +11,14 @@ module.exports = {
         //VISTA DE REGISTRO
         res.render("user/signUp");
     },
-    insertUser: async function (req, res) {
+    insertUser: function (req, res) {
         //GUARDADO DE USUARIOS
         const { name, lastname, email, day, month, year, password } = req.body;
 
-        await bcrypt.hash(password, 8, (err, hash) => {
+        bcrypt.hash(password, 8, async (err, hash) => {
             if (err) throw err;
 
-            new User({
+            await new User({
                 name: name,
                 lastname: lastname,
                 email: email,
