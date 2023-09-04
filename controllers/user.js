@@ -29,4 +29,25 @@ module.exports = {
             res.send(req.body);
         });
     },
+    signIn: async function (req, res) {
+        const { email, password } = req.body;
+        const query = await User.findOne({ email: email }).lean();
+
+        if(query){
+            bcrypt.compare(password,query.password,(err,result) => {
+                if(err) throw err
+                if(result){
+                    res.send("correcto")
+                }else{
+                    incorrect("Contraseña incorrecta")
+                }
+            })
+        }else{
+            incorrect("Correo incorrecto")
+        }
+
+        function incorrect(error){
+            res.send(error)
+        }
+    },
 };

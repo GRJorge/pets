@@ -11,9 +11,9 @@
 <body>
     <div class="page">
         <div class="box">
-            <form class="shadow" action="" method="post">
-                <input class="text" type="text" name="emial" id="email" placeholder="Correo electronico">
-                <input class="text" type="password" name="password" id="password" placeholder="Contraseña">
+            <form class="shadow" action="/signIn" method="post">
+                <input class="text" maxL="5" type="text" name="email" id="email" placeholder="Correo electronico">
+                <input class="text" maxL="6" type="password" name="password" id="password" placeholder="Contraseña">
                 <div>
                     <input class="btn btnPrimary" type="submit" value="Entrar">
                     <a class="btn btnAccent" href="/signUp">Crear una cuenta</a>
@@ -33,5 +33,7 @@
             </div>
         </div>
     </div>
+
+    <script src="/javascripts/validateForms.js"></script>
 </body>
 </html>
