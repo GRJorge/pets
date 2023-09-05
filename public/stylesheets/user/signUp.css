@@ -45,6 +45,7 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    padding: 32px;
 }
 form,
 form > div {
@@ -56,6 +57,8 @@ form {
     padding: 32px;
     border-radius: 16px;
     min-width: 350px;
+    max-height: calc(100vh - 96px);
+    overflow: auto;
 }
 form a{
     width: 50%;
@@ -68,9 +71,8 @@ form .birthday select{
 form .birthday div:last-child {
     gap: 8px;
 }
-
-hr {
-    width: 20%;
+#errors{
+    display: none;
     margin: 0;
-    border: 1px solid var(--dark);
+    gap: 8px;
 }
