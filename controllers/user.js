@@ -5,11 +5,11 @@ require("../config/db");
 module.exports = {
     viewSignIn: function (req, res) {
         //VISTA DE LOGIN
-        res.render("user/signIn");
+        res.render("user/signIn", { error: null, incorrectData: null });
     },
     viewSignUp: function (req, res) {
         //VISTA DE REGISTRO
-        res.render("user/signUp");
+        res.render("user/signUp", { error: null, incorrectData: {} });
     },
     insertUser: function (req, res) {
         //GUARDADO DE USUARIOS
@@ -18,36 +18,44 @@ module.exports = {
         bcrypt.hash(password, 8, async (err, hash) => {
             if (err) throw err;
 
-            await new User({
-                name: name,
-                lastname: lastname,
-                email: email,
-                birthday: new Date(year + "-" + month + "-" + day),
-                password: hash,
-            }).save();
+            try {
+                await new User({
+                    name: name,
+                    lastname: lastname,
+                    email: email,
+                    birthday: new Date(year + "-" + month + "-" + day),
+                    password: hash,
+                }).save();
 
-            res.send(req.body);
+                res.send(req.body);
+            } catch (error) {
+                res.render("user/signUp", {
+                    error: "Correo en uso",
+                    incorrectData: req.body,
+                });
+            }
         });
     },
     signIn: async function (req, res) {
+        //INICIO DE SESION
         const { email, password } = req.body;
         const query = await User.findOne({ email: email }).lean();
 
-        if(query){
-            bcrypt.compare(password,query.password,(err,result) => {
-                if(err) throw err
-                if(result){
-                    res.send("correcto")
-                }else{
-                    incorrect("Contraseña incorrecta")
+        if (query) {
+            bcrypt.compare(password, query.password, (err, result) => {
+                if (err) throw err;
+                if (result) {
+                    res.send("correcto");
+                } else {
+                    incorrect("Contraseña incorrecta", "");
                 }
-            })
-        }else{
-            incorrect("Correo incorrecto")
+            });
+        } else {
+            incorrect("Correo incorrecto", email);
         }
 
-        function incorrect(error){
-            res.send(error)
+        function incorrect(error, data) {
+            res.render("user/signIn", { error: error, incorrectData: data });
         }
     },
 };

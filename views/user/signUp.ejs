@@ -21,13 +21,19 @@
         </div>
         <div class="box">
             <form class="shadow" action="/insertUser" method="post">
-                <div id="errors"></div>
+                <% if (error) { %>
+                    <div id="errors" style="display: flex;">
+                        <span class="notError"><%= error %><button id="close"><i class="fi fi-sr-circle-xmark"></i></button></span>
+                    </div>
+                <% } else { %>
+                    <div id="errors"></div>
+                <% } %>
                 <div>
-                    <input class="text textPrimary" type="text" maxL="3" name="name" id="name" placeholder="Nombre(s)">
-                    <input class="text textPrimary" type="text" maxL="3" name="lastname" id="lastname" placeholder="Apellido(s)">
+                    <input class="text textPrimary" type="text" maxL="3" name="name" id="name" placeholder="Nombre(s)" value="<%= incorrectData.name %>">
+                    <input class="text textPrimary" type="text" maxL="3" name="lastname" id="lastname" placeholder="Apellido(s)" value="<%= incorrectData.lastname %>">
                 </div>
                 <div>
-                    <input class="text textPrimary" type="email" maxL="6" name="email" id="email" placeholder="Correo">
+                    <input class="text textPrimary" type="email" maxL="6" name="email" id="email" placeholder="Correo" value="<%= incorrectData.email %>">
                 </div>
                 <div class="birthday">
                     <div>
@@ -36,31 +42,43 @@
                     <div>
                         <select class="text textPrimary" name="day" id="day">
                             <% for( let i=1; i <=31; i++ ) { %>
-                                <option value="<%= i %>">
-                                    <%= i %>
-                                </option>
+                                <% if (i == incorrectData.day) { %>
+                                    <option selected value="<%= i %>">
+                                        <%= i %>
+                                    </option>        
+                                <% } else { %>
+                                    <option value="<%= i %>">
+                                        <%= i %>
+                                    </option>     
                                 <% } %>
+                            <% } %>
                         </select>
                         <select class="text textPrimary" name="month" id="month">
-                            <option value="01">Enero</option>
-                            <option value="02">Febrero</option>
-                            <option value="03">Marzo</option>
-                            <option value="04">Abril</option>
-                            <option value="05">Mayo</option>
-                            <option value="06">Junio</option>
-                            <option value="07">Julio</option>
-                            <option value="08">Agosto</option>
-                            <option value="09">Septiembre</option>
-                            <option value="10">Octubre</option>
-                            <option value="11">Noviembre</option>
-                            <option value="12">Diciembre</option>
+                            <option value="01" <% if (incorrectData.month === 1) { %>selected<% } %>>Enero</option>
+                            <option value="02" <% if (incorrectData.month === 2) { %>selected<% } %>>Febrero</option>
+                            <option value="03" <% if (incorrectData.month === 3) { %>selected<% } %>>Marzo</option>
+                            <option value="04" <% if (incorrectData.month === 4) { %>selected<% } %>>Abril</option>
+                            <option value="05" <% if (incorrectData.month === 5) { %>selected<% } %>>Mayo</option>
+                            <option value="06" <% if (incorrectData.month === 6) { %>selected<% } %>>Junio</option>
+                            <option value="07" <% if (incorrectData.month === 7) { %>selected<% } %>>Julio</option>
+                            <option value="08" <% if (incorrectData.month === 8) { %>selected<% } %>>Agosto</option>
+                            <option value="09" <% if (incorrectData.month === 9) { %>selected<% } %>>Septiembre</option>
+                            <option value="10" <% if (incorrectData.month === 10) { %>selected<% } %>>Octubre</option>
+                            <option value="11" <% if (incorrectData.month === 11) { %>selected<% } %>>Noviembre</option>
+                            <option value="12" <% if (incorrectData.month === 12) { %>selected<% } %>>Diciembre</option>
                         </select>
                         <select class="text textPrimary" name="year" id="year">
                             <% for( let i=new Date().getFullYear(); i>= 1900; i--) { %>
-                                <option value="<%= i %>">
-                                    <%= i %>
-                                </option>
+                                <% if (i == incorrectData.day) { %>
+                                    <option selected value="<%= i %>">
+                                        <%= i %>
+                                    </option>        
+                                <% } else { %>
+                                    <option value="<%= i %>">
+                                        <%= i %>
+                                    </option>     
                                 <% } %>
+                            <% } %>
                         </select>
                     </div>
                 </div>
