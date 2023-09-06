@@ -27,7 +27,10 @@ module.exports = {
                     password: hash,
                 }).save();
 
-                res.send(req.body);
+                res.render("user/signIn", {
+                    error: null,
+                    incorrectData: email,
+                });
             } catch (error) {
                 res.render("user/signUp", {
                     error: "Correo en uso",
