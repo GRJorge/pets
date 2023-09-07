@@ -18,13 +18,13 @@ const store = new MongoDBStore({
 });
 
 store.on("error", function (error) {
-  consolo.error(error);
+  console.error(error);
 });
 
 app.use(session({
   secret: "STANlee31",
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: store,
   cookie: {
     secure: false,

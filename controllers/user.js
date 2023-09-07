@@ -2,13 +2,19 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 require("../config/db");
 
+const global = require("../config/global");
+
 module.exports = {
     viewSignIn: function (req, res) {
         //VISTA DE LOGIN
+        deleteSession(req.session)
+
         res.render("user/signIn", { error: null, incorrectData: null });
     },
     viewSignUp: function (req, res) {
         //VISTA DE REGISTRO
+        deleteSession(req.session)
+
         res.render("user/signUp", { error: null, incorrectData: {} });
     },
     insertUser: function (req, res) {
@@ -48,9 +54,10 @@ module.exports = {
             bcrypt.compare(password, query.password, (err, result) => {
                 if (err) throw err;
                 if (result) {
-                    res.send("correcto");
+                    req.session.user = query._id;
+                    res.send(query);
                 } else {
-                    incorrect("Contraseña incorrecta", "");
+                    incorrect("Contraseña incorrecta", email);
                 }
             });
         } else {
@@ -62,3 +69,11 @@ module.exports = {
         }
     },
 };
+
+function deleteSession(session) {
+    if (session) {
+        session.destroy((err) => {
+            if (err) throw err;
+        });
+    }
+}
