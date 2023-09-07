@@ -1,9 +1,9 @@
 module.exports = {
-    ifSession: function (session, res, fun) {
-        if (session) {
+    ifSession: function (req, res, fun) {
+        if (req.session.user) {
             fun();
         } else {
-            res.redirect("/");
+            res.redirect("/user/signIn");
         }
     },
 };

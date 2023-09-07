@@ -1,11 +1,14 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const controller = require('../controllers/user')
+const controller = require("../controllers/user");
 
-router.get('/',controller.viewSignIn);
-router.get('/signUp',controller.viewSignUp)
-router.post('/signIn', controller.signIn)
-router.post('/insertUser',controller.insertUser)
+router.get("/", (req, res) => {
+    res.redirect("/user/signIn");
+});
+router.get("/signIn", controller.viewSignIn); //VISTA DE LOGIN
+router.get("/signUp", controller.viewSignUp); //VISTA DE REGISTRO
+router.post("/signIn", controller.signIn); //INICIO DE SESION
+router.post("/signUp", controller.singUp); //REGISTRO DE USUARIO
 
-module.exports = router
+module.exports = router;

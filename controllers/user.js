@@ -2,22 +2,20 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 require("../config/db");
 
-const global = require("../config/global");
-
 module.exports = {
     viewSignIn: function (req, res) {
         //VISTA DE LOGIN
-        deleteSession(req.session)
+        deleteSession(req.session);
 
         res.render("user/signIn", { error: null, incorrectData: null });
     },
     viewSignUp: function (req, res) {
         //VISTA DE REGISTRO
-        deleteSession(req.session)
+        deleteSession(req.session);
 
         res.render("user/signUp", { error: null, incorrectData: {} });
     },
-    insertUser: function (req, res) {
+    singUp: function (req, res) {
         //GUARDADO DE USUARIOS
         const { name, lastname, email, day, month, year, password } = req.body;
 
@@ -55,7 +53,7 @@ module.exports = {
                 if (err) throw err;
                 if (result) {
                     req.session.user = query._id;
-                    res.send(query);
+                    res.redirect("/");
                 } else {
                     incorrect("Contraseña incorrecta", email);
                 }

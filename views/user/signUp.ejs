@@ -20,7 +20,7 @@
             <img src="/images/Cat.png" alt="">
         </div>
         <div class="box">
-            <form class="shadow" action="/insertUser" method="post">
+            <form class="shadow" action="/user/signUp" method="post">
                 <% if (error) { %>
                     <div id="errors" style="display: flex;">
                         <span class="notError"><%= error %><button id="close"><i class="fi fi-sr-circle-xmark"></i></button></span>
@@ -89,7 +89,7 @@
                 <div>
                     <input class="btn btnPrimary" type="submit" value="Crear nueva cuenta">
                     
-                    <a class="btn btnAccent" href="/">Iniciar sesion</a>
+                    <a class="btn btnAccent" href="/user/signIn">Iniciar sesion</a>
                 </div>
             </form>
         </div>
