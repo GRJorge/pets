@@ -1,0 +1,76 @@
+@import url("../global.css");
+
+.bar {
+    display: flex;
+    background-color: var(--dark);
+    align-items: center;
+    padding: 10px 16px;
+}
+.bar > div {
+    width: 33.33%;
+}
+.bar .search {
+    justify-content: center;
+}
+.bar .sections {
+    justify-content: end;
+}
+/* PERFIL */
+.bar .profile img {
+    width: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+/* BUSQUEDA */
+.bar .search input {
+    background: none;
+    border: none;
+    color: var(--light);
+    outline: none;
+}
+.bar .search div {
+    background-color: var(--dark2);
+    border-radius: 8px;
+    padding: 6px;
+}
+.bar .search label {
+    padding: 0 8px;
+    transform: scaleX(-1);
+    cursor: text;
+}
+.bar .search i {
+    position: relative;
+    top: 2px;
+    color: var(--light);
+}
+/* SECCIONES */
+.bar .sections {
+    gap: 16px;
+}
+.bar .sections a,
+.bar .sections button {
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: none;
+    font-size: 22px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+.bar .sections a:hover,
+.bar .sections button:hover {
+    background-color: var(--primary);
+    border-radius: 8px;
+}
+.bar .sections a:hover i,
+.bar .sections button:hover i {
+    color: var(--dark);
+}
+.bar .sections i {
+    position: relative;
+    top: 3px;
+    color: var(--light);
+}

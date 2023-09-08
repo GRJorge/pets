@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="/stylesheets/partials/bar.css">
+    <link rel="stylesheet" href="/stylesheets/<%= css %>">
+<head>
+<body>
+    <nav class="bar shadow">
+        <div class="profile">
+            <img src="/images/user.jpg" alt="">
+        </div>
+        <div class="search">
+            <div>
+                <label for="search"><i class="fi fi-rr-search"></i></label>
+                <input type="text" id="search" placeholder="Buscar...">
+            </div>
+        </div>
+        <div class="sections">
+            <a href=""><i class="fi fi-rr-home"></i></a>
+            <a href=""><i class="fi fi-rr-messages"></i></a>
+            <button><i class="fi fi-rs-bell"></i></button>
+        </div>
+    </nav>
