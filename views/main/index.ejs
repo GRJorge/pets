@@ -1,3 +1,26 @@
-    <%- include('../partials/bar.ejs',{title: "Home", css: "main/home.css"}) %>    
+    <%- include('../partials/bar.ejs',{title: "Home", css: "main/home.css"}) %>
+    
+    <main>
+        <section class="friends">Section 1</section>
+        <section class="posts">
+            <form class="newPost shadow" action="" method="post">
+                <div class="data">
+                    <div>
+                        <label for="description"><i class="fi fi-sr-paw"></i></label>
+                        <textarea class="text sm textPrimary" type="text" name="description" id="description" placeholder="Nueva publicacion..." rows="1"></textarea>
+                    </div>
+                    <div>
+                        <label for="multimedia"><i class="fi fi-rr-picture"></i>Foto/video</label>
+                        <input type="file" id="multimedia" src="" alt="" accept=".png, .jpg, .jpeg, .mp4">
+                    </div>
+                </div>
+                <div>
+                    <button class="btn sm btnAlert">Cancelar</button>
+                    <input class="btn sm btnSuccess" type="submit" value="Publicar">
+                </div>
+            </form>
+        </section>
+        <section class="myPets">Section 3</section>
+    </main>
 </body>
 </html>

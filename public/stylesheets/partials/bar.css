@@ -2,6 +2,8 @@
 
 .bar {
     display: flex;
+    position: sticky;
+    top: 0px;
     background-color: var(--dark);
     align-items: center;
     padding: 10px 16px;

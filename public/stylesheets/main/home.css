@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+main {
+    flex-grow: 1;
+}
+/* CONTENEDORES DE SECCIONES */
+.friends,
+.myPets {
+    width: 25%;
+}
+.posts {
+    width: 50%;
+    border-left: 1px solid var(--dark2);
+    border-right: 1px solid var(--dark2);
+    flex-direction: column;
+    padding: 16px;
+    align-items: center;
+}
+/* NUEVA PUBLICACION */
+.newPost{
+    flex-direction: column;
+    background-color: var(--light);
+    border-radius: 16px;
+    padding: 8px;
+    padding-left: 12px;
+    gap: 8px;
+}
+.newPost i{
+    position: relative;
+    font-size: 20px;
+    top: 2px;
+}
+.newPost .data div:last-child label{
+    cursor: pointer;
+    background-color: var(--primary);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+.newPost .data div:last-child label:hover{
+    background-color: var(--dark);
+    color: var(--light);
+}
+.newPost .data div:last-child label:hover > i{
+    color: var(--accent);
+}
+.newPost .data div:last-child label i{
+    margin-right: 8px;
+}
+.newPost input[type="file"]{
+    display: none;
+}
+.newPost div{
+    align-items: center;
+    gap: 8px;
+}
+.newPost > div:last-child{
+    display: none;
+    justify-content: end;
+}
