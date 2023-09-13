@@ -29,18 +29,18 @@
                     <div id="errors"></div>
                 <% } %>
                 <div>
-                    <input class="text textPrimary" type="text" maxL="3" name="name" id="name" placeholder="Nombre(s)" value="<%= incorrectData.name %>">
-                    <input class="text textPrimary" type="text" maxL="3" name="lastname" id="lastname" placeholder="Apellido(s)" value="<%= incorrectData.lastname %>">
+                    <input class="text md textPrimary" type="text" maxL="3" name="name" id="name" placeholder="Nombre(s)" value="<%= incorrectData.name %>">
+                    <input class="text md textPrimary" type="text" maxL="3" name="lastname" id="lastname" placeholder="Apellido(s)" value="<%= incorrectData.lastname %>">
                 </div>
                 <div>
-                    <input class="text textPrimary" type="email" maxL="6" name="email" id="email" placeholder="Correo" value="<%= incorrectData.email %>">
+                    <input class="text md textPrimary" type="email" maxL="6" name="email" id="email" placeholder="Correo" value="<%= incorrectData.email %>">
                 </div>
                 <div class="birthday">
                     <div>
                         <span>Fecha de nacimiento:</span>
                     </div>
                     <div>
-                        <select class="text textPrimary" name="day" id="day">
+                        <select class="text md textPrimary" name="day" id="day">
                             <% for( let i=1; i <=31; i++ ) { %>
                                 <% if (i == incorrectData.day) { %>
                                     <option selected value="<%= i %>">
@@ -53,7 +53,7 @@
                                 <% } %>
                             <% } %>
                         </select>
-                        <select class="text textPrimary" name="month" id="month">
+                        <select class="text md textPrimary" name="month" id="month">
                             <option value="01" <% if (incorrectData.month === 1) { %>selected<% } %>>Enero</option>
                             <option value="02" <% if (incorrectData.month === 2) { %>selected<% } %>>Febrero</option>
                             <option value="03" <% if (incorrectData.month === 3) { %>selected<% } %>>Marzo</option>
@@ -67,7 +67,7 @@
                             <option value="11" <% if (incorrectData.month === 11) { %>selected<% } %>>Noviembre</option>
                             <option value="12" <% if (incorrectData.month === 12) { %>selected<% } %>>Diciembre</option>
                         </select>
-                        <select class="text textPrimary" name="year" id="year">
+                        <select class="text md textPrimary" name="year" id="year">
                             <% for( let i=new Date().getFullYear(); i>= 1900; i--) { %>
                                 <% if (i == incorrectData.day) { %>
                                     <option selected value="<%= i %>">
@@ -83,13 +83,13 @@
                     </div>
                 </div>
                 <div>
-                    <input class="text textPrimary" type="password" maxL="6" name="password" id="password" placeholder="Contraseña">
-                    <input class="text textPrimary" type="password" id="confirmPassword" placeholder="Confirmar contraseña">
+                    <input class="text md textPrimary" type="password" maxL="6" name="password" id="password" placeholder="Contraseña">
+                    <input class="text md textPrimary" type="password" id="confirmPassword" placeholder="Confirmar contraseña">
                 </div>
                 <div>
-                    <input class="btn btnPrimary" type="submit" value="Crear nueva cuenta">
+                    <input class="btn md btnPrimary" type="submit" value="Crear nueva cuenta">
                     
-                    <a class="btn btnAccent" href="/user/signIn">Iniciar sesion</a>
+                    <a class="btn md btnAccent" href="/user/signIn">Iniciar sesion</a>
                 </div>
             </form>
         </div>
