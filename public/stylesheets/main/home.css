@@ -61,3 +61,6 @@ main {
     display: none;
     justify-content: end;
 }
+#description{
+    overflow: hidden;
+}
