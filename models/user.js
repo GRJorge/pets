@@ -7,7 +7,6 @@ const userSchema = new Schema(
         birthday: { type: Date, required: true },
         name: { type: String, required: true },
         lastname: { type: String, required: true },
-        preferences: [String],
         picture: Buffer,
     },
     {

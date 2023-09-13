@@ -29,6 +29,7 @@ module.exports = {
                     email: email,
                     birthday: new Date(year + "-" + month + "-" + day),
                     password: hash,
+                    picture : null
                 }).save();
 
                 res.render("user/signIn", {

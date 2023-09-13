@@ -1,0 +1,39 @@
+@import url("../global.css");
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    background-color: var(--light);
+    border-radius: 16px;
+    padding: 32px;
+}
+form,
+form > div{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+h1,
+p{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-size: 28px;
+}
+p{
+    font-size: 18px;
+}
+form img{
+    height: 250px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+input[type="file"]{
+    display: none;
+}
