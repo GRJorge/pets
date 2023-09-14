@@ -31,8 +31,11 @@ p{
 }
 form img{
     height: 250px;
+    width: 250px;
     border-radius: 50%;
     cursor: pointer;
+    object-fit: cover;
+    clip: rect(0px, 250px, 250px, 0px);
 }
 input[type="file"]{
     display: none;

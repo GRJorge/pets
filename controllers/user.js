@@ -78,7 +78,22 @@ module.exports = {
             $set: {
                 picture: {
                     bin: null,
-                    default: true
+                    default: true,
+                },
+            },
+        };
+
+        await User.updateOne(filter, update);
+
+        res.redirect("/");
+    },
+    changePicture: async function (req, res) {
+        const filter = { _id: req.session.user };
+        const update = {
+            $set: {
+                picture: {
+                    bin: req.file.buffer,
+                    default: null,
                 },
             },
         };
