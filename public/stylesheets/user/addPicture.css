@@ -37,3 +37,16 @@ form img{
 input[type="file"]{
     display: none;
 }
+#submit{
+    display: none;
+}
+#skipForm{
+    display: none;
+}
+#skip{
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
+}

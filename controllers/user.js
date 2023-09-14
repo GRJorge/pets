@@ -29,7 +29,7 @@ module.exports = {
                     email: email,
                     birthday: new Date(year + "-" + month + "-" + day),
                     password: hash,
-                    picture : null
+                    picture: null,
                 }).save();
 
                 res.render("user/signIn", {
@@ -54,7 +54,11 @@ module.exports = {
                 if (err) throw err;
                 if (result) {
                     req.session.user = query._id;
-                    res.redirect("/");
+                    if (!query.picture.default) {
+                        res.render("user/addPicture");
+                    } else {
+                        res.redirect("/");
+                    }
                 } else {
                     incorrect("Contraseña incorrecta", email);
                 }
@@ -66,6 +70,22 @@ module.exports = {
         function incorrect(error, data) {
             res.render("user/signIn", { error: error, incorrectData: data });
         }
+    },
+    skipAddPicture: async function (req, res) {
+        //OMICION DE GUARDADO DE FOTO DE PERFIL Y PUESTA FOTO POR DEFAULT
+        const filter = { _id: req.session.user };
+        const update = {
+            $set: {
+                picture: {
+                    bin: null,
+                    default: true
+                },
+            },
+        };
+
+        await User.updateOne(filter, update);
+
+        res.redirect("/");
     },
 };
 
