@@ -54,7 +54,7 @@ module.exports = {
                 if (err) throw err;
                 if (result) {
                     req.session.user = query._id;
-                    if (!query.picture.default) {
+                    if (query.picture == null) {
                         res.render("user/addPicture");
                     } else {
                         res.redirect("/");
@@ -76,10 +76,7 @@ module.exports = {
         const filter = { _id: req.session.user };
         const update = {
             $set: {
-                picture: {
-                    bin: null,
-                    default: true,
-                },
+                picture: "default.jpg",
             },
         };
 
@@ -88,13 +85,11 @@ module.exports = {
         res.redirect("/");
     },
     changePicture: async function (req, res) {
+        //CAMBIO DE IMAGEN DE PERFIL
         const filter = { _id: req.session.user };
         const update = {
             $set: {
-                picture: {
-                    bin: req.file.buffer,
-                    default: null,
-                },
+                picture: req.file.filename,
             },
         };
 

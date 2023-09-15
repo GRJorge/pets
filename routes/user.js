@@ -4,7 +4,16 @@ const router = express.Router();
 
 const controller = require("../controllers/user");
 
-const upload = multer({ storage: multer.memoryStorage() });
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, "./public/images/profiles/");
+    },
+    filename: (req, file, callback) => {
+        callback(null, Date.now() + "_" + file.originalname);
+    },
+});
+
+const upload = multer({ storage: storage });
 
 router.get("/", (req, res) => {
     res.redirect("/user/signIn");

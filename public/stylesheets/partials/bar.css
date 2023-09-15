@@ -20,8 +20,11 @@
 /* PERFIL */
 .bar .profile img {
     width: 36px;
+    height: 36px;
     border-radius: 50%;
     cursor: pointer;
+    object-fit: cover;
+    clip: rect(0px, 36px, 36px, 0px);
 }
 /* BUSQUEDA */
 .bar .search input {

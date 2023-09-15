@@ -7,10 +7,7 @@ const userSchema = new Schema(
         birthday: { type: Date, required: true },
         name: { type: String, required: true },
         lastname: { type: String, required: true },
-        picture: {
-            bin: { type: Buffer, default: null },
-            default: { type: Boolean, required: true, default: false },
-        },
+        picture: { type: String, default: null },
     },
     {
         timestamps: true,
