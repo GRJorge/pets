@@ -40,6 +40,12 @@ main {
     padding: 6px 12px;
     font-size: 14px;
 }
+.newPost .data div:first-child{
+    flex-grow: 1;
+}
+.newPost .data #description{
+    width: 100%;
+}
 .newPost .data div:last-child label:hover{
     background-color: var(--dark);
     color: var(--light);
@@ -63,4 +69,12 @@ main {
 }
 #description{
     overflow: hidden;
+}
+#gallery{
+    display: none;
+    flex-wrap: wrap;
+}
+#gallery img{
+    width: calc(33.33% - 6px);
+    border-radius: 8px;
 }
