@@ -1,8 +1,8 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, ObjectId } = require("mongoose");
 
 const publicationSchema = new Schema(
     {
-        user: { type: ObjectId, required: true },
+        user: { type: ObjectId, ref: "User", required: true },
         description: String,
         multimedia: [String],
     },
