@@ -8,6 +8,7 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 
 const mainRouter = require("./routes/main");
 const userRouter = require("./routes/user");
+const publicationRouter = require("./routes/publication");
 
 var app = express();
 
@@ -45,6 +46,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", mainRouter);
 app.use("/user", userRouter);
+app.use("/publication", publicationRouter);
 
 
 // catch 404 and forward to error handler
