@@ -1,7 +1,6 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
 }
 main {
     flex-grow: 1;
@@ -18,63 +17,140 @@ main {
     flex-direction: column;
     padding: 16px;
     align-items: center;
+    height: calc(100vh - 56px - 32px);
+    overflow: auto;
 }
 /* NUEVA PUBLICACION */
-.newPost{
+.newPost {
     flex-direction: column;
     background-color: var(--light);
     border-radius: 16px;
     padding: 8px;
     padding-left: 12px;
     gap: 8px;
+    margin-bottom: 32px;
 }
-.newPost i{
+.newPost i {
     position: relative;
     font-size: 20px;
     top: 2px;
 }
-.newPost .data div:last-child label{
+.newPost .data div:last-child label {
     cursor: pointer;
     background-color: var(--primary);
     border-radius: 8px;
     padding: 6px 12px;
     font-size: 14px;
 }
-.newPost .data div:first-child{
+.newPost .data div:first-child {
     flex-grow: 1;
 }
-.newPost .data #description{
+.newPost .data #description {
     width: 100%;
 }
-.newPost .data div:last-child label:hover{
+.newPost .data div:last-child label:hover {
     background-color: var(--dark);
     color: var(--light);
 }
-.newPost .data div:last-child label:hover > i{
+.newPost .data div:last-child label:hover > i {
     color: var(--accent);
 }
-.newPost .data div:last-child label i{
+.newPost .data div:last-child label i {
     margin-right: 8px;
 }
-.newPost input[type="file"]{
+.newPost input[type="file"] {
     display: none;
 }
-.newPost div{
+.newPost div {
     align-items: center;
     gap: 8px;
 }
-.newPost > div:last-child{
+.newPost > div:last-child {
     display: none;
     justify-content: end;
 }
-#description{
+#description {
     overflow: hidden;
 }
-#gallery{
+#gallery {
     display: none;
     flex-wrap: wrap;
 }
-#gallery img{
+#gallery img {
     width: calc(33.33% - 6px);
     border-radius: 8px;
+}
+/* PUBLICACIONES */
+.pubs,
+.pub {
+    flex-direction: column;
+    justify-content: center;
+}
+.pubs {
+    gap: 16px;
+}
+.pub {
+    background-color: var(--light);
+    border-radius: 16px;
+    padding: 16px;
+    padding-bottom: 8px;
+}
+.pub .profile {
+    justify-content: space-between;
+    align-items: center;
+}
+.pub .profile > button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+.pub .profile img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+.pub .content {
+    flex-direction: column;
+    margin: 8px 0;
+}
+.pub .content > img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+.pub .content .gallery{
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    align-items: center;
+}
+.pub .content .gallery img{
+    width: calc(50% - 6px);
+    border-radius: 8px;
+}
+.pub .reactions {
+    justify-content: space-between;
+}
+.pub .reactions div {
+    gap: 8px;
+}
+.pub .reactions button {
+    display: flex;
+    gap: 6px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    align-items: center;
+    cursor: pointer;
+}
+.pub .reactions button i{
+    position: relative;
+    top: 3px;
+    font-size: 22px;
 }

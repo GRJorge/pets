@@ -23,6 +23,12 @@ h1,
 h2,
 h3 {
     font-family: "Montserrat Alternates", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+p{
+    margin: 0;
+    padding: 0;
 }
 body {
     margin: 0;
@@ -83,9 +89,17 @@ section {
 .btnSuccess {
     background-color: var(--success);
 }
+.btnDark2 {
+    background-color: var(--dark2);
+    color: var(--light);
+}
 .btn:hover {
     background-color: var(--dark);
     color: var(--light2);
+}
+.btnDark2:hover {
+    background-color: var(--light2);
+    color: var(--dark2);
 }
 
 /* ERRORES */

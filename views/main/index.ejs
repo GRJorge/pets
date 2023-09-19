@@ -3,6 +3,7 @@
     <main>
         <section class="friends">Section 1</section>
         <section class="posts">
+            <!-- NUEVA PUBLICACION -->
             <form class="newPost shadow" action="/publication/new" method="post" enctype="multipart/form-data">
                 <div class="data">
                     <div>
@@ -20,10 +21,21 @@
                     <input class="btn sm btnSuccess" type="submit" value="Publicar">
                 </div>
             </form>
+            <!-- MI ULTIMA PUBLICACION -->
+            <div class="pubs">
+                <% if (lastPublications.length > 0) { %>
+                    <div>
+                        <h1>Ultima publicacion:</h1>
+                    </div>
+                    <% lastPublications.forEach(publication => { %>
+                        <%- include('../partials/home/publication.ejs', { publication, self: true }) %>
+                    <% }) %>
+                <% } %>
+            </div>
         </section>
         <section class="myPets">Section 3</section>
     </main>
-
+    <!-- MI ULTIMA PUBLICACION -->
     <script src="/javascripts/main/index.js"></script>
 </body>
 </html>
