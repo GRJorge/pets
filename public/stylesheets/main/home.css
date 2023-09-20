@@ -99,6 +99,7 @@ main {
 .pub .profile {
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 8px;
 }
 .pub .profile > button {
     display: flex;
@@ -126,17 +127,16 @@ main {
 }
 .pub .content {
     flex-direction: column;
-    margin: 8px 0;
 }
 .pub .content > img {
     width: 100%;
     border-radius: 8px;
-    margin-top: 16px;
+    margin-top: 8px;
 }
 .pub .content .gallery {
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: 8px;
     align-items: center;
 }
 .pub .content .gallery img {
@@ -147,6 +147,7 @@ main {
 }
 .pub .reactions {
     justify-content: space-between;
+    margin-top: 8px;
 }
 .pub .reactions div {
     gap: 8px;
