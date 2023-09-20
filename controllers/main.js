@@ -18,11 +18,14 @@ module.exports = {
                 createdAt: {
                     $gte: date.setDate(date.getDate() - 1),
                 },
-            }).sort({ createdAt: -1 }).lean();
+            })
+                .sort({ createdAt: -1 }).select("description multimedia createdAt")
+                .populate("user","name lastname picture")
+                .lean();
 
             res.render("main/index", {
                 pictureProfile: pictureProfile.picture,
-                lastPublications
+                lastPublications,
             });
         });
     },
