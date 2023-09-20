@@ -16,7 +16,7 @@ module.exports = {
             const lastPublications = await Publication.find({
                 user: req.session.user,
                 createdAt: {
-                    $gte: date.setDate(date.getDate() - 3),
+                    $gte: date.setDate(date.getDate() - 1),
                 },
             }).sort({ createdAt: -1 }).lean();
 

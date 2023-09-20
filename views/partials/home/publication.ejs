@@ -4,22 +4,35 @@
             <img src="/images/profiles/default.jpg" alt="">
             <span>Nombre de la persona</span>
         </button>
+        <div>
+            <span>
+                <% const date = new Date() %>
+                <% if (publication.createdAt.getDate() == date.getDate() && publication.createdAt.getMonth() == date.getMonth() && publication.createdAt.getFullYear() == date.getFullYear()) { %>
+                    <% const hours = publication.createdAt.getHours().toString().padStart(2,"0") %>
+                    <% const minutes = publication.createdAt.getMinutes().toString().padStart(2,"0") %>
+                    
+                    <%= hours %>:<%= minutes %> %>    
+                <% } else { %>
+                    <% const day = publication.createdAt.getDate().toString().padStart(2,"0") %>
+                    <% const month = publication.createdAt.getMonth().toString().padStart(2,"0") %>
+                    
+                    <%= day %>/<%= month %>/<%= publication.createdAt.getFullYear() %>    
+                <% } %>
+            </span>
         <% if (!self) { %>
-            <div>
-                <button class="btn sm btnDark2">Seguir</button>
-            </div>
+            <button class="btn sm btnDark2">Seguir</button>
         <% } %>
-        
+        </div>
     </div>
     <div class="content">
-        <p><%= publication.description %></p>
+        <p><%- publication.description.replace(/\r\n/g, '<br>') %></p>
         <% if (publication.multimedia.length > 1) { %>
             <div class="gallery">
                 <% for( let i = 0; i < publication.multimedia.length; i++ ) { %>
                     <img src="/images/publications/<%= publication.multimedia[i] %>" alt="">
                 <% } %>
             </div>
-        <% } else { %>
+        <% } else if(publication.multimedia.length == 1) { %>
             <img src="/images/publications/<%= publication.multimedia[0] %>" alt="">
         <% } %>
     </div>

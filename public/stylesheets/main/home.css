@@ -88,6 +88,7 @@ main {
 }
 .pubs {
     gap: 16px;
+    width: 100%;
 }
 .pub {
     background-color: var(--light);
@@ -114,6 +115,14 @@ main {
     width: 36px;
     height: 36px;
     border-radius: 50%;
+    object-fit: cover;
+    clip: rect(0px, 36px, 36px, 0px);
+}
+.pub .profile div{
+    gap: 8px;
+}
+.pub .profile div span{
+    font-size: 14px;
 }
 .pub .content {
     flex-direction: column;
@@ -124,14 +133,16 @@ main {
     border-radius: 8px;
     margin-top: 16px;
 }
-.pub .content .gallery{
+.pub .content .gallery {
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 16px;
     align-items: center;
 }
-.pub .content .gallery img{
+.pub .content .gallery img {
     width: calc(50% - 6px);
+    height: 300px;
+    object-fit: cover;
     border-radius: 8px;
 }
 .pub .reactions {
@@ -149,7 +160,7 @@ main {
     align-items: center;
     cursor: pointer;
 }
-.pub .reactions button i{
+.pub .reactions button i {
     position: relative;
     top: 3px;
     font-size: 22px;
