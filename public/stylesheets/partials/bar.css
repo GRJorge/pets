@@ -79,3 +79,29 @@
     top: 3px;
     color: var(--light);
 }
+@media screen and (max-width: 650px) {
+    .bar .search div{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 420px) {
+    .search {
+        position: absolute;
+        right: 16px;   
+    }
+    .bar {
+        flex-direction: column;
+    }
+    .bar div:first-child{
+        width: 100%;
+    }
+    .bar .sections {
+        width: 100%;
+        margin-top: 8px;
+        justify-content: center;
+    }
+    .bar .sections a,
+    .bar .sections button{
+        flex-grow: 1;
+    }
+}
