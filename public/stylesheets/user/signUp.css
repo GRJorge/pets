@@ -84,7 +84,7 @@ form .birthday div:last-child {
     gap: 8px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 970px) {
     .box {
         padding: 16px 0;
     }

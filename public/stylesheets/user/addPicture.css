@@ -6,30 +6,31 @@ body {
     justify-content: center;
     align-items: center;
 }
-form{
+form {
     background-color: var(--light);
     border-radius: 16px;
     padding: 32px;
 }
 form,
-form > div{
+form > div {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 16px;
+    text-align: center;
 }
 h1,
-p{
+p {
     margin: 0;
     padding: 0;
 }
-h1{
+h1 {
     font-size: 28px;
 }
-p{
+p {
     font-size: 18px;
 }
-form img{
+form img {
     height: 250px;
     width: 250px;
     border-radius: 50%;
@@ -37,19 +38,39 @@ form img{
     object-fit: cover;
     clip: rect(0px, 250px, 250px, 0px);
 }
-input[type="file"]{
+input[type="file"] {
     display: none;
 }
-#submit{
+#submit {
     display: none;
 }
-#skipForm{
+#skipForm {
     display: none;
 }
-#skip{
+#skip {
     background: none;
     border: none;
     text-decoration: underline;
     cursor: pointer;
     font-size: 14px;
+}
+@media screen and (max-width: 460px) {
+    body {
+        padding: 16px;
+    }
+    form {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 340px) {
+    form {
+        width: 70%;
+    }
+    form img {
+        width: 90%;
+        height: auto;
+    }
+    h1 {
+        font-size: 22px;
+    }
 }
