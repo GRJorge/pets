@@ -29,11 +29,11 @@
         <% if (publication.multimedia.length > 1) { %>
             <div class="gallery">
                 <% for( let i = 0; i < publication.multimedia.length; i++ ) { %>
-                    <img src="/images/publications/<%= publication.multimedia[i] %>" alt="">
+                    <img id="pubImg" num="<%= i %>" src="/images/publications/<%= publication.multimedia[i] %>">
                 <% } %>
             </div>
         <% } else if(publication.multimedia.length == 1) { %>
-            <img src="/images/publications/<%= publication.multimedia[0] %>" alt="">
+            <img id="pubImg" num="0" src="/images/publications/<%= publication.multimedia[0] %>">
         <% } %>
     </div>
     <div class="reactions">
