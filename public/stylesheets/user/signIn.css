@@ -21,6 +21,8 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    gap: 32px;
+    flex-direction: column;
 }
 form,
 form > div {
@@ -36,6 +38,11 @@ form {
 form a {
     width: 50%;
     align-self: center;
+}
+.box > div {
+    display: none;
+    flex-direction: column;
+    text-align: center;
 }
 /* INFORMACION Y FOTO DEL PERRO */
 .info {
@@ -55,11 +62,11 @@ form a {
     right: 120px;
     top: 70px;
 }
-.info h1{
+h1 {
     color: var(--accent);
 }
-.info h1,
-.info p {
+h1,
+p {
     margin: 0;
 }
 .info img {
@@ -67,8 +74,31 @@ form a {
     transform: scaleX(-1);
 }
 
-#errors{
+#errors {
     display: none;
     margin: 0;
     gap: 8px;
+}
+
+@media screen and (max-width: 900px) {
+    .info {
+        display: none;
+    }
+    .box > div {
+        display: block;
+    }
+}
+@media screen and (max-width: 450px) {
+    .box {
+        width: 100%;
+        margin: 0;
+    }
+    form {
+        margin: 0;
+        width: 70%;
+        min-width: inherit;
+    }
+    form a {
+        width: inherit;
+    }
 }

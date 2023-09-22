@@ -28,11 +28,11 @@
     flex-direction: column;
     text-align: right;
 }
-.info div h1 {
+h1 {
     color: var(--primary);
     margin: 0;
 }
-.info div p {
+p {
     margin: 0;
 }
 .info img {
@@ -46,6 +46,13 @@
     align-items: center;
     flex-grow: 1;
     padding: 32px;
+    flex-direction: column;
+    gap: 16px;
+}
+.box > div{
+    display: none;
+    flex-direction: column;
+    text-align: center;
 }
 form,
 form > div {
@@ -60,19 +67,50 @@ form {
     max-height: calc(100vh - 96px);
     overflow: auto;
 }
-form a{
+form a {
     width: 50%;
     align-self: center;
 }
 /* FECHA DE CUMPLEAÑOS */
-form .birthday select{
+form .birthday select {
     flex-grow: 1;
 }
 form .birthday div:last-child {
     gap: 8px;
 }
-#errors{
+#errors {
     display: none;
     margin: 0;
     gap: 8px;
+}
+
+@media screen and (max-width: 900px) {
+    .box {
+        padding: 16px 0;
+    }
+    .info {
+        display: none;
+    }
+    .box > div {
+        display: block;
+    }
+}
+@media screen and (max-width: 470px) {
+    .box {
+        width: 100%;
+        margin: 0;
+    }
+    form {
+        margin: 0;
+        width: 70%;
+        min-width: inherit;
+    }
+    form a {
+        width: inherit;
+    }
+}
+@media screen and (max-width: 430px){
+    form .birthday div:last-child {
+        flex-direction: column;
+    }
 }

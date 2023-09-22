@@ -20,6 +20,10 @@
             <img src="/images/Cat.png" alt="">
         </div>
         <div class="box">
+            <div>
+                <h1>Registrate</h1>
+                <p>Es facil y rapido</p>
+            </div>
             <form class="shadow" action="/user/signUp" method="post">
                 <% if (error) { %>
                     <div id="errors" style="display: flex;">
@@ -87,7 +91,7 @@
                     <input class="text md textPrimary" type="password" id="confirmPassword" placeholder="Confirmar contraseña">
                 </div>
                 <div>
-                    <input class="btn md btnPrimary" type="submit" value="Crear nueva cuenta">
+                    <button class="btn md btnPrimary" type="submit">Crear nueva cuenta</button>
                     
                     <a class="btn md btnAccent" href="/user/signIn">Iniciar sesion</a>
                 </div>
