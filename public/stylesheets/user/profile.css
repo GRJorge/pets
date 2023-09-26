@@ -1,0 +1,46 @@
+main {
+    padding: 32px;
+}
+section {
+    background-color: var(--light);
+    border-radius: 16px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+}
+.infoProfile {
+    margin-top: 60px;
+    height: 80px;
+}
+.infoProfile > div {
+    align-items: center;
+}
+.infoProfile img {
+    width: 216px;
+    object-fit: cover;
+    clip: rect(0px, 216px, 216px, 0px);
+    border-radius: 50%;
+}
+.infoProfile .name {
+    flex-direction: column;
+}
+.infoProfile .name span:first-child {
+    font-size: 24px;
+    font-weight: 600;
+}
+.infoProfile .info {
+    gap: 32px;
+}
+.infoProfile .control {
+    gap: 8px;
+}
+.infoProfile .control .btnDark2 {
+    padding: 6px 10px;
+}
+.infoProfile .control i {
+    position: relative;
+    top: 3px;
+    font-size: 22px;
+    color: var(--light);
+}

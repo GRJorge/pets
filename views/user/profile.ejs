@@ -1,1 +1,18 @@
-<%- include('../partials/bar.ejs',{profile , title: "Home", css: ""}) %>
+<%- include('../partials/bar.ejs',{profile , title: "Home", css: "user/profile.css"}) %>
+
+<main>
+    <section class="infoProfile shadow">
+        <div class="info">
+            <img class="shadow" src="/images/profiles/default.jpg" alt="Profile">
+            <div class="name">
+                <span>Nombre de la persona</span>
+                <span>50 Seguidores 30 Seguidos</span>
+            </div>
+        </div>
+        <div class="control">
+            <button class="btn md btnAccent">Seguir</button>
+            <button class="btn btnDark2"><i class="fi fi-rr-comment"></i></button>
+            <button class="btn btnDark2"><i class="fi fi-rr-menu-dots-vertical"></i></button>
+        </div>
+    </section>
+</main>
