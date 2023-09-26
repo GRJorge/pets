@@ -18,7 +18,7 @@ module.exports = {
                 .lean();
 
             res.render("main/index", {
-                profile: await global.getPictureProfile(req.session),
+                barProfile: await global.getPictureProfile(req.session),
                 lastPublications,
             });
         });

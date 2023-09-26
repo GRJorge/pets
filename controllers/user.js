@@ -99,9 +99,12 @@ module.exports = {
         res.redirect("/");
     },
     viewProfile: async function (req, res) {
+        const query = await User.findById(req.params.id).lean();
+
         //PERFIL DE USUARIO
         res.render("user/profile", {
-            profile: await global.getPictureProfile(req.session),
+            barProfile: await global.getPictureProfile(req.session),
+            profile: query,
         });
     },
 };

@@ -1,11 +1,11 @@
-<%- include('../partials/bar.ejs',{profile , title: "Home", css: "user/profile.css"}) %>
+<%- include('../partials/bar.ejs',{barProfile , title: "Perfil", css: "user/profile.css"}) %>
 
 <main>
     <section class="infoProfile shadow">
         <div class="info">
-            <img class="shadow" src="/images/profiles/default.jpg" alt="Profile">
+            <img class="shadow" src="/images/profiles/<%= profile.picture %>" alt="Profile">
             <div class="name">
-                <span>Nombre de la persona</span>
+                <span><%= profile.name %> <%= profile.lastname %></span>
                 <span>50 Seguidores 30 Seguidos</span>
             </div>
         </div>
