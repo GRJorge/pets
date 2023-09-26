@@ -25,4 +25,6 @@ router.post("/signUp", controller.singUp); //REGISTRO DE USUARIO
 router.post("/skipAddPicture", controller.skipAddPicture); //OMITIR AGREGAR FOTO DE PERFIL
 router.post("/changePicture", upload.single("picture"), controller.changePicture); //CAMBIAR FOTO DE PERFIL
 
+router.get("/profile/:id", controller.viewProfile); //PERFIL DE USUARIO
+
 module.exports = router;

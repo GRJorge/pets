@@ -18,6 +18,9 @@
     justify-content: end;
 }
 /* PERFIL */
+.bar .profile a{
+    height: 36px;
+}
 .bar .profile img {
     width: 36px;
     height: 36px;

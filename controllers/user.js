@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
+const global = require("../config/global");
 require("../config/db");
 
 module.exports = {
@@ -96,6 +97,12 @@ module.exports = {
         await User.updateOne(filter, update);
 
         res.redirect("/");
+    },
+    viewProfile: async function (req, res) {
+        //PERFIL DE USUARIO
+        res.render("user/profile", {
+            profile: await global.getPictureProfile(req.session),
+        });
     },
 };
 
