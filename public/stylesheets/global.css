@@ -26,7 +26,7 @@ h3 {
     margin: 0;
     padding: 0;
 }
-p{
+p {
     margin: 0;
     padding: 0;
 }
@@ -38,7 +38,8 @@ body {
 div,
 form,
 main,
-section {
+section,
+nav {
     display: flex;
 }
 .shadow {
@@ -89,9 +90,24 @@ section {
 .btnSuccess {
     background-color: var(--success);
 }
+.btnLight2 {
+    background-color: var(--light2);
+}
 .btnDark2 {
     background-color: var(--dark2);
     color: var(--light);
+}
+.btnDark2 i {
+    color: var(--light);
+}
+.btn i {
+    position: relative;
+    top: 2px;
+    margin-right: 4px;
+    font-size: 16px;
+}
+.btn:hover > i {
+    color: var(--light2);
 }
 .btn:hover {
     background-color: var(--dark);
@@ -99,6 +115,9 @@ section {
 }
 .btnDark2:hover {
     background-color: var(--light2);
+    color: var(--dark2);
+}
+.btnDark2:hover > i {
     color: var(--dark2);
 }
 
