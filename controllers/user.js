@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
+const Publication = require("../models/publication");
 const global = require("../config/global");
 require("../config/db");
 
@@ -99,12 +100,24 @@ module.exports = {
         res.redirect("/");
     },
     viewProfile: async function (req, res) {
-        const query = await User.findById(req.params.id).lean();
+        const profile = await User.findById(req.params.id).lean(); //OBTENCION DE INFORMACIÓN DEL PERFIL
+        const publications = await Publication.find({ user: req.params.id })
+            .select("description multimedia createdAt")
+            .lean();
+
+        publications.forEach(pub => {
+            pub.user = {
+                name: profile.name,
+                lastname: profile.lastname,
+                picture: profile.picture
+            }
+        })
 
         //PERFIL DE USUARIO
         res.render("user/profile", {
             barProfile: await global.getPictureProfile(req.session),
-            profile: query,
+            profile,
+            publications,
         });
     },
 };

@@ -1,0 +1,87 @@
+/* PUBLICACIONES */
+.pubs,
+.pub {
+    flex-direction: column;
+    justify-content: center;
+}
+.pubs {
+    gap: 16px;
+    width: 100%;
+}
+.pub {
+    background-color: var(--light);
+    border-radius: 16px;
+    padding: 16px;
+    padding-bottom: 8px;
+}
+.pub .profile {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.pub .profile > button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+.pub .profile img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    clip: rect(0px, 36px, 36px, 0px);
+}
+.pub .profile div{
+    gap: 8px;
+}
+.pub .profile div span{
+    font-size: 14px;
+}
+.pub .content {
+    flex-direction: column;
+}
+.pub .content img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+.pub .content .gallery {
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+    align-items: center;
+}
+.pub .content .gallery img {
+    width: calc(50% - 6px);
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.pub .reactions {
+    justify-content: space-between;
+    margin-top: 8px;
+}
+.pub .reactions div {
+    gap: 8px;
+}
+.pub .reactions button {
+    display: flex;
+    gap: 6px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    align-items: center;
+    cursor: pointer;
+}
+.pub .reactions button i {
+    position: relative;
+    top: 3px;
+    font-size: 22px;
+}

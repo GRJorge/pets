@@ -19,4 +19,9 @@
         <button class="btn sm btnLight2"><i class="fi fi-rr-clock"></i>Publicaciones</button>
         <button class="btn sm btnLight2"><i class="fi fi-rr-picture"></i>Fotos</button>
     </section>
+    <section class="pubs">
+        <% publications.forEach(publication => { %>
+            <%- include("../partials/publication.ejs",{publication, self: true}) %>
+        <% }) %>
+    </section>
 </main>
