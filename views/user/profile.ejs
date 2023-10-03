@@ -3,7 +3,7 @@
 <main>
     <section class="box shadow infoProfile">
         <div class="info">
-            <img class="shadow" src="/images/profiles/<%= profile.picture %>" alt="Profile">
+            <img class="shadow" id="pubImg" num="0" src="/images/profiles/<%= profile.picture %>" alt="Profile">
             <div>
                 <span><%= profile.name %> <%= profile.lastname %></span>
                 <span>50 Seguidores 30 Seguidos</span>
@@ -19,9 +19,14 @@
         <button class="btn sm btnLight2"><i class="fi fi-rr-clock"></i>Publicaciones</button>
         <button class="btn sm btnLight2"><i class="fi fi-rr-picture"></i>Fotos</button>
     </section>
-    <section class="pubs">
+    <section class="pubs" id="pubs">
         <% publications.forEach(publication => { %>
             <%- include("../partials/publication.ejs",{publication, self: true}) %>
         <% }) %>
     </section>
+    <section class="box shadow" id="gallery">
+
+    </section>
 </main>
+
+<%- include("../partials/slider.ejs") %>

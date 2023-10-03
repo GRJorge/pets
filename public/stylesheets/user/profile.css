@@ -1,4 +1,5 @@
 @import url("../partials/publication.css");
+@import url("../partials/slider.css");
 
 main {
     flex-direction: column;
@@ -33,6 +34,7 @@ section {
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+    cursor: pointer;
 }
 .infoProfile .control {
     gap: 8px;

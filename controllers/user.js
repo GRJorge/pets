@@ -102,16 +102,17 @@ module.exports = {
     viewProfile: async function (req, res) {
         const profile = await User.findById(req.params.id).lean(); //OBTENCION DE INFORMACIÓN DEL PERFIL
         const publications = await Publication.find({ user: req.params.id })
+            .sort({ createdAt: -1 })
             .select("description multimedia createdAt")
             .lean();
 
-        publications.forEach(pub => {
+        publications.forEach((pub) => {
             pub.user = {
                 name: profile.name,
                 lastname: profile.lastname,
-                picture: profile.picture
-            }
-        })
+                picture: profile.picture,
+            };
+        });
 
         //PERFIL DE USUARIO
         res.render("user/profile", {
