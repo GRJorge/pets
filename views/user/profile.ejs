@@ -24,8 +24,12 @@
             <%- include("../partials/publication.ejs",{publication, self: true}) %>
         <% }) %>
     </section>
-    <section class="box shadow" id="section" style="display: none;">
-        <p>Galeria</p>
+    <section class="box shadow gallery" id="section" style="display: none;">
+        <% publications.forEach(publication => { %>
+            <% publication.multimedia.forEach(media => { %>
+                <img src="/images/publications/<%= media %>" alt="">
+            <% }) %>
+        <% }) %>
     </section>
 </main>
 
