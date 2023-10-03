@@ -19,17 +19,28 @@
         <button class="btn sm btnPrimary"><i class="fi fi-rr-clock"></i>Publicaciones</button>
         <button class="btn sm btnLight2"><i class="fi fi-rr-picture"></i>Fotos</button>
     </section>
-    <section class="pubs" id="section">
-        <% publications.forEach(publication => { %>
-            <%- include("../partials/publication.ejs",{publication, self: true}) %>
-        <% }) %>
-    </section>
+    <% if (publications.length > 0) { %>
+        <section class="pubs" id="section">
+            <% publications.forEach(publication => { %>
+                <%- include("../partials/publication.ejs",{publication, self: true}) %>
+            <% }) %>
+        </section>        
+    <% } else { %>
+        <section class="box shadow" id="section">
+            <p>Nada que mostrar</p>
+        </section>
+    <% } %>
     <section class="box shadow gallery" id="section" style="display: none;">
+        <% let ifPhoto = false %>
         <% publications.forEach(publication => { %>
             <% publication.multimedia.forEach(media => { %>
+                <% ifPhoto = true %>
                 <img src="/images/publications/<%= media %>" alt="">
             <% }) %>
         <% }) %>
+        <% if (!ifPhoto) { %>
+            <p>Nada que mostrar</p>
+        <% } %>
     </section>
 </main>
 

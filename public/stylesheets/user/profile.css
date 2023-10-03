@@ -9,6 +9,7 @@ main {
 }
 section {
     width: 80%;
+    justify-content: center;
 }
 .box {
     padding: 16px;

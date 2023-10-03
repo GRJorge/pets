@@ -12,6 +12,7 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    z-index: 3;
 }
 #slider img{
     height: calc(100vh - 64px);
