@@ -33,9 +33,9 @@
     <section class="box shadow gallery" id="section" style="display: none;">
         <% let ifPhoto = false %>
         <% publications.forEach(publication => { %>
-            <% publication.multimedia.forEach(media => { %>
+            <% publication.multimedia.forEach((media, index) => { %>
                 <% ifPhoto = true %>
-                <img src="/images/publications/<%= media %>" alt="">
+                <img id="pubImg" num="<%= index %>" src="/images/publications/<%= media %>" alt="">
             <% }) %>
         <% }) %>
         <% if (!ifPhoto) { %>
