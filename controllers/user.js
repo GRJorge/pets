@@ -108,6 +108,7 @@ module.exports = {
 
         publications.forEach((pub) => {
             pub.user = {
+                _id: profile._id,
                 name: profile.name,
                 lastname: profile.lastname,
                 picture: profile.picture,

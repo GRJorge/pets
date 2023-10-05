@@ -1,9 +1,9 @@
 <div class="pub shadow">
     <div class="profile">
-        <button>
+        <a href="/user/profile/<%= publication.user._id %>">
             <img src="/images/profiles/<%= publication.user.picture %>" alt="">
             <span><%= publication.user.name %> <%= publication.user.lastname %></span>
-        </button>
+        </a>
         <div>
             <span>
                 <% const date = new Date() %>

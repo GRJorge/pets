@@ -21,7 +21,7 @@
     flex-wrap: wrap;
     gap: 8px;
 }
-.pub .profile > button {
+.pub .profile > a {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -31,6 +31,7 @@
     border: none;
     cursor: pointer;
     font-size: 14px;
+    text-decoration: none;
 }
 .pub .profile img {
     width: 36px;
