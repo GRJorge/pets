@@ -48,6 +48,7 @@ section {
 .navContent {
     justify-content: center;
     gap: 8px;
+    flex-wrap: wrap;
 }
 /* SECCION DE PUBLICACIONES */
 .pubs{
@@ -57,9 +58,29 @@ section {
 .gallery{
     flex-wrap: wrap;
     gap: 8px;
+    justify-content: flex-start;
 }
 .gallery img{
     width: calc(33.33% - 6px);
     object-fit: cover;
     border-radius: 8px;
+}
+
+@media screen and (max-width: 900px) {
+    .infoProfile .info{
+        flex-direction: column;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 640px) {
+    .infoProfile{
+        flex-direction: column;
+        gap: 16px;
+    }
+    .gallery img{
+        width: calc(50% - 6px);
+    }
+    section{
+        width: 100%;
+    }
 }
