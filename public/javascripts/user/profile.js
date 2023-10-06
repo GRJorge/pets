@@ -20,3 +20,11 @@ function resetButtons(btnIndex){
         }
     })
 }
+
+// SOCKETS
+
+const socket = io()
+
+function follow(_id){
+    socket.emit("follow", _id)
+}

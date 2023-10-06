@@ -5,14 +5,15 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
+const http = require("http")
+
 
 const mainRouter = require("./routes/main");
 const userRouter = require("./routes/user");
 const publicationRouter = require("./routes/publication");
 
 var app = express();
-const server = http.createServer(app);
-
+const server = http.createServer(app)
 // session setup
 
 const store = new MongoDBStore({
@@ -66,4 +67,18 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+server.listen(3000, () => {
+  console.log("Escuchando desde 3000")
+})
+
+const io = require("socket.io")(server)
+
+io.on("connection", (socket) => {
+  console.log("Conexion del cliente")
+
+  socket.on("follow", async (_id) => {
+      console.log("follow " + _id)
+  })
+})
+
+module.exports = io

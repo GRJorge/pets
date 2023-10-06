@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="control">
-            <button class="btn md btnAccent">Seguir</button>
+            <button onclick="follow('<%= profile._id %>')" class="btn md btnAccent">Seguir</button>
             <button class="btn btnDark2"><i class="fi fi-rr-comment"></i></button>
             <button class="btn btnDark2"><i class="fi fi-rr-menu-dots-vertical"></i></button>
         </div>
@@ -46,4 +46,5 @@
 
 <%- include("../partials/slider.ejs") %>
 
+<script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/user/profile.js"></script>
