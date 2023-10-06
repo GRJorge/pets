@@ -11,6 +11,7 @@ const userRouter = require("./routes/user");
 const publicationRouter = require("./routes/publication");
 
 var app = express();
+const server = http.createServer(app);
 
 // session setup
 
