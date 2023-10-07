@@ -33,6 +33,7 @@ section {
 }
 .infoProfile .info img {
     width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
@@ -58,7 +59,7 @@ section {
 .gallery{
     flex-wrap: wrap;
     gap: 8px;
-    justify-content: flex-start;
+    justify-content: center;
 }
 .gallery img{
     width: calc(33.33% - 6px);
