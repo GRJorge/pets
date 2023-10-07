@@ -120,6 +120,7 @@ module.exports = {
             barProfile: await global.getPictureProfile(req.session),
             profile,
             publications,
+            selfId: req.session.user
         });
     },
 };

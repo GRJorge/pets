@@ -1,5 +1,4 @@
 <%- include('../partials/bar.ejs',{barProfile , title: "Perfil", css: "user/profile.css"}) %>
-
 <main>
     <section class="box shadow infoProfile">
         <div class="info">
@@ -10,7 +9,7 @@
             </div>
         </div>
         <div class="control">
-            <button onclick="follow('<%= profile._id %>')" class="btn md btnAccent">Seguir</button>
+            <button onclick="follow('<%= profile._id %>','<%= selfId %>')" class="btn md btnAccent">Seguir</button>
             <button class="btn btnDark2"><i class="fi fi-rr-comment"></i></button>
             <button class="btn btnDark2"><i class="fi fi-rr-menu-dots-vertical"></i></button>
         </div>

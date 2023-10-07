@@ -25,6 +25,6 @@ function resetButtons(btnIndex){
 
 const socket = io()
 
-function follow(_id){
-    socket.emit("follow", _id)
+function follow(_id, selfId){
+    socket.emit("follow", _id, selfId)
 }
