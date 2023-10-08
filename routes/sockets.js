@@ -5,20 +5,31 @@ module.exports = (server) => {
     const io = require("socket.io")(server);
 
     io.on("connection", (socket) => {
-        //USER//
+        /* USER */
         //SEGUIR USUARIOS
         socket.on("follow", async (_id, selfId) => {
-            if (_id == selfId) {
-                console.log("Los usuarios son los mismos");
-            } else {
-                // Añadir a seguidores al dueño del perfil
-                await User.findByIdAndUpdate(_id, {
-                    $push: { followers: selfId },
+            if (_id != selfId) {
+                let follow = false;
+                const following = await User.findById(selfId).select("following").lean();
+                // Comprobar si ya se sigue, si es correcto eliminarlo
+                const promises = following.following.map(async (user) => {
+                    if (user == _id) {
+                        await User.findByIdAndUpdate(selfId, { $pull: { following: _id } });
+                        await User.findByIdAndUpdate(_id, { $pull: { followers: selfId } });
+                        return true;
+                    }
+                    return false;
                 });
-                // Añadir a siguiendo al usuario conectado
-                await User.findByIdAndUpdate(selfId, {
-                    $push: { following: _id },
-                });
+                
+                const results = await Promise.all(promises);
+                follow = results.some(result => result);
+                // Si no se sigue se añade
+                if (!follow) {
+                    // Añadir a seguidores al dueño del perfil
+                    await User.findByIdAndUpdate(_id, { $push: { followers: selfId } });
+                    // Añadir a siguiendo al usuario conectado
+                    await User.findByIdAndUpdate(selfId, { $push: { following: _id } });
+                }
             }
         });
     });
