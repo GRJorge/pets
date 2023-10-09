@@ -1,4 +1,5 @@
 const Publication = require("../models/publication");
+const escape = require("escape-html")
 require("../config/db");
 
 module.exports = {
@@ -25,8 +26,8 @@ module.exports = {
 
             await new Publication({
                 user: req.session.user,
-                description: req.body.description,
-                multimedia: files,
+                description: escape(req.body.description),
+                multimedia: escape(files),
             }).save();
 
             res.redirect("/");
