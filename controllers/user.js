@@ -99,28 +99,27 @@ module.exports = {
 
         res.redirect("/");
     },
-    viewProfile: async function (req, res) {
-        const profile = await User.findById(req.params.id).lean(); //OBTENCION DE INFORMACIÓN DEL PERFIL
-        const publications = await Publication.find({ user: req.params.id })
-            .sort({ createdAt: -1 })
-            .select("description multimedia createdAt")
-            .lean();
+    viewProfile: function (req, res) {
+        global.ifSession(req, res, async () => {
+            const profile = await User.findById(req.params.id).lean(); //OBTENCION DE INFORMACIÓN DEL PERFIL
+            const publications = await Publication.find({ user: req.params.id }).sort({ createdAt: -1 }).select("description multimedia createdAt").lean();
 
-        publications.forEach((pub) => {
-            pub.user = {
-                _id: profile._id,
-                name: profile.name,
-                lastname: profile.lastname,
-                picture: profile.picture,
-            };
-        });
+            publications.forEach((pub) => {
+                pub.user = {
+                    _id: profile._id,
+                    name: profile.name,
+                    lastname: profile.lastname,
+                    picture: profile.picture,
+                };
+            });
 
-        //PERFIL DE USUARIO
-        res.render("user/profile", {
-            barProfile: await global.getPictureProfile(req.session),
-            profile,
-            publications,
-            selfId: req.session.user
+            //PERFIL DE USUARIO
+            res.render("user/profile", {
+                barProfile: await global.getPictureProfile(req.session),
+                profile,
+                publications,
+                selfId: req.session.user,
+            });
         });
     },
 };
