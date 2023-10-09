@@ -9,7 +9,11 @@
             </div>
         </div>
         <div class="control">
-            <button onclick="follow('<%= profile._id %>','<%= selfId %>')" class="btn md btnAccent">Seguir</button>
+            <% if (!isFollow) { %>
+                <button id="follow" profileId="<%= profile._id %>" selfId="<%= selfId %>" class="btn md btnAccent">Seguir</button>
+            <% } else { %>
+                <button id="follow" profileId="<%= profile._id %>" selfId="<%= selfId %>" class="btn md btnPrimary">Siguiendo</button>
+            <% } %>
             <button class="btn btnDark2"><i class="fi fi-rr-comment"></i></button>
             <button class="btn btnDark2"><i class="fi fi-rr-menu-dots-vertical"></i></button>
         </div>

@@ -113,12 +113,19 @@ module.exports = {
                 };
             });
 
+            let isFollow = false;
+
+            if (await User.findOne({ _id: req.session.user, following: req.params.id }).lean()) {
+                isFollow = true;
+            }
+
             //PERFIL DE USUARIO
             res.render("user/profile", {
-                barProfile: await global.getPictureProfile(req.session),
-                profile,
-                publications,
-                selfId: req.session.user,
+                barProfile: await global.getPictureProfile(req.session), //INFORMACION PARA LA BARRA PRINCIPAL
+                profile, //INFORMACION DEL PERFIL
+                publications, //PUBLICACIONES DEL PERFIL
+                selfId: req.session.user, //ID PROPIO
+                isFollow, //SE SIGUE A LA PERSONA
             });
         });
     },

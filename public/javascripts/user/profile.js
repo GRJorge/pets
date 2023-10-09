@@ -25,6 +25,17 @@ function resetButtons(btnIndex){
 
 const socket = io()
 
-function follow(_id, selfId){
-    socket.emit("follow", _id, selfId)
-}
+const btnFollow = document.querySelector("#follow")
+
+btnFollow.addEventListener("click",() => {
+    socket.emit("follow",btnFollow.getAttribute("profileId"),btnFollow.getAttribute("selfId"))
+
+    btnFollow.classList.toggle("btnAccent")
+    btnFollow.classList.toggle("btnPrimary")
+
+    if(btnFollow.classList.contains("btnAccent")){
+        btnFollow.innerHTML = "Seguir"
+    }else{
+        btnFollow.innerHTML = "Siguiendo"
+    }
+})
