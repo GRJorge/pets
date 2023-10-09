@@ -27,7 +27,7 @@ section {
 .infoProfile .info div {
     flex-direction: column;
 }
-.infoProfile .info div span:first-child {
+.infoProfile .info div > span:first-child {
     font-size: 22px;
     font-weight: 600;
 }

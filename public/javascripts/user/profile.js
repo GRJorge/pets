@@ -35,7 +35,11 @@ btnFollow.addEventListener("click",() => {
 
     if(btnFollow.classList.contains("btnAccent")){
         btnFollow.innerHTML = "Seguir"
+        const num = document.querySelector("#followersNum")
+        num.innerHTML = parseInt(num.innerHTML) - 1
     }else{
         btnFollow.innerHTML = "Siguiendo"
+        const num = document.querySelector("#followersNum")
+        num.innerHTML = parseInt(num.innerHTML) + 1
     }
 })

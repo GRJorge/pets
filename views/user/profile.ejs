@@ -5,7 +5,7 @@
             <img class="shadow" id="pubImg" num="0" src="/images/profiles/<%= profile.picture %>" alt="Profile">
             <div>
                 <span><%= profile.name %> <%= profile.lastname %></span>
-                <span>50 Seguidores 30 Seguidos</span>
+                <span><span id="followersNum"><%= profile.followers.length %></span> Seguidores - <span id="followingNum"><%= profile.following.length %></span> Seguidos</span>
             </div>
         </div>
         <div class="control">
