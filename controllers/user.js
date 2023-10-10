@@ -101,8 +101,10 @@ module.exports = {
     },
     viewProfile: function (req, res) {
         global.ifSession(req, res, async () => {
-            const profile = await User.findById(req.params.id).lean(); //OBTENCION DE INFORMACIÓN DEL PERFIL
+            const profile = await User.findById(req.params.id).select("name lastname picture").lean(); //OBTENCION DE INFORMACIÓN DEL PERFIL
             const publications = await Publication.find({ user: req.params.id }).sort({ createdAt: -1 }).select("description multimedia createdAt").lean();
+
+            const follows = await User.findById(req.params.id).select("followers following").populate("followers following", "name lastname picture").lean();
 
             publications.forEach((pub) => {
                 pub.user = {
@@ -126,6 +128,7 @@ module.exports = {
                 publications, //PUBLICACIONES DEL PERFIL
                 selfId: req.session.user, //ID PROPIO
                 isFollow, //SE SIGUE A LA PERSONA
+                follows, //OBTENCION DE SEGUIDORES Y SEGUIDOS
             });
         });
     },

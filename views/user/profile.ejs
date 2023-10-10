@@ -5,7 +5,7 @@
             <img class="shadow" id="pubImg" num="0" src="/images/profiles/<%= profile.picture %>" alt="Profile">
             <div>
                 <span><%= profile.name %> <%= profile.lastname %></span>
-                <span><span id="followersNum"><%= profile.followers.length %></span> Seguidores - <span id="followingNum"><%= profile.following.length %></span> Seguidos</span>
+                <span><span id="followersNum"><%= follows.followers.length %></span> Seguidores - <span id="followingNum"><%= follows.following.length %></span> Seguidos</span>
             </div>
         </div>
         <div class="control">
@@ -23,6 +23,8 @@
     <section id="sections" class="box shadow navContent">
         <button class="btn sm btnPrimary"><i class="fi fi-rr-clock"></i>Publicaciones</button>
         <button class="btn sm btnLight2"><i class="fi fi-rr-picture"></i>Fotos</button>
+        <button class="btn sm btnLight2">Seguidores</button>
+        <button class="btn sm btnLight2">Seguidos</button>
     </section>
     <% if (publications.length > 0) { %>
         <section class="pubs" id="section">
@@ -45,6 +47,24 @@
         <% }) %>
         <% if (!ifPhoto) { %>
             <p>Nada que mostrar</p>
+        <% } %>
+    </section>
+    <section class="box shadow follows" id="section">
+        <% if (follows.followers.length < 1) { %>
+            <p>Nada que mostrar</p>
+        <% } else { %>
+            <% follows.followers.forEach((followers) => { %>
+                <a href="/user/profile/<%= followers._id %>"><img class="shadow" src="/images/profiles/<%= followers.picture%>"><span><%= followers.name %> <%= followers.lastname %></span></a>
+            <% }) %>
+        <% } %>
+    </section>
+    <section class="box shadow follows" id="section">
+        <% if (follows.following.length < 1) { %>
+            <p>Nada que mostrar</p>
+        <% } else { %>
+            <% follows.following.forEach((following) => { %>
+                <a href="/user/profile/<%= following._id %>"><img class="shadow" src="/images/profiles/<%= following.picture%>"><span><%= following.name %> <%= following.lastname %></span></a>
+            <% }) %>
         <% } %>
     </section>
 </main>
