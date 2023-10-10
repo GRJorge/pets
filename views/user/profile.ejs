@@ -9,13 +9,15 @@
             </div>
         </div>
         <div class="control">
-            <% if (!isFollow) { %>
-                <button id="follow" profileId="<%= profile._id %>" selfId="<%= selfId %>" class="btn md btnAccent">Seguir</button>
-            <% } else { %>
-                <button id="follow" profileId="<%= profile._id %>" selfId="<%= selfId %>" class="btn md btnPrimary">Siguiendo</button>
+            <% if (profile._id.toString() != selfId.toString()) { %>
+                <% if (!isFollow) { %>
+                    <button id="follow" profileId="<%= profile._id %>" selfId="<%= selfId %>" class="btn md btnAccent">Seguir</button>
+                <% } else { %>
+                    <button id="follow" profileId="<%= profile._id %>" selfId="<%= selfId %>" class="btn md btnPrimary">Siguiendo</button>
+                <% } %>
             <% } %>
-            <button class="btn btnDark2"><i class="fi fi-rr-comment"></i></button>
-            <button class="btn btnDark2"><i class="fi fi-rr-menu-dots-vertical"></i></button>
+            <button class="btn md btnDark2"><i class="fi fi-rr-comment"></i></button>
+            <button class="btn md btnDark2"><i class="fi fi-rr-menu-dots-vertical"></i></button>
         </div>
     </section>
     <section id="sections" class="box shadow navContent">
