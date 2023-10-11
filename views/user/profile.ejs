@@ -15,8 +15,12 @@
                 <% } else { %>
                     <button id="follow" profileId="<%= profile._id %>" selfId="<%= selfId %>" class="btn md btnPrimary">Siguiendo</button>
                 <% } %>
+                <button class="btn md btnDark2"><i class="fi fi-rr-comment"></i></button>
+            <% } else { %>
+                <form action="/user/profile/edit" method="post">
+                    <button class="btn md btnDark2" type="submit"><i class="fi fi-rr-user-pen"></i> Editar</button>
+                </form>
             <% } %>
-            <button class="btn md btnDark2"><i class="fi fi-rr-comment"></i></button>
             <button class="btn md btnDark2"><i class="fi fi-rr-menu-dots-vertical"></i></button>
         </div>
     </section>

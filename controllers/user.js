@@ -132,6 +132,9 @@ module.exports = {
             });
         });
     },
+    viewEditProfile:async function (req, res) {
+        res.render("user/edit")
+    },
 };
 
 function deleteSession(session) {
