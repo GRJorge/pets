@@ -1,0 +1,67 @@
+main {
+    justify-content: center;
+}
+.box,
+.box div,
+.box form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 50%;
+    margin: 32px;
+    padding: 32px;
+    background-color: var(--light);
+    border-radius: 16px;
+    gap: 16px;
+}
+.image > div {
+    gap: 16px;
+    align-items: normal;
+}
+.image img {
+    width: 256px;
+    height: 256px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.image input {
+    display: none;
+}
+.name span {
+    font-weight: 600;
+    font-size: 22px;
+}
+.name span button {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-left: 6px;
+    cursor: pointer;
+}
+.name form {
+    gap: 8px;
+}
+.name form div {
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+}
+.name form button {
+    flex-grow: 1;
+}
+#editName {
+    display: none;
+}
+#errors {
+    display: none;
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}

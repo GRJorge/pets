@@ -132,8 +132,14 @@ module.exports = {
             });
         });
     },
-    viewEditProfile:async function (req, res) {
-        res.render("user/edit")
+    viewEditProfile: async function (req, res) {
+        const profile = await User.findById(req.session.user).select("email name lastname bithday picture createdAt").lean();
+
+        console.log(profile);
+
+        res.render("user/edit", {
+            profile,
+        });
     },
 };
 

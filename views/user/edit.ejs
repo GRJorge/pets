@@ -1,1 +1,29 @@
-<h1>Edit</h1>
+<%- include('../partials/bar.ejs',{barProfile: profile, title: "Editar perfil", css: "user/edit.css"}) %>
+
+<main>
+    <div class="box shadow">
+        <form class="image" action="" method="post">
+            <div>
+                <label for="picture"><img class="shadow" src="/images/profiles/<%= profile.picture %>" alt=""></label>
+                <label class="btn md btnPrimary" for="picture">Cambiar foto</label>
+            </div>
+            <input type="file" name="picture" id="picture">
+        </form>
+        <div class="name">
+            <span><%= profile.name %> <%= profile.lastname %><button id="showEditName"><i class="fi fi-rr-pencil"></i></button></span>
+            <form id="editName" action="" method="post">
+                <input maxL="3" class="text sm textPrimary" placeholder="Nombre" type="text" name="name" id="name" value="<%= profile.name %>">
+                <input maxL="3" class="text sm textPrimary" placeholder="Apellido(s)" type="text" name="lastname" id="lastname" value="<%= profile.lastname %>">
+                <div>
+                    <button id="cancelEditName" type="reset" class="btn sm btnAlert">Cancelar</button>
+                    <button type="submit" class="btn sm btnAccent">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<div id="errors"></div>
+
+<script src="/javascripts/user/edit.js"></script>
+<script src="/javascripts/validateForms.js"></script>
