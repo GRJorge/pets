@@ -2,12 +2,12 @@
 
 <main>
     <div class="box shadow">
-        <form class="image" action="" method="post">
+        <form class="image" action="/user/changePicture/edit" method="post" enctype="multipart/form-data">
             <div>
                 <label for="picture"><img id="picturePreview" class="shadow" src="/images/profiles/<%= profile.picture %>" alt=""></label>
                 <label class="btn md btnPrimary" for="picture">Cambiar foto</label>
             </div>
-            <input type="file" name="picture" id="picture">
+            <input type="file" name="picture" id="picture" accept="image/*">
             <div id="controlsImage">
                 <button id="cancelEditPicture" type="reset" class="btn md btnAlert">Cancelar</button>
                 <button type="submit" class="btn md btnAccent">Guardar</button>

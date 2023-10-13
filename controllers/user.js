@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const Publication = require("../models/publication");
 const global = require("../config/global");
+const fs = require("fs")
 require("../config/db");
 
 module.exports = {
@@ -88,6 +89,8 @@ module.exports = {
     },
     changePicture: async function (req, res) {
         //CAMBIO DE IMAGEN DE PERFIL
+        const oldPicture = await User.findById(req.session.user).select("picture").lean();
+
         const filter = { _id: req.session.user };
         const update = {
             $set: {
@@ -97,7 +100,15 @@ module.exports = {
 
         await User.updateOne(filter, update);
 
-        res.redirect("/");
+        if (req.params.redirect == "main") {
+            res.redirect("/");
+        } else {
+            const routeImage = "public/images/profiles/" + oldPicture.picture
+            if(fs.existsSync(routeImage)){
+                fs.unlinkSync(routeImage)
+            }
+            res.redirect("/user/profile/" + req.session.user);
+        }
     },
     viewProfile: function (req, res) {
         global.ifSession(req, res, async () => {
@@ -134,8 +145,6 @@ module.exports = {
     },
     viewEditProfile: async function (req, res) {
         const profile = await User.findById(req.session.user).select("email name lastname bithday picture createdAt").lean();
-
-        console.log(profile);
 
         res.render("user/edit", {
             profile,
