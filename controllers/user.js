@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 const Publication = require("../models/publication");
 const global = require("../config/global");
-const fs = require("fs")
+const fs = require("fs");
 require("../config/db");
 
 module.exports = {
@@ -103,9 +103,9 @@ module.exports = {
         if (req.params.redirect == "main") {
             res.redirect("/");
         } else {
-            const routeImage = "public/images/profiles/" + oldPicture.picture
-            if(fs.existsSync(routeImage)){
-                fs.unlinkSync(routeImage)
+            const routeImage = "public/images/profiles/" + oldPicture.picture;
+            if (fs.existsSync(routeImage)) {
+                fs.unlinkSync(routeImage);
             }
             res.redirect("/user/profile/" + req.session.user);
         }
@@ -149,6 +149,14 @@ module.exports = {
         res.render("user/edit", {
             profile,
         });
+    },
+    editName: async function (req, res) {
+        await User.findByIdAndUpdate(req.session.user,{
+            name: req.body.name,
+            lastname: req.body.lastname
+        })
+
+        res.redirect("/user/edit")
     },
 };
 
