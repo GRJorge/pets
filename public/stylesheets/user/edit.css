@@ -16,9 +16,16 @@ main {
     border-radius: 16px;
     gap: 16px;
 }
-.image > div {
+.image > div:first-child {
     gap: 16px;
     align-items: normal;
+}
+.image > div:last-child {
+    display: none;
+    gap: 8px;
+    align-items: normal;
+    width: 100%;
+    margin-top: 16px;
 }
 .image img {
     width: 256px;
@@ -27,7 +34,7 @@ main {
     border-radius: 50%;
     cursor: pointer;
 }
-.image input {
+.image input[type="file"] {
     display: none;
 }
 .name span {
