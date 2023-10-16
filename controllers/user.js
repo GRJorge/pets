@@ -144,7 +144,7 @@ module.exports = {
         });
     },
     viewEditProfile: async function (req, res) {
-        const profile = await User.findById(req.session.user).select("email name lastname bithday picture createdAt").lean();
+        const profile = await User.findById(req.session.user).select("email name lastname birthday picture createdAt").lean();
 
         res.render("user/edit", {
             profile,

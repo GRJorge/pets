@@ -16,6 +16,19 @@ main {
     border-radius: 16px;
     gap: 16px;
 }
+.info {
+    font-weight: 600;
+    font-size: 22px;
+}
+.info button {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-top: 3px;
+    margin-left: 6px;
+    cursor: pointer;
+}
 .image > div:first-child {
     gap: 16px;
     align-items: normal;
@@ -37,17 +50,9 @@ main {
 .image input[type="file"] {
     display: none;
 }
-.name span {
-    font-weight: 600;
-    font-size: 22px;
-}
-.name span button {
-    position: absolute;
-    background: none;
-    border: none;
-    font-size: 20px;
-    margin-left: 6px;
-    cursor: pointer;
+.name .sub{
+    font-size: 15px;
+    font-weight: 500;
 }
 .name form {
     gap: 8px;
@@ -58,6 +63,18 @@ main {
     width: 100%;
 }
 .name form button {
+    flex-grow: 1;
+}
+.birthday form{
+    display: none;
+    gap: 8px;
+}
+.birthday form div{
+    flex-direction: row;
+    gap: 8px;
+    width: 100%;
+}
+.birthday form div button{
     flex-grow: 1;
 }
 #editName {

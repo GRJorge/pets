@@ -39,6 +39,7 @@ function showControlsImage(show) {
 
 const editName = d.querySelector("#editName");
 const showEditNameBtn = d.querySelector("#showEditName");
+const nameInfo = d.querySelector("#nameInfo");
 //CUANDO SE PRESIONA BOTON DE EDITAR NOMBRE
 showEditNameBtn.addEventListener("click", () => {
     showEditName(true);
@@ -53,13 +54,29 @@ d.querySelector("#cancelEditName").addEventListener("click", () => {
 //MOSTRAR U OCULTAR FORMULARIO DE CAMBIO DE NOMBRE
 function showEditName(show) {
     if (show) {
-        showEditNameBtn.parentNode.style.display = "none";
+        nameInfo.style.display = "none";
         editName.style.display = "flex";
         //Reiniciar clases de los inputs
         editName.querySelector("#name").classList.replace("textAlert", "textPrimary");
         editName.querySelector("#lastname").classList.replace("textAlert", "textPrimary");
     } else {
-        showEditNameBtn.parentNode.style.display = "block";
+        nameInfo.style.display = "flex";
         editName.style.display = "none";
     }
 }
+
+/*---- EDICION DE CUMPLEAÑOS ----*/
+
+const editBirthday = d.querySelector("#editBirthday");
+const birthdayInfo = d.querySelector("#birthdayInfo");
+const showEditBirthday = d.querySelector("#showEditBirthday");
+
+showEditBirthday.addEventListener("click", () => {
+    editBirthday.style.display = "flex";
+    birthdayInfo.style.display = "none"
+});
+
+d.querySelector("#cancelEditBirthday").addEventListener("click",() => {
+    editBirthday.style.display = "none";
+    birthdayInfo.style.display = "flex"
+})

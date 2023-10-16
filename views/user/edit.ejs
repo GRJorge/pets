@@ -14,12 +14,54 @@
             </div>
         </form>
         <div class="name">
-            <span><span id="nameText"><%= profile.name %></span> <span id="lastnameText"><%= profile.lastname %></span><button id="showEditName"><i class="fi fi-rr-pencil"></i></button></span>
+            <div id="nameInfo">
+                <span class="sub"><%= profile.email %></span>
+                <span class="info"><span id="nameText"><%= profile.name %></span> <span id="lastnameText"><%= profile.lastname %></span><button id="showEditName"><i class="fi fi-sr-pencil"></i></button></span>
+            </div>
             <form id="editName" action="/user/editName" method="post">
                 <input maxL="3" class="text sm textPrimary" placeholder="Nombre" type="text" name="name" id="name" value="<%= profile.name %>">
                 <input maxL="3" class="text sm textPrimary" placeholder="Apellido(s)" type="text" name="lastname" id="lastname" value="<%= profile.lastname %>">
                 <div>
                     <button id="cancelEditName" type="reset" class="btn sm btnAlert">Cancelar</button>
+                    <button type="submit" class="btn sm btnAccent">Guardar</button>
+                </div>
+            </form>
+        </div>
+        <div class="birthday">
+            <% birthday = profile.birthday %>
+            <div id="birthdayInfo">
+                <span class="sub">Cumpleaños:</span>
+                <span class="info"><%= (birthday.getDate() + 1).toString().padStart(2,"0") %>/<%= (birthday.getMonth() + 1).toString().padStart(2,"0") %>/<%= birthday.getFullYear() %><button id="showEditBirthday"><i class="fi fi-sr-pencil"></i></button></span>
+            </div>
+            <form id="editBirthday" action="" method="post">
+                <div>
+                    <select class="text sm textPrimary" name="day" id="day">
+                        <% for( let i = 1; i <= 31; i++ ) { %>
+                            <option <% if ((birthday.getDate() + 1) === i) { %>selected<% } %> value="<%= i %>"><%= i %></option>
+                        <% } %>
+                    </select>
+                    <select class="text sm textPrimary" name="month" id="month">
+                        <option <% if ((birthday.getMonth() + 1) == 1) { %>selected<% } %> value="01">Enero</option>
+                        <option <% if ((birthday.getMonth() + 1) == 2) { %>selected<% } %> value="02">Febrero</option>
+                        <option <% if ((birthday.getMonth() + 1) == 3) { %>selected<% } %> value="03">Marzo</option>
+                        <option <% if ((birthday.getMonth() + 1) == 4) { %>selected<% } %> value="04">Abril</option>
+                        <option <% if ((birthday.getMonth() + 1) == 5) { %>selected<% } %> value="05">Mayo</option>
+                        <option <% if ((birthday.getMonth() + 1) == 6) { %>selected<% } %> value="06">Junio</option>
+                        <option <% if ((birthday.getMonth() + 1) == 7) { %>selected<% } %> value="07">Julio</option>
+                        <option <% if ((birthday.getMonth() + 1) == 8) { %>selected<% } %> value="08">Agosto</option>
+                        <option <% if ((birthday.getMonth() + 1) == 9) { %>selected<% } %> value="09">Septiembre</option>
+                        <option <% if ((birthday.getMonth() + 1) == 10) { %>selected<% } %> value="10">Octubre</option>
+                        <option <% if ((birthday.getMonth() + 1) == 11) { %>selected<% } %> value="11">Noviembre</option>
+                        <option <% if ((birthday.getMonth() + 1) == 12) { %>selected<% } %> value="12">Diciembre</option>
+                    </select>
+                    <select class="text sm textPrimary" name="year" id="year">
+                        <% for( let i=new Date().getFullYear(); i>= 1900; i--) { %>
+                            <option <% if (birthday.getFullYear() == i) { %>selected<% } %> value="<%= i %>"><%= i %></option>        
+                        <% } %>
+                    </select>
+                </div>
+                <div>
+                    <button id="cancelEditBirthday" type="reset" class="btn sm btnAlert">Cancelar</button>
                     <button type="submit" class="btn sm btnAccent">Guardar</button>
                 </div>
             </form>
