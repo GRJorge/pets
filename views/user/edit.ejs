@@ -33,7 +33,7 @@
                 <span class="sub">Cumpleaños:</span>
                 <span class="info"><%= (birthday.getDate() + 1).toString().padStart(2,"0") %>/<%= (birthday.getMonth() + 1).toString().padStart(2,"0") %>/<%= birthday.getFullYear() %><button id="showEditBirthday"><i class="fi fi-sr-pencil"></i></button></span>
             </div>
-            <form id="editBirthday" action="" method="post">
+            <form id="editBirthday" action="/user/editBirthday" method="post">
                 <div>
                     <select class="text sm textPrimary" name="day" id="day">
                         <% for( let i = 1; i <= 31; i++ ) { %>

@@ -151,12 +151,23 @@ module.exports = {
         });
     },
     editName: async function (req, res) {
-        await User.findByIdAndUpdate(req.session.user,{
-            name: req.body.name,
-            lastname: req.body.lastname
-        })
+        const { name, lastname } = req.body;
 
-        res.redirect("/user/edit")
+        await User.findByIdAndUpdate(req.session.user, {
+            name: name,
+            lastname: lastname,
+        });
+
+        res.redirect("/user/edit");
+    },
+    editBirthday: async function (req, res) {
+        const { year, month, day } = req.body;
+
+        await User.findByIdAndUpdate(req.session.user, {
+            birthday: new Date(year + "-" + month + "-" + day),
+        });
+
+        res.redirect("/user/edit");
     },
 };
 

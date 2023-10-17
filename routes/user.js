@@ -28,5 +28,6 @@ router.post("/changePicture/:redirect", upload.single("picture"), controller.cha
 router.get("/profile/:id", controller.viewProfile); //PERFIL DE USUARIO
 router.get("/edit", controller.viewEditProfile); //VISTA DE EDICION
 router.post("/editName", controller.editName); //EDITAR NOMBRE
+router.post("/editBirthday", controller.editBirthday); //EDITAR CUMPLEAÑOS
 
 module.exports = router;
