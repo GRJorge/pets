@@ -113,9 +113,9 @@ module.exports = {
     viewProfile: function (req, res) {
         global.ifSession(req, res, async () => {
             const profile = await User.findById(req.params.id).select("name lastname picture").lean(); //OBTENCION DE INFORMACIÓN DEL PERFIL
-            const publications = await Publication.find({ user: req.params.id }).sort({ createdAt: -1 }).select("description multimedia createdAt").lean();
+            const publications = await Publication.find({ user: req.params.id }).sort({ createdAt: -1 }).select("description multimedia createdAt").lean(); //PUBLICACIONES DE LA PERSONA
 
-            const follows = await User.findById(req.params.id).select("followers following").populate("followers following", "name lastname picture").lean();
+            const follows = await User.findById(req.params.id).select("followers following").populate("followers following", "name lastname picture").lean(); //SEGUIDORES Y SIGUIENDO
 
             publications.forEach((pub) => {
                 pub.user = {
@@ -127,7 +127,7 @@ module.exports = {
             });
 
             let isFollow = false;
-
+            //COMPROBAR SI SE SIGUE A LA PERSONA DEL PERFIL
             if (await User.findOne({ _id: req.session.user, following: req.params.id }).lean()) {
                 isFollow = true;
             }
