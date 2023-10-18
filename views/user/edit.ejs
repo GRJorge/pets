@@ -66,6 +66,19 @@
                 </div>
             </form>
         </div>
+        <div class="">
+            <a class="btn md btnAlert" href="/user">Cerrar sesión</a>
+        </div>
+        <div class="created">
+            <div>
+                <span>Creado el:</span>
+                <span><%= (profile.createdAt.getDate()).toString().padStart(2,"0") %>/<%= (profile.createdAt.getMonth() + 1).toString().padStart(2,"0") %>/<%= profile.createdAt.getFullYear() %></span>
+            </div>
+            <div>
+                <span>Editado por ultima vez:</span>
+                <span><%= (profile.updatedAt.getDate()).toString().padStart(2,"0") %>/<%= (profile.updatedAt.getMonth() + 1).toString().padStart(2,"0") %>/<%= profile.updatedAt.getFullYear() %></span>
+            </div>
+        </div>
     </div>
 </main>
 

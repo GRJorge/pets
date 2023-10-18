@@ -2,10 +2,13 @@ main {
     justify-content: center;
 }
 .box,
-.box div,
-.box form {
+.image,
+.image div,
+.name form,
+.name div,
+.birthday form,
+.birthday div{
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 .box {
@@ -50,7 +53,7 @@ main {
 .image input[type="file"] {
     display: none;
 }
-.name .sub{
+.name .sub {
     font-size: 15px;
     font-weight: 500;
 }
@@ -65,17 +68,26 @@ main {
 .name form button {
     flex-grow: 1;
 }
-.birthday form{
+.birthday form {
     display: none;
     gap: 8px;
 }
-.birthday form div{
+.birthday form div {
     flex-direction: row;
     gap: 8px;
     width: 100%;
 }
-.birthday form div button{
+.birthday form div button {
     flex-grow: 1;
+}
+.created {
+    font-size: 13px;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+.created div {
+    flex-direction: column;
 }
 #editName {
     display: none;
