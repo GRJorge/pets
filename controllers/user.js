@@ -143,11 +143,13 @@ module.exports = {
             });
         });
     },
-    viewEditProfile: async function (req, res) {
-        const profile = await User.findById(req.session.user).select("email name lastname birthday picture createdAt").lean();
+    viewEditProfile: function (req, res) {
+        global.ifSession(req, res, async () => {
+            const profile = await User.findById(req.session.user).select("email name lastname birthday picture createdAt updatedAt").lean();
 
-        res.render("user/edit", {
-            profile,
+            res.render("user/edit", {
+                profile,
+            });
         });
     },
     editName: async function (req, res) {
