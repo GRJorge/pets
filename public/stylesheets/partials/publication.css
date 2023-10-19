@@ -13,11 +13,11 @@
     border-radius: 16px;
     padding: 16px;
     padding-bottom: 8px;
+    gap: 8px;
 }
 .pub .profile {
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
     flex-wrap: wrap;
     gap: 8px;
 }
@@ -40,10 +40,10 @@
     object-fit: cover;
     clip: rect(0px, 36px, 36px, 0px);
 }
-.pub .profile div{
+.pub .profile div {
     gap: 8px;
 }
-.pub .profile div span{
+.pub .profile div span {
     font-size: 14px;
 }
 .pub .content {
@@ -52,13 +52,13 @@
 .pub .content img {
     width: 100%;
     border-radius: 8px;
-    margin-top: 8px;
+    margin-top: 12px;
     cursor: pointer;
 }
 .pub .content .gallery {
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 8px;
+    margin-top: 12px;
     align-items: center;
 }
 .pub .content .gallery img {
@@ -69,9 +69,8 @@
 }
 .pub .reactions {
     justify-content: space-between;
-    margin-top: 8px;
 }
-.pub .reactions div {
+.pub .reactions div{
     gap: 8px;
 }
 .pub .reactions button {
@@ -88,9 +87,12 @@
     top: 3px;
     font-size: 22px;
 }
+.liked {
+    color: var(--alert);
+}
 
 @media screen and (max-width: 900px) {
-    .pub .content .gallery img{
+    .pub .content .gallery img {
         width: 100%;
         height: auto;
     }

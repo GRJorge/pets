@@ -5,6 +5,7 @@ const publicationSchema = new Schema(
         user: { type: ObjectId, ref: "User", required: true },
         description: String,
         multimedia: [String],
+        likes: [{ type: ObjectId, ref: "User" }],
     },
     {
         timestamps: true,

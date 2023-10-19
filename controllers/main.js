@@ -13,13 +13,14 @@ module.exports = {
                     $gte: date.setDate(date.getDate() - 1),
                 },
             })
-                .sort({ createdAt: -1 }).select("description multimedia createdAt")
-                .populate("user","name lastname picture")
+                .sort({ createdAt: -1 })
+                .populate("user", "name lastname picture")
                 .lean();
 
             res.render("main/index", {
                 barProfile: await global.getPictureProfile(req.session),
                 lastPublications,
+                selfId: req.session.user,
             });
         });
     },

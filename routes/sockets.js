@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Publication = require("../models/publication");
 require("../config/db");
 
 module.exports = (server) => {
@@ -20,9 +21,9 @@ module.exports = (server) => {
                     }
                     return false;
                 });
-                
+
                 const results = await Promise.all(promises);
-                follow = results.some(result => result);
+                follow = results.some((result) => result);
                 // Si no se sigue se añade
                 if (!follow) {
                     // Añadir a seguidores al dueño del perfil
@@ -30,6 +31,30 @@ module.exports = (server) => {
                     // Añadir a siguiendo al usuario conectado
                     await User.findByIdAndUpdate(selfId, { $push: { following: _id } });
                 }
+            }
+        });
+        /*---- PUBLICACIONES ----*/
+        //LIKES
+        socket.on("like", async (idPub, selfId) => {
+            const reactions = await Publication.findById(idPub).select("likes").lean();
+
+            let liked = false;
+
+            for (const like of reactions.likes) {
+                if(like == selfId){
+                    liked = true;
+                    break;
+                }
+            }
+
+            if(!liked){
+                await Publication.findByIdAndUpdate(idPub, {
+                    $push: { likes: selfId },
+                });
+            }else{
+                await Publication.findByIdAndUpdate(idPub, {
+                    $pull: { likes: selfId }
+                })
             }
         });
     });
