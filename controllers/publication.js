@@ -21,13 +21,13 @@ module.exports = {
             let files = [];
 
             req.files.forEach((file) => {
-                files.push(file.filename);
+                files.push(escape(file.filename));
             });
 
             await new Publication({
                 user: req.session.user,
                 description: escape(req.body.description),
-                multimedia: escape(files),
+                multimedia: files,
             }).save();
 
             res.redirect("/");
