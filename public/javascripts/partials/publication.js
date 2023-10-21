@@ -1,6 +1,8 @@
 const d = document;
 
-const socket = io();
+if(typeof socket === "undefined"){
+    var socket = io();
+}
 
 d.querySelectorAll("#like").forEach((like) => {
     like.addEventListener("click", () => {

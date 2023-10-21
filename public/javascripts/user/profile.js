@@ -27,19 +27,21 @@ const socket = io()
 
 const btnFollow = document.querySelector("#follow")
 
-btnFollow.addEventListener("click",() => {
-    socket.emit("follow",btnFollow.getAttribute("profileId"),btnFollow.getAttribute("selfId"))
-
-    btnFollow.classList.toggle("btnAccent")
-    btnFollow.classList.toggle("btnPrimary")
-
-    if(btnFollow.classList.contains("btnAccent")){
-        btnFollow.innerHTML = "Seguir"
-        const num = document.querySelector("#followersNum")
-        num.innerHTML = parseInt(num.innerHTML) - 1
-    }else{
-        btnFollow.innerHTML = "Siguiendo"
-        const num = document.querySelector("#followersNum")
-        num.innerHTML = parseInt(num.innerHTML) + 1
-    }
-})
+if(btnFollow){
+    btnFollow.addEventListener("click",() => {
+        socket.emit("follow",btnFollow.getAttribute("profileId"),btnFollow.getAttribute("selfId"))
+    
+        btnFollow.classList.toggle("btnAccent")
+        btnFollow.classList.toggle("btnPrimary")
+    
+        if(btnFollow.classList.contains("btnAccent")){
+            btnFollow.innerHTML = "Seguir"
+            const num = document.querySelector("#followersNum")
+            num.innerHTML = parseInt(num.innerHTML) - 1
+        }else{
+            btnFollow.innerHTML = "Siguiendo"
+            const num = document.querySelector("#followersNum")
+            num.innerHTML = parseInt(num.innerHTML) + 1
+        }
+    })
+}

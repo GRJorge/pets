@@ -36,25 +36,23 @@ module.exports = (server) => {
         /*---- PUBLICACIONES ----*/
         //LIKES
         socket.on("like", async (idPub, selfId) => {
-            const reactions = await Publication.findById(idPub).select("likes").lean();
+            const liked = await Publication.findOne({
+                _id: idPub,
+                likes: {
+                    $elemMatch: {
+                        $eq: selfId,
+                    },
+                },
+            });
 
-            let liked = false;
-
-            for (const like of reactions.likes) {
-                if(like == selfId){
-                    liked = true;
-                    break;
-                }
-            }
-
-            if(!liked){
+            if (!liked) {
                 await Publication.findByIdAndUpdate(idPub, {
                     $push: { likes: selfId },
                 });
-            }else{
+            } else {
                 await Publication.findByIdAndUpdate(idPub, {
-                    $pull: { likes: selfId }
-                })
+                    $pull: { likes: selfId },
+                });
             }
         });
     });
