@@ -1,4 +1,4 @@
-.commentsShow{
+.commentsShow {
     position: fixed;
     flex-direction: column;
     align-items: center;
@@ -14,51 +14,73 @@
     -webkit-backdrop-filter: blur(4px);
     z-index: 3;
 }
-.commentsShow > div{
+.commentsShow > div {
     width: 50%;
     background-color: var(--light);
     border-radius: 16px;
     padding: 16px;
 }
-.control{
+.control {
     margin-top: 16px;
     justify-content: center;
     gap: 8px;
 }
-.comments{
+.comments {
     flex-grow: 1;
     overflow: auto;
     flex-direction: column;
     gap: 8px;
 }
-.comment{
+.comment {
     flex-direction: column;
     background-color: var(--light2);
     padding: 8px;
     border-radius: 8px;
     gap: 8px;
 }
-.comment .profile{
+.profile {
     display: flex;
     gap: 12px;
     align-items: center;
     text-decoration: none;
     font-weight: 600;
 }
-.comment img{
+.comment img {
+    width: 38px;
     width: 38px;
     border-radius: 50%;
 }
-.newComment{
-    gap: 16px;
+.reactions {
+    display: none;
+    flex-grow: 1;
+    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
-.newComment input{
+.reactions .profile {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: var(--light2);
+    font-weight: 400;
+}
+.reactions .profile img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+.newComment {
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.newComment input {
     flex-grow: 1;
 }
-.newComment button{
+.newComment button {
     width: 46px;
 }
-.newComment button i{
+.newComment button i {
     font-size: 20px;
     position: relative;
     left: 3px;
