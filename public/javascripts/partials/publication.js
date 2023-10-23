@@ -1,8 +1,6 @@
 const d = document;
 
-if(typeof socket === "undefined"){
-    var socket = io();
-}
+const newSocket = io()
 
 d.querySelectorAll("#like").forEach((like) => {
     like.addEventListener("click", () => {
@@ -23,6 +21,6 @@ d.querySelectorAll("#like").forEach((like) => {
             total.innerHTML = parseInt(total.innerHTML) + 1;
         }
 
-        socket.emit("like", like.getAttribute("pubId"), like.getAttribute("selfId"));
+        newSocket.emit("like", like.getAttribute("pubId"), like.getAttribute("selfId"));
     });
 });

@@ -1,5 +1,6 @@
 @import url("../partials/publication.css");
 @import url("../partials/slider.css");
+@import url("../partials/comments.css");
 
 main {
     flex-direction: column;
