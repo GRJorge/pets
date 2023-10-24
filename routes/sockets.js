@@ -55,5 +55,12 @@ module.exports = (server) => {
                 });
             }
         });
+
+        //COMENTARIOS
+        socket.on("newComment", async (idPub, selfId, text) => {
+            await Publication.findByIdAndUpdate(idPub, {
+                $push: { comments: { user: selfId, text: text } },
+            });
+        });
     });
 };

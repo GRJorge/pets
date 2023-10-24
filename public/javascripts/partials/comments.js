@@ -29,8 +29,22 @@ document.querySelector("#closeComments").addEventListener("click", () => {
 
 document.addEventListener("keydown", (event) => {
     if (comments.style.display != "none") {
-        if(event.key == "Escape"){
-            comments.style.display = "none"
+        if (event.key == "Escape") {
+            comments.style.display = "none";
         }
     }
+});
+
+//NUEVO COMENTARIO
+
+const comSocket = io();
+
+document.querySelector("#btnNewComment").addEventListener("click", () => {
+    const comText = document.querySelector("#comText")
+    
+    if(comText.value.length > 0){
+        comSocket.emit("newComment", comments.getAttribute("pubId"), comments.getAttribute("selfId"), comText.value);
+    }
+
+    comText.value = "";
 });

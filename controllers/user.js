@@ -113,9 +113,14 @@ module.exports = {
     viewProfile: function (req, res) {
         global.ifSession(req, res, async () => {
             const profile = await User.findById(req.params.id).select("name lastname picture").lean(); //OBTENCION DE INFORMACIÓN DEL PERFIL
-            const publications = await Publication.find({ user: req.params.id }).populate("user", "name lastname picture").sort({ createdAt: -1 }).lean(); //PUBLICACIONES DE LA PERSONA
+            const publications = await Publication.find({ user: req.params.id })
+                .select("user description multimedia likes createdAt")
+                .populate("user", "name lastname picture")
+                .sort({ createdAt: -1 })
+                .lean(); //PUBLICACIONES DE LA PERSONA
+            
             //AGREGAR SI SE LE DIO LIKE A LA PUBLICACION
-
+            
             for (const publication of publications) {
                 publication.isLiked = publication.likes.toString().includes(req.session.user);
             }

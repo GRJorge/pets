@@ -15,6 +15,7 @@ module.exports = {
                 },
             })
                 .sort({ createdAt: -1 })
+                .select("user description multimedia likes createdAt")
                 .populate("user", "name lastname picture")
                 .lean();
 
