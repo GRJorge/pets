@@ -4,10 +4,10 @@ const comControl = document.querySelector("#comControl");
 comControl.querySelectorAll("button").forEach((btn, btnIndex) => {
     btn.addEventListener("click", () => {
         showSections(btnIndex);
-        comControl.querySelectorAll("button").forEach((btn2,index) => {
-            btn2.classList.replace("btnPrimary","btnLight2")
+        comControl.querySelectorAll("button").forEach((btn2, index) => {
+            btn2.classList.replace("btnPrimary", "btnLight2");
         });
-        btn.classList.replace("btnLight2","btnPrimary")
+        btn.classList.replace("btnLight2", "btnPrimary");
     });
 });
 
@@ -20,3 +20,17 @@ function showSections(numSection) {
         }
     });
 }
+
+//CERRAR
+
+document.querySelector("#closeComments").addEventListener("click", () => {
+    comments.style.display = "none";
+});
+
+document.addEventListener("keydown", (event) => {
+    if (comments.style.display != "none") {
+        if(event.key == "Escape"){
+            comments.style.display = "none"
+        }
+    }
+});
