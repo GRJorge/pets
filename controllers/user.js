@@ -103,10 +103,13 @@ module.exports = {
         if (req.params.redirect == "main") {
             res.redirect("/");
         } else {
-            const routeImage = "public/images/profiles/" + oldPicture.picture;
-            if (fs.existsSync(routeImage)) {
-                fs.unlinkSync(routeImage);
+            if (oldPicture.picture != "default.jpg") {
+                const routeImage = "public/images/profiles/" + oldPicture.picture;
+                if (fs.existsSync(routeImage)) {
+                    fs.unlinkSync(routeImage);
+                }
             }
+
             res.redirect("/user/profile/" + req.session.user);
         }
     },
@@ -118,9 +121,9 @@ module.exports = {
                 .populate("user", "name lastname picture")
                 .sort({ createdAt: -1 })
                 .lean(); //PUBLICACIONES DE LA PERSONA
-            
+
             //AGREGAR SI SE LE DIO LIKE A LA PUBLICACION
-            
+
             for (const publication of publications) {
                 publication.isLiked = publication.likes.toString().includes(req.session.user);
             }
