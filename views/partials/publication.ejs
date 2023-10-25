@@ -32,7 +32,7 @@
     <div class="reactions">
         <div pubId="<%= publication._id %>" selfId="<%= selfId %>">
             <button id="like"><i <% if (publication.isLiked) { %>class="liked fi fi-sr-heart"<% } else { %>class="fi fi-rr-heart"<% } %> ></i><span><% if (publication.likes.length > 0) { %><%= publication.likes.length %><% } %></span></button>
-            <button id="btnComments"><i class="fi fi-rr-comment-alt"></i><span>100</span></button>
+            <button id="btnComments"><i class="fi fi-rr-comment-alt"></i><span><%= publication.comments.length %></span></button>
         </div>
         <div>
             <button><i class="fi fi-rr-menu-dots"></i></button>

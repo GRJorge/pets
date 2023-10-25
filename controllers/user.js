@@ -117,7 +117,7 @@ module.exports = {
         global.ifSession(req, res, async () => {
             const profile = await User.findById(req.params.id).select("name lastname picture").lean(); //OBTENCION DE INFORMACIÓN DEL PERFIL
             const publications = await Publication.find({ user: req.params.id })
-                .select("user description multimedia likes createdAt")
+                .select("user description multimedia likes comments createdAt")
                 .populate("user", "name lastname picture")
                 .sort({ createdAt: -1 })
                 .lean(); //PUBLICACIONES DE LA PERSONA
