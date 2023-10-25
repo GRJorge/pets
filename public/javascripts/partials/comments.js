@@ -35,14 +35,25 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+//CAMBIAR ESTADO DE BOTON DE ENVIAR
+const comText = document.querySelector("#comText");
+const btnNewComment = document.querySelector("#btnNewComment");
+
+comText.addEventListener("input", () => {
+    if (comText.value.length > 0) {
+        btnNewComment.classList.replace("btnDark2", "btnAccent");
+    }else{
+        btnNewComment.classList.replace("btnAccent","btnDark2");
+    }
+});
+
 //NUEVO COMENTARIO
 
 const comSocket = io();
 
-document.querySelector("#btnNewComment").addEventListener("click", () => {
-    const comText = document.querySelector("#comText")
-    
-    if(comText.value.length > 0){
+btnNewComment.addEventListener("click", () => {
+    if (comText.value.length > 0) {
+        btnNewComment.classList.replace("btnAccent","btnDark2");
         comSocket.emit("newComment", comments.getAttribute("pubId"), comments.getAttribute("selfId"), comText.value);
     }
 
