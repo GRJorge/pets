@@ -6,7 +6,7 @@
         </a>
         <div>
             <span>
-                <% if(publication.createdAt.toLocaleDateString('en-GB') === new Date().toLocaleDateString('en-GB')) { %>
+                <% if(publication.createdAt.toLocaleDateString() === new Date().toLocaleDateString()) { %>
                     <%= publication.createdAt.toLocaleTimeString() %>
                 <% } else { %>
                     <%= publication.createdAt.toLocaleDateString() %>

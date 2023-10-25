@@ -38,6 +38,13 @@
     border-radius: 8px;
     gap: 8px;
 }
+.comment div{
+    justify-content: space-between;
+    align-items: center;
+}
+.comment div > span{
+    font-size: 14px;
+}
 .comProfile {
     display: flex;
     gap: 12px;

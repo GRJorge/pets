@@ -61,14 +61,23 @@ module.exports = (server) => {
             await Publication.findByIdAndUpdate(idPub, {
                 $push: { comments: { user: selfId, text: text } },
             });
+
+            fillComments(socket, idPub);
         });
         socket.on("onFillComments", async (idPub) => {
-            const comments = await Publication.findById(idPub)
-                .select("comments createdAt")
-                .populate({ path: "comments", populate: { path: "user", select:"name lastname" } })
-                .lean();
-            
-            socket.emit("fillComments", comments.comments)
+            fillComments(socket, idPub);
+
+            const likes = await Publication.findById(idPub).select("likes").populate("likes", "name lastname picture").lean();
+            socket.emit("fillLikes", likes.likes);
         });
     });
 };
+
+async function fillComments(socket, idPub) {
+    const comments = await Publication.findById(idPub)
+        .select("comments")
+        .populate({ path: "comments", populate: { path: "user", select: "name lastname picture" } })
+        .lean();
+
+    socket.emit("fillComments", [...comments.comments].reverse());
+}
