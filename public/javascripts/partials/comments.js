@@ -49,13 +49,16 @@ comText.addEventListener("input", () => {
 
 //NUEVO COMENTARIO
 
-const comSocket = io();
-
 btnNewComment.addEventListener("click", () => {
     if (comText.value.length > 0) {
         btnNewComment.classList.replace("btnAccent","btnDark2");
-        comSocket.emit("newComment", comments.getAttribute("pubId"), comments.getAttribute("selfId"), comText.value);
+        socket.emit("newComment", comments.getAttribute("pubId"), comments.getAttribute("selfId"), comText.value);
     }
 
     comText.value = "";
 });
+
+//RELLENAR COMENTARIOS
+socket.on("fillComments",(commentsJSON) => {
+    console.log("emit")
+})

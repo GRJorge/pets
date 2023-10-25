@@ -62,5 +62,13 @@ module.exports = (server) => {
                 $push: { comments: { user: selfId, text: text } },
             });
         });
+        socket.on("onFillComments", async (idPub) => {
+            const comments = await Publication.findById(idPub)
+                .select("comments createdAt")
+                .populate({ path: "comments", populate: { path: "user", select:"name lastname" } })
+                .lean();
+            
+            socket.emit("fillComments", comments.comments)
+        });
     });
 };
