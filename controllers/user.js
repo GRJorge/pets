@@ -27,9 +27,9 @@ module.exports = {
 
             try {
                 await new User({
-                    name: name,
-                    lastname: lastname,
-                    email: email,
+                    name: capitalizeName(name),
+                    lastname: capitalizeName(lastname),
+                    email: email.toLowerCase(),
                     birthday: new Date(year + "-" + month + "-" + day),
                     password: hash,
                     picture: null,
@@ -160,8 +160,8 @@ module.exports = {
         const { name, lastname } = req.body;
 
         await User.findByIdAndUpdate(req.session.user, {
-            name: name,
-            lastname: lastname,
+            name: capitalizeName(name),
+            lastname: capitalizeName(lastname),
         });
 
         res.redirect("/user/edit");
@@ -183,4 +183,11 @@ function deleteSession(session) {
             if (err) throw err;
         });
     }
+}
+
+function capitalizeName(name) {
+    return name
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
 }
