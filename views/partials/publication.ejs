@@ -6,17 +6,10 @@
         </a>
         <div>
             <span>
-                <% const date = new Date() %>
-                <% if (publication.createdAt.getDate() == date.getDate() && publication.createdAt.getMonth() == date.getMonth() && publication.createdAt.getFullYear() == date.getFullYear()) { %>
-                    <% const hours = publication.createdAt.getHours().toString().padStart(2,"0") %>
-                    <% const minutes = publication.createdAt.getMinutes().toString().padStart(2,"0") %>
-                    
-                    <%= hours %>:<%= minutes %> %>    
+                <% if(publication.createdAt.toLocaleDateString('en-GB') === new Date().toLocaleDateString('en-GB')) { %>
+                    <%= publication.createdAt.toLocaleTimeString() %>
                 <% } else { %>
-                    <% const day = publication.createdAt.getDate().toString().padStart(2,"0") %>
-                    <% const month = publication.createdAt.getMonth().toString().padStart(2,"0") %>
-                    
-                    <%= day %>/<%= month %>/<%= publication.createdAt.getFullYear() %>    
+                    <%= publication.createdAt.toLocaleDateString() %>
                 <% } %>
             </span>
         <% if (!self) { %>
