@@ -9,6 +9,10 @@ body {
 main {
     flex-grow: 1;
 }
+section{
+    height: calc(100vh - 56px - 32px);
+    overflow: auto;
+}
 /* CONTENEDORES DE SECCIONES */
 .friends,
 .myPets {
@@ -21,8 +25,6 @@ main {
     flex-direction: column;
     padding: 16px;
     align-items: center;
-    height: calc(100vh - 56px - 32px);
-    overflow: auto;
 }
 /* NUEVA PUBLICACION */
 .newPost {
@@ -97,6 +99,7 @@ main {
     font-weight: 600;
 }
 .friends .follows span {
+    margin-bottom: 8px;
     font-size: 18px;
     font-weight: 600;
 }
