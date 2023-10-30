@@ -29,7 +29,7 @@ module.exports = {
             followings = followings.following.sort(() => Math.random() - 0.5).slice(0,10);
 
             res.render("main/index", {
-                barProfile: await global.getPictureProfile(req.session),
+                profile: await User.findById(req.session.user).select("name lastname picture").lean(),
                 lastPublications,
                 selfId: req.session.user,
                 followings

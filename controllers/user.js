@@ -138,7 +138,6 @@ module.exports = {
 
             //PERFIL DE USUARIO
             res.render("user/profile", {
-                barProfile: await global.getPictureProfile(req.session), //INFORMACION PARA LA BARRA PRINCIPAL
                 profile, //INFORMACION DEL PERFIL
                 publications, //PUBLICACIONES DEL PERFIL
                 selfId: req.session.user, //ID PROPIO

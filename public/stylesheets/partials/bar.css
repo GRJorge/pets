@@ -19,10 +19,10 @@
     justify-content: end;
 }
 /* PERFIL */
-.bar .profile a{
+.bar .home a{
     height: 36px;
 }
-.bar .profile img {
+.bar .home img {
     width: 36px;
     height: 36px;
     border-radius: 50%;

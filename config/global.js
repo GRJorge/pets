@@ -9,7 +9,4 @@ module.exports = {
             res.redirect("/user/signIn");
         }
     },
-    getPictureProfile: async function (session) {
-        return await User.findById(session.user).select("picture").lean();
-    },
 };
