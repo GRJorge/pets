@@ -73,6 +73,33 @@ main {
     display: none;
     justify-content: end;
 }
+/* FRIENDS */
+.friends {
+    padding: 12px 0;
+    gap: 16px;
+    align-items: center;
+    flex-direction: column;
+}
+.friends span {
+    font-size: 18px;
+    font-weight: 600;
+}
+.friends div {
+    gap: 8px;
+    flex-direction: column;
+}
+.friends div a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 8px;
+}
+.friends div a img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 #description {
     overflow: hidden;
 }

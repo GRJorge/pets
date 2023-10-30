@@ -1,7 +1,18 @@
     <%- include('../partials/bar.ejs',{barProfile, title: "Home", css: "main/home.css"}) %>
     
     <main>
-        <section class="friends">Section 1</section>
+        <section class="friends">
+            <div>
+                <span>Siguiendo</span>
+                <% if (followings.length == 0) { %>
+                    <p>Aun no sigues a nadie...</p>
+                <% } else { %>
+                    <% for(const person of followings){ %>
+                        <a href="/user/profile/<%= person._id %>"><img class="shadow" src="/images/profiles/<%= person.picture %>"><%= person.name %> <%= person.lastname %></a>
+                    <% } %>
+                <% } %>
+            </div>
+        </section>
         <section class="posts">
             <!-- NUEVA PUBLICACION -->
             <form class="newPost shadow" action="/publication/new" method="post" enctype="multipart/form-data">

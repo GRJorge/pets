@@ -1,6 +1,7 @@
 const global = require("../config/global");
 const Publication = require("../models/publication");
-const mongoose = require("mongoose")
+const User = require("../models/user");
+const mongoose = require("mongoose");
 require("../config/db");
 
 module.exports = {
@@ -23,10 +24,15 @@ module.exports = {
                 publication.isLiked = publication.likes.toString().includes(req.session.user);
             }
 
+            //SEGUIDORES ALEATORIOS
+            let followings = await User.findById(req.session.user).select("following").populate("following","name lastname picture").lean();
+            followings = followings.following.sort(() => Math.random() - 0.5).slice(0,10);
+
             res.render("main/index", {
                 barProfile: await global.getPictureProfile(req.session),
                 lastPublications,
                 selfId: req.session.user,
+                followings
             });
         });
     },
