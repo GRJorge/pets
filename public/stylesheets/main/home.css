@@ -15,7 +15,7 @@ section{
 }
 /* CONTENEDORES DE SECCIONES */
 .friends,
-.myPets {
+.today {
     width: 25%;
 }
 .posts {
@@ -112,6 +112,37 @@ section{
     height: 32px;
     object-fit: cover;
     border-radius: 50%;
+}
+.today {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+    justify-content: space-between;
+}
+.today img{
+    border-radius: 8px;
+    cursor: pointer;
+}
+.today .by{
+    justify-content: space-between;
+
+}
+.today .by span{
+    font-size: 14px;
+}
+.today .by button{
+    border: none;
+    background: none;
+    font-size: 20px;
+    padding: 0;
+    cursor: pointer;
+}
+.today > div{
+    flex-direction: column;
+    gap: 16px;
+}
+.today > div > span{
+    font-weight: 600;
 }
 #description {
     overflow: hidden;
