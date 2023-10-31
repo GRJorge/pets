@@ -1,6 +1,7 @@
 const global = require("../config/global");
 const Publication = require("../models/publication");
 const User = require("../models/user");
+const Tips = require("../models/tips");
 const mongoose = require("mongoose");
 require("../config/db");
 
@@ -25,14 +26,19 @@ module.exports = {
             }
 
             //SEGUIDORES ALEATORIOS
-            let followings = await User.findById(req.session.user).select("following").populate("following","name lastname picture").lean();
-            followings = followings.following.sort(() => Math.random() - 0.5).slice(0,10);
+            let followings = await User.findById(req.session.user).select("following").populate("following", "name lastname picture").lean();
+            followings = followings.following.sort(() => Math.random() - 0.5).slice(0, 10);
+
+            //TIP ALEATORIO
+            let tip = await Tips.find({}).lean();
+            tip = tip[Math.round(Math.random() * 10)].text;
 
             res.render("main/index", {
                 profile: await User.findById(req.session.user).select("name lastname picture").lean(),
                 lastPublications,
                 selfId: req.session.user,
-                followings
+                followings,
+                tip,
             });
         });
     },
