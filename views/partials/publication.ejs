@@ -4,18 +4,13 @@
             <img src="/images/profiles/<%= publication.user.picture %>" alt="">
             <span><%= publication.user.name %> <%= publication.user.lastname %></span>
         </a>
-        <div>
-            <span>
-                <% if(publication.createdAt.toLocaleDateString() === new Date().toLocaleDateString()) { %>
-                    <%= publication.createdAt.toLocaleTimeString() %>
-                <% } else { %>
-                    <%= publication.createdAt.toLocaleDateString() %>
-                <% } %>
-            </span>
-        <% if (!self) { %>
-            <button class="btn sm btnDark2">Seguir</button>
-        <% } %>
-        </div>
+        <span>
+            <% if(publication.createdAt.toLocaleDateString() === new Date().toLocaleDateString()) { %>
+                <%= publication.createdAt.toLocaleTimeString() %>
+            <% } else { %>
+                <%= publication.createdAt.toLocaleDateString() %>
+            <% } %>
+        </span>
     </div>
     <div class="content">
         <p><%- publication.description.replace(/\r\n/g, '<br>') %></p>
@@ -32,7 +27,7 @@
     <div class="reactions">
         <div pubId="<%= publication._id %>" selfId="<%= selfId %>">
             <button id="like"><i <% if (publication.isLiked) { %>class="liked fi fi-sr-heart"<% } else { %>class="fi fi-rr-heart"<% } %> ></i><span><% if (publication.likes.length > 0) { %><%= publication.likes.length %><% } %></span></button>
-            <button id="btnComments"><i class="fi fi-rr-comment-alt"></i><span><%= publication.comments.length %></span></button>
+            <button id="btnComments"><i class="fi fi-rr-comment-alt"></i><span><% if(publication.comments.length > 0){ %><%= publication.comments.length %><% } %></span></button>
         </div>
         <div>
             <button><i class="fi fi-rr-menu-dots"></i></button>

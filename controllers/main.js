@@ -21,9 +21,8 @@ module.exports = {
                 .populate("user", "name lastname picture")
                 .lean();
 
-            for (const publication of lastPublications) {
-                publication.isLiked = publication.likes.toString().includes(req.session.user);
-            }
+            addIsLiked(lastPublications)
+
             //PUBLICACIONES DE PERSONAS QUE SIGUES
             const followingsPub = await User.findById(req.session.user).select("following").lean(); //Obtener solo siguiendo
             
@@ -36,6 +35,8 @@ module.exports = {
                 },
             }).populate("user","name lastname picture").select("user description multimedia likes comments createdAt").lean();
             
+            addIsLiked(followingPublications)
+
             followingPublications = followingPublications.sort(() => Math.random() - 0.5);
 
             //SEGUIDORES ALEATORIOS
@@ -54,6 +55,12 @@ module.exports = {
                 tip, //TIP ALEATORIO
                 followingPublications, //PUBLICACIONES DE QUIENES SIGO
             });
+
+            function addIsLiked(query){
+                for (const publication of query) {
+                    publication.isLiked = publication.likes.toString().includes(req.session.user);
+                }
+            }
         });
     },
 };
