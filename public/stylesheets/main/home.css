@@ -125,7 +125,7 @@ section{
 }
 .today .by{
     justify-content: space-between;
-
+    align-items: center;
 }
 .today .by span{
     font-size: 14px;
@@ -139,9 +139,13 @@ section{
 }
 .today > div{
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
+    background-color: var(--light);
+    padding: 8px;
+    border-radius: 8px;
 }
 .today > div > span{
+    display: flex;
     font-weight: 600;
 }
 #description {
