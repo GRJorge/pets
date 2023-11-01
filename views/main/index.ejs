@@ -45,6 +45,15 @@
                         <%- include('../partials/publication.ejs', { publication, self: true }) %>
                     <% }) %>
                 <% } %>
+                <!-- PUBLICACIONES DE QUIENES SIGO --> 
+                <% if (followingPublications.length > 0) { %>
+                    <div>
+                        <h1>Quienes sigues:</h1>
+                    </div>
+                    <% for(const publication of followingPublications) { %>
+                        <%- include('../partials/publication.ejs', { publication , self: false}) %>
+                    <% } %>
+                <% } %>
             </div>
         </section>
         <section class="today">
