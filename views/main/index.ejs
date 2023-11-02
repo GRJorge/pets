@@ -38,7 +38,7 @@
             <!-- MI ULTIMA PUBLICACION -->
             <div class="pubs">
                 <% if (lastPublications.length > 0) { %>
-                    <div>
+                    <div class="pubsTitle">
                         <h1>Ultima publicacion:</h1>
                     </div>
                     <% lastPublications.forEach(publication => { %>
@@ -47,11 +47,20 @@
                 <% } %>
                 <!-- PUBLICACIONES DE QUIENES SIGO --> 
                 <% if (followingPublications.length > 0) { %>
-                    <div>
+                    <div class="pubsTitle">
                         <h1>Quienes sigues:</h1>
                     </div>
                     <% for(const publication of followingPublications) { %>
-                        <%- include('../partials/publication.ejs', { publication , self: false}) %>
+                        <%- include('../partials/publication.ejs', { publication , self: false }) %>
+                    <% } %>
+                <% } %>
+                <!-- PUBLICACIONES GENERALES -->
+                <% if (generalPublications.length > 0) { %>
+                    <div class="msgFinish pubsTitle">
+                        <span><i class="fi fi-sr-check-circle"></i> Estas al dia</span>
+                    </div>
+                    <% for(const publication of generalPublications) { %>
+                        <%- include('../partials/publication.ejs', { publication, self: false }) %>
                     <% } %>
                 <% } %>
             </div>

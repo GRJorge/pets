@@ -8,6 +8,19 @@
     gap: 16px;
     width: 100%;
 }
+.pubs .msgFinish{
+    font-size: 22px;
+    justify-content: center;
+}
+.pubs .msgFinish i{
+    color: var(--success);
+    position: relative;
+    top: 3px;
+}
+.pubs .pubsTitle{
+    border-bottom: 1px solid var(--dark2);
+    padding-bottom: 8px;
+}
 .pub {
     background-color: var(--light);
     border-radius: 16px;

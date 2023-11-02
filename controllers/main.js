@@ -21,23 +21,45 @@ module.exports = {
                 .populate("user", "name lastname picture")
                 .lean();
 
-            addIsLiked(lastPublications)
+            addIsLiked(lastPublications);
 
             //PUBLICACIONES DE PERSONAS QUE SIGUES
             const followingsPub = await User.findById(req.session.user).select("following").lean(); //Obtener solo siguiendo
-            
+
             let followingPublications = await Publication.find({
                 user: {
-                    $in: followingsPub.following
+                    $in: followingsPub.following,
                 },
                 createdAt: {
                     $gte: date.setDate(date.getDate() - 4),
                 },
-            }).populate("user","name lastname picture").select("user description multimedia likes comments createdAt").lean();
-            
-            addIsLiked(followingPublications)
+            })
+                .populate("user", "name lastname picture")
+                .select("user description multimedia likes comments createdAt")
+                .lean();
+
+            addIsLiked(followingPublications);
 
             followingPublications = followingPublications.sort(() => Math.random() - 0.5);
+
+            //PUBLICACIONES GENERALES (PERSONAS QUE NO SIGUES)
+            followingsPub.following.push(req.session.user);
+            
+            let generalPublications = await Publication.find({
+                user: {
+                    $nin: followingsPub.following,
+                },
+                createdAt: {
+                    $gte: date.setDate(date.getDate() - 7),
+                },
+            })
+                .populate("user", "name lastname picture")
+                .select("user description multimedia likes comments createdAt")
+                .lean();
+
+            addIsLiked(generalPublications);
+
+            generalPublications = generalPublications.sort(() => Math.random() - 0.5);
 
             //SEGUIDORES ALEATORIOS
             let followings = await User.findById(req.session.user).select("following").populate("following", "name lastname picture").lean(); //Obtener siguiendo pupolado
@@ -48,15 +70,16 @@ module.exports = {
             tip = tip[Math.floor(Math.random() * tip.length)].text;
 
             res.render("main/index", {
-                profile: await User.findById(req.session.user).select("name lastname picture").lean(),//PERFIL
-                lastPublications,//MIS ULTIMAS PUBLICACIONES
+                profile: await User.findById(req.session.user).select("name lastname picture").lean(), //PERFIL
+                lastPublications, //MIS ULTIMAS PUBLICACIONES
                 selfId: req.session.user,
                 followings, //QUIENES SE SIGUEN
                 tip, //TIP ALEATORIO
                 followingPublications, //PUBLICACIONES DE QUIENES SIGO
+                generalPublications,
             });
 
-            function addIsLiked(query){
+            function addIsLiked(query) {
                 for (const publication of query) {
                     publication.isLiked = publication.likes.toString().includes(req.session.user);
                 }
