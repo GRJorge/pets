@@ -44,7 +44,7 @@ module.exports = {
 
             //PUBLICACIONES GENERALES (PERSONAS QUE NO SIGUES)
             followingsPub.following.push(req.session.user);
-            
+
             let generalPublications = await Publication.find({
                 user: {
                     $nin: followingsPub.following,
@@ -65,6 +65,32 @@ module.exports = {
             let followings = await User.findById(req.session.user).select("following").populate("following", "name lastname picture").lean(); //Obtener siguiendo pupolado
             followings = followings.following.sort(() => Math.random() - 0.5).slice(0, 10); //Randomizar arreglo y cortar a solo los primeros 10
 
+            //FOTO DEL DIA
+            const topPhoto = await Publication.find({
+                createdAt: {
+                    $gte: date.setDate(date.getDate()),
+                },
+                multimedia: {
+                    $ne: [],
+                },
+                likes: {
+                    $ne: [],
+                },
+            })
+                .populate("user", "name lastname")
+                .select("multimedia likes")
+                .lean();
+
+            addIsLiked(topPhoto)
+
+            let moreLikePhoto = topPhoto[0]
+
+            for(const top of topPhoto){
+                if(top.likes.length > moreLikePhoto.likes.length){
+                    moreLikePhoto = top
+                }
+            }
+
             //TIP ALEATORIO
             let tip = await Tips.find({}).lean();
             tip = tip[Math.floor(Math.random() * tip.length)].text;
@@ -76,7 +102,8 @@ module.exports = {
                 followings, //QUIENES SE SIGUEN
                 tip, //TIP ALEATORIO
                 followingPublications, //PUBLICACIONES DE QUIENES SIGO
-                generalPublications,
+                generalPublications, //PUBLICACIONES GENERELES
+                moreLikePhoto, //FOTO DEL DIA
             });
 
             function addIsLiked(query) {

@@ -3,6 +3,8 @@ const d = document;
 //LIKE
 d.querySelectorAll("#like").forEach((like) => {
     like.addEventListener("click", () => {
+        socket.emit("like", like.parentNode.getAttribute("pubId"), like.parentNode.getAttribute("selfId"));
+        
         const icon = like.querySelector("i");
         icon.classList.toggle("fi-rr-heart");
         icon.classList.toggle("fi-sr-heart");
@@ -19,8 +21,6 @@ d.querySelectorAll("#like").forEach((like) => {
 
             total.innerHTML = parseInt(total.innerHTML) + 1;
         }
-
-        socket.emit("like", like.parentNode.getAttribute("pubId"), like.parentNode.getAttribute("selfId"));
     });
 });
 
