@@ -1,1 +1,35 @@
 <%- include("../views/partials/bar.ejs",{ title: "Chat", css: "chat.css" }) %>
+
+<main>
+    <section class="chat shadow">
+        <section class="friends">
+            <div class="searchChat">
+                <label for="searchChat"><i class="fi fi-rr-search"></i></label>
+                <input class="text sm textPrimary" type="text" id="searchChat" placeholder="Buscar chat...">
+            </div>
+            <div class="chatProfiles">
+                <button class="chatProfile">
+                    <div>
+                        <div>
+                            <img class="shadow" src="/images/profiles/default.jpg">
+                        </div>
+                        <div>
+                            <span class="chatName">Nombre de la persona</span>
+                            <span>Ultimo mensaje...</span>
+                        </div>
+                    </div>
+                    <div class="deleteChat">
+                        <span><i class="fi fi-sr-trash-xmark"></i></span>
+                    </div>
+                </button>
+            </div>
+        </section>
+        
+        <section class="conversation">
+            <span>Burbuja</span>
+            <span>Burbuja</span>
+            <span>Burbuja</span>
+            <span>Burbuja</span>
+        </section>
+    </section>
+</main>

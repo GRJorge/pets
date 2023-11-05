@@ -1,1 +1,90 @@
 @import url("./global.css");
+
+main {
+    height: calc(100vh - 56px);
+    justify-content: center;
+    align-items: center;
+}
+.chat {
+    width: 70%;
+    height: 80%;
+    border-radius: 16px;
+}
+.friends,
+.chatProfiles,
+.chatProfile div > div {
+    flex-direction: column;
+}
+/* SECCION DE AMIGOS */
+.friends {
+    width: 35%;
+    padding: 16px;
+    background-color: var(--light);
+    border-radius: 16px 0 0 16px;
+    overflow: auto;
+    gap: 16px;
+}
+/* Busqueda de chats*/
+.searchChat{
+    align-items: center;
+    gap: 8px;
+}
+.searchChat label{
+    transform: scaleX(-1);
+    cursor: text;
+}
+.searchChat i{
+    position: relative;
+    top: 2px;
+    font-size: 20px;
+}
+.searchChat input{
+    width: 100%;
+}
+/* Perfiles */
+.chatProfiles{
+    gap: 8px;
+}
+.chatProfile {
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    background: none;
+    cursor: pointer;
+    background-color: var(--light2);
+    padding: 8px;
+    border-radius: 8px;
+}
+.chatProfile img {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.chatProfile > div {
+    gap: 12px;
+}
+.chatProfile > div > div:last-child{
+    align-items: flex-start;
+}
+.chatProfile .chatName{
+    font-size: 15px;
+    font-weight: 600;
+}
+.deleteChat{
+    align-items: center;
+    font-size: 18px;
+}
+.deleteChat i{
+    position: relative;
+    top: 2px;
+    color: var(--alert);
+}
+
+
+
+
+.conversation {
+    background-color: blue;
+    width: 65%;
+}
