@@ -10,6 +10,7 @@ const http = require("http")
 const mainRouter = require("./routes/main");
 const userRouter = require("./routes/user");
 const publicationRouter = require("./routes/publication");
+const chatRouter = require("./routes/chat");
 
 var app = express();
 const server = http.createServer(app)
@@ -48,6 +49,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", mainRouter);
 app.use("/user", userRouter);
 app.use("/publication", publicationRouter);
+app.use("/chat", chatRouter);
 
 
 // catch 404 and forward to error handler
