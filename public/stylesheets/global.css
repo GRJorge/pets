@@ -69,6 +69,14 @@ nav {
     outline: 1px solid var(--alert);
     border-color: var(--alert);
 }
+.textLight{
+    border-color: var(--light);
+    color: var(--light);
+}
+.textLight:focus{
+    outline: 1px solid var(--primary);
+    border-color: var(--primary);
+}
 
 /* BOTONES */
 

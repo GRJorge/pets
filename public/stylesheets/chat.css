@@ -12,7 +12,8 @@ main {
 }
 .friends,
 .chatProfiles,
-.chatProfile div > div {
+.chatProfile div > div,
+.conversation {
     flex-direction: column;
 }
 /* SECCION DE AMIGOS */
@@ -25,24 +26,24 @@ main {
     gap: 16px;
 }
 /* Busqueda de chats*/
-.searchChat{
+.searchChat {
     align-items: center;
     gap: 8px;
 }
-.searchChat label{
+.searchChat label {
     transform: scaleX(-1);
     cursor: text;
 }
-.searchChat i{
+.searchChat i {
     position: relative;
     top: 2px;
     font-size: 20px;
 }
-.searchChat input{
+.searchChat input {
     width: 100%;
 }
 /* Perfiles */
-.chatProfiles{
+.chatProfiles {
     gap: 8px;
 }
 .chatProfile {
@@ -64,27 +65,62 @@ main {
 .chatProfile > div {
     gap: 12px;
 }
-.chatProfile > div > div:last-child{
+.chatProfile > div > div:last-child {
     align-items: flex-start;
 }
-.chatProfile .chatName{
+.chatProfile .chatName {
     font-size: 15px;
     font-weight: 600;
 }
-.deleteChat{
+.chatProfile:hover > .deleteChat {
+    display: flex;
+}
+.deleteChat {
+    display: none;
     align-items: center;
     font-size: 18px;
 }
-.deleteChat i{
+.deleteChat i {
     position: relative;
     top: 2px;
     color: var(--alert);
 }
-
-
-
-
+/* SECCION DE CHAT */
 .conversation {
-    background-color: blue;
     width: 65%;
+    border: 2px solid var(--light);
+    border-radius: 0 16px 16px 0;
+}
+/* Mensajes */
+.messages {
+    padding: 8px;
+    flex-grow: 1;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 8px;
+}
+.messages span {
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+.messages .sender {
+    background-color: var(--light);
+    align-self: flex-start;
+}
+.messages .receiver {
+    background-color: var(--success);
+    align-self: flex-end;
+}
+/* Nuevo mensaje */
+.newMsg {
+    padding: 8px;
+    gap: 8px;
+    background-color: var(--dark);
+    border-radius: 0 0 12px 0;
+}
+.newMsg input {
+    width: 100%;
+}
+.newMsg button {
+    width: 40px;
 }
