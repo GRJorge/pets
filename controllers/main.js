@@ -8,12 +8,14 @@ require("../config/db");
 module.exports = {
     viewHome: function (req, res) {
         global.ifSession(req, res, async () => {
-            const date = new Date();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
             //ULTIMAS PUBLICACIONES PROPIAS
             const lastPublications = await Publication.find({
                 user: req.session.user,
                 createdAt: {
-                    $gte: date.setDate(date.getDate() - 2),
+                    $gte: new Date().setDate(today.getDate() - 2),
                 },
             })
                 .sort({ createdAt: -1 })
@@ -31,7 +33,7 @@ module.exports = {
                     $in: followingsPub.following,
                 },
                 createdAt: {
-                    $gte: date.setDate(date.getDate() - 4),
+                    $gte: new Date().setDate(today.getDate() - 4),
                 },
             })
                 .populate("user", "name lastname picture")
@@ -50,7 +52,7 @@ module.exports = {
                     $nin: followingsPub.following,
                 },
                 createdAt: {
-                    $gte: date.setDate(date.getDate() - 7),
+                    $gte: new Date().setDate(today.getDate() - 4),
                 },
             })
                 .populate("user", "name lastname picture")
@@ -68,7 +70,7 @@ module.exports = {
             //FOTO DEL DIA
             const topPhoto = await Publication.find({
                 createdAt: {
-                    $gte: date.setDate(date.getDate()),
+                    $gte: today,
                 },
                 multimedia: {
                     $ne: [],
@@ -81,15 +83,17 @@ module.exports = {
                 .select("multimedia likes")
                 .lean();
 
-            addIsLiked(topPhoto)
+            addIsLiked(topPhoto);
 
-            let moreLikePhoto = topPhoto[0]
+            let moreLikePhoto = topPhoto[0];
 
-            for(const top of topPhoto){
-                if(top.likes.length > moreLikePhoto.likes.length){
-                    moreLikePhoto = top
+            for (const top of topPhoto) {
+                if (top.likes.length > moreLikePhoto.likes.length) {
+                    moreLikePhoto = top;
                 }
             }
+
+            console.log(topPhoto);
 
             //TIP ALEATORIO
             let tip = await Tips.find({}).lean();

@@ -67,14 +67,16 @@
         </section>
         <section class="today">
             <a class="btn md btnAccent" href="">¡Adopta!</a>
-            <div class="shadow">
-                <span>Foto del dia:</span>
-                <img id="pubImg" num="0" class="shadow" src="/images/publications/<%= moreLikePhoto.multimedia[0] %>" alt="">
-                <div class="by" pubId="<%= moreLikePhoto._id %>" selfId="<%= selfId %>">
-                    <span>De: <a href="/user/profile/<%= moreLikePhoto.user._id %>"><%= moreLikePhoto.user.name %> <%= moreLikePhoto.user.lastname %></a></span>
-                    <button id="like"><i <% if(moreLikePhoto.isLiked) { %>class="liked fi fi-sr-heart"<% } else { %>class="fi fi-rr-heart"<% } %> ></i></button>
+            <% if( moreLikePhoto ) { %>
+                <div class="shadow">
+                    <span>Foto del dia:</span>
+                    <img id="pubImg" num="0" class="shadow" src="/images/publications/<%= moreLikePhoto.multimedia[0] %>" alt="">
+                    <div class="by" pubId="<%= moreLikePhoto._id %>" selfId="<%= selfId %>">
+                        <span>De: <a href="/user/profile/<%= moreLikePhoto.user._id %>"><%= moreLikePhoto.user.name %> <%= moreLikePhoto.user.lastname %></a></span>
+                        <button id="like"><i <% if(moreLikePhoto.isLiked) { %>class="liked fi fi-sr-heart"<% } else { %>class="fi fi-rr-heart"<% } %> ></i></button>
+                    </div>
                 </div>
-            </div>
+            <% } %>
             <div class="shadow">
                 <span>Tips:</span>
                 <p><%= tip %></p>
