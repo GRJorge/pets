@@ -4,7 +4,7 @@ const d = document;
 d.querySelectorAll("#like").forEach((like) => {
     like.addEventListener("click", () => {
         socket.emit("like", like.parentNode.getAttribute("pubId"), like.parentNode.getAttribute("selfId"));
-        
+
         const icon = like.querySelector("i");
         icon.classList.toggle("fi-rr-heart");
         icon.classList.toggle("fi-sr-heart");
@@ -25,12 +25,13 @@ d.querySelectorAll("#like").forEach((like) => {
 });
 
 //COMENTARIOS
-const btnComments = d.querySelector("#btnComments");
-btnComments.addEventListener("click", () => {
-    const comments = d.querySelector("#comments");
-    comments.style.display = "flex";
-    comments.setAttribute("pubId", btnComments.parentNode.getAttribute("pubId"));
-    comments.setAttribute("selfId", btnComments.parentNode.getAttribute("selfId"));
+d.querySelectorAll("#btnComments").forEach((btnComments) => {
+    btnComments.addEventListener("click", () => {
+        const comments = d.querySelector("#comments");
+        comments.style.display = "flex";
+        comments.setAttribute("pubId", btnComments.parentNode.getAttribute("pubId"));
+        comments.setAttribute("selfId", btnComments.parentNode.getAttribute("selfId"));
 
-    socket.emit("onFillComments", comments.getAttribute("pubId"));
+        socket.emit("onFillComments", comments.getAttribute("pubId"));
+    });
 });
