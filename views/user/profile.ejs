@@ -15,7 +15,7 @@
                 <% } else { %>
                     <button id="follow" profileId="<%= profile._id %>" selfId="<%= selfId %>" class="btn md btnPrimary">Siguiendo</button>
                 <% } %>
-                <button class="btn md btnDark2"><i class="fi fi-rr-comment"></i></button>
+                <a href="/chat/<%= profile._id %>" class="btn md btnDark2"><i class="fi fi-rr-comment"></i></a>
             <% } else { %>
                 <a class="btn md btnDark2" href="/user/edit"><i class="fi fi-rr-user-pen"></i> Editar</a>
             <% } %>

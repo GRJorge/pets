@@ -6,8 +6,8 @@ main {
     align-items: center;
 }
 .chat {
-    width: 70%;
-    height: 80%;
+    width: 80%;
+    height: 90%;
     border-radius: 16px;
 }
 .friends,
@@ -16,9 +16,14 @@ main {
 .conversation {
     flex-direction: column;
 }
+.friends{
+    width: 30%;
+}
+.conversation{
+    width: 70%;
+}
 /* SECCION DE AMIGOS */
 .friends {
-    width: 35%;
     padding: 16px;
     background-color: var(--light);
     border-radius: 16px 0 0 16px;
@@ -87,7 +92,6 @@ main {
 }
 /* SECCION DE CHAT */
 .conversation {
-    width: 65%;
     border: 2px solid var(--light);
     border-radius: 0 16px 16px 0;
 }
@@ -95,7 +99,7 @@ main {
 .messages {
     padding: 8px;
     flex-grow: 1;
-    flex-direction: column;
+    flex-direction: column-reverse;
     overflow-y: auto;
     gap: 8px;
 }

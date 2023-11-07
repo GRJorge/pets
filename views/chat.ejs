@@ -8,23 +8,25 @@
                 <input class="text sm textPrimary" type="text" id="searchChat" placeholder="Buscar chat...">
             </div>
             <div class="chatProfiles">
-                <button class="chatProfile">
-                    <div>
+                <% if (initChatProfile) { %>
+                    <button class="chatProfile">
                         <div>
-                            <img class="shadow" src="/images/profiles/default.jpg">
+                            <div>
+                                <img class="shadow" src="/images/profiles/<%= initChatProfile.picture %>">
+                            </div>
+                            <div>
+                                <span class="chatName"><%= initChatProfile.name %> <%= initChatProfile.lastname %></span>
+                                <span>Ultimo mensaje...</span>
+                            </div>
                         </div>
-                        <div>
-                            <span class="chatName">Nombre de la persona</span>
-                            <span>Ultimo mensaje...</span>
+                        <div class="deleteChat">
+                            <span><i class="fi fi-sr-trash-xmark"></i></span>
                         </div>
-                    </div>
-                    <div class="deleteChat">
-                        <span><i class="fi fi-sr-trash-xmark"></i></span>
-                    </div>
-                </button>
+                    </button>
+                <% } %>
             </div>
         </section>
-        
+
         <section class="conversation">
             <div class="messages">
                 <span class="sender">Burbuja</span>
