@@ -115,6 +115,15 @@ main {
     background-color: var(--success);
     align-self: flex-end;
 }
+.messages .notChat {
+    background-color: var(--accent);
+    align-self: center;
+}
+.messages .notChat i{
+    position: relative;
+    top: 2px;
+    margin-right: 4px;
+}
 /* Nuevo mensaje */
 .newMsg {
     padding: 8px;

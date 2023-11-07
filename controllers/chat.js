@@ -10,7 +10,7 @@ module.exports = {
 
                 res.render("chat", { initChatProfile });
             } else {
-                res.send("sin  usuario");
+                res.render("chat", { initChatProfile: null });
             }
             //res.render("chat")
         });
