@@ -54,7 +54,8 @@
 }
 .comment img {
     width: 38px;
-    width: 38px;
+    height: 38px;
+    object-fit: cover;
     border-radius: 50%;
 }
 .comReactions {
@@ -62,11 +63,9 @@
     flex-grow: 1;
     overflow: auto;
     flex-direction: column;
-    align-items: center;
     gap: 8px;
 }
 .comReactions .comProfile {
-    width: 100%;
     padding: 8px;
     border-radius: 8px;
     background-color: var(--light2);
@@ -75,6 +74,7 @@
 .comReactions .comProfile img {
     width: 42px;
     height: 42px;
+    object-fit: cover;
     border-radius: 50%;
 }
 .newComment {
