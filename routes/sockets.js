@@ -75,11 +75,30 @@ module.exports = (server) => {
         /*--- CHAT ---*/
         //NUEVO MENSAJE
         socket.on("sendMsg", async (senderId, receiverId, msg) => {
-            await new Chat({
-                sender: senderId,
-                receiver: receiverId,
-                msg: msg,
-            }).save();
+            //Comprueba si ya existe el chat
+            const ifChatExist = await Chat.find({
+                $or: [{ userOne: senderId }, { userOne: receiverId }],
+                $or: [{ userTwo: senderId }, { userTwo: receiverId }],
+            });
+
+            if (ifChatExist.length > 0) {
+                //Agregar mensaje si ya existe el chat
+                await Chat.findByIdAndUpdate(ifChatExist[0]._id, {
+                    $push: { msgs: { sender: senderId, msg: msg } },
+                });
+            } else {
+                //Crear nuevo chat y agregar primer mensaje
+                await new Chat({
+                    userOne: senderId,
+                    userTwo: receiverId,
+                    msgs: [
+                        {
+                            sender: senderId,
+                            msg: msg,
+                        },
+                    ],
+                }).save();
+            }
         });
     });
 };
