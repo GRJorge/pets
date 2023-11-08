@@ -99,7 +99,7 @@ main {
 .messages {
     padding: 8px;
     flex-grow: 1;
-    flex-direction: column-reverse;
+    flex-direction: column;
     overflow-y: auto;
     gap: 8px;
 }
@@ -108,12 +108,12 @@ main {
     border-radius: 8px;
 }
 .messages .sender {
-    background-color: var(--light);
-    align-self: flex-start;
-}
-.messages .receiver {
     background-color: var(--success);
     align-self: flex-end;
+}
+.messages .receiver {
+    background-color: var(--light);
+    align-self: flex-start;
 }
 .messages .notChat {
     background-color: var(--accent);

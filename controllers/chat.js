@@ -8,9 +8,9 @@ module.exports = {
             if (req.params.id != "home") {
                 const initChatProfile = await User.findById(req.params.id).select("name lastname picture").lean();
 
-                res.render("chat", { initChatProfile });
+                res.render("chat", { initChatProfile, selfId: req.session.user });
             } else {
-                res.render("chat", { initChatProfile: null });
+                res.render("chat", { initChatProfile: null, selfId: req.session.user });
             }
             //res.render("chat")
         });
