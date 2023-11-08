@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Publication = require("../models/publication");
+const Chat = require("../models/chat");
 require("../config/db");
 
 module.exports = (server) => {
@@ -70,10 +71,15 @@ module.exports = (server) => {
             const likes = await Publication.findById(idPub).select("likes").populate("likes", "name lastname picture").lean();
             socket.emit("fillLikes", likes.likes);
         });
+
         /*--- CHAT ---*/
         //NUEVO MENSAJE
         socket.on("sendMsg", async (senderId, receiverId, msg) => {
-            console.log(senderId, receiverId, msg);
+            await new Chat({
+                sender: senderId,
+                receiver: receiverId,
+                msg: msg,
+            }).save();
         });
     });
 };
