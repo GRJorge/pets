@@ -8,15 +8,15 @@
                 <input class="text sm textPrimary" type="text" id="searchChat" placeholder="Buscar chat...">
             </div>
             <div class="chatProfiles">
-                <% if (initChatProfile) { %>
+                <% for( const chat of chats ) { %>
                     <button class="chatProfile">
                         <div>
                             <div>
-                                <img class="shadow" src="/images/profiles/<%= initChatProfile.picture %>">
+                                <img class="shadow" src="/images/profiles/<%= chat.user.picture %>">
                             </div>
                             <div>
-                                <span class="chatName"><%= initChatProfile.name %> <%= initChatProfile.lastname %></span>
-                                <span>Ultimo mensaje...</span>
+                                <span class="chatName"><%= chat.user.name %> <%= chat.user.lastname %></span>
+                                <span><% if (chat.lastMsg.sender.toString() == selfId) { %><i class="fi fi-sr-bullet"></i> <% } %><%= chat.lastMsg.msg %></span>
                             </div>
                         </div>
                         <div class="deleteChat">
