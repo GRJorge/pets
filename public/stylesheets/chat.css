@@ -84,6 +84,9 @@ main {
 .chatProfile:hover > .deleteChat {
     display: flex;
 }
+.chatActive {
+    outline: 2px solid var(--primary);
+}
 .deleteChat {
     display: none;
     align-items: center;

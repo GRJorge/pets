@@ -43,3 +43,10 @@ function sendMsg() {
         messages.innerHTML += `<span class="sender">${newMsg}</span>`;
     }
 }
+
+document.querySelectorAll("#chatProfile").forEach((chat) => {
+    chat.addEventListener("click", () => {
+        socket.emit("getMsgs", chat.getAttribute("chatId"));
+        chat.classList.add("chatActive")
+    });
+});

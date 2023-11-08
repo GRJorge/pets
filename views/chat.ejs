@@ -9,7 +9,7 @@
             </div>
             <div class="chatProfiles">
                 <% for( const chat of chats ) { %>
-                    <button class="chatProfile">
+                    <button id="chatProfile" class="chatProfile" chatId="<%= chat._id %>">
                         <div>
                             <div>
                                 <img class="shadow" src="/images/profiles/<%= chat.user.picture %>">

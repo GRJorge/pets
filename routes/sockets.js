@@ -100,6 +100,13 @@ module.exports = (server) => {
                 }).save();
             }
         });
+        //OBTENER MENSAJES
+        socket.on("getMsgs", async (chatId) => {
+            let chatMsgs = await Chat.findById(chatId).select("msgs").lean();
+            chatMsgs = chatMsgs.msgs
+
+            console.log(chatMsgs)
+        })
     });
 };
 

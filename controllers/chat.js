@@ -37,8 +37,6 @@ module.exports = {
                 delete chat.msgs;
             }
 
-            console.log(chats);
-
             res.render("chat", { initChatProfile, chats, selfId: req.session.user });
         });
     },
