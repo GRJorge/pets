@@ -70,6 +70,11 @@ module.exports = (server) => {
             const likes = await Publication.findById(idPub).select("likes").populate("likes", "name lastname picture").lean();
             socket.emit("fillLikes", likes.likes);
         });
+        /*--- CHAT ---*/
+        //NUEVO MENSAJE
+        socket.on("sendMsg", async (senderId, receiverId, msg) => {
+            console.log(senderId, receiverId, msg);
+        });
     });
 };
 
