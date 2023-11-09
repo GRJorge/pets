@@ -9,7 +9,7 @@
             </div>
             <div class="chatProfiles">
                 <% for( const chat of chats ) { %>
-                    <button id="chatProfile" class="chatProfile" chatId="<%= chat._id %>">
+                    <button id="chatProfile" class="chatProfile" chatId="<%= chat._id %>" userId="<%= chat.user._id %>">
                         <div>
                             <div>
                                 <img class="shadow" src="/images/profiles/<%= chat.user.picture %>">
@@ -32,8 +32,6 @@
                 <% if (!initChatProfile) { %>
                     <span class="notChat"><i class="fi fi-sr-hand-wave"></i> Da click en un chat para comenzar a conversar...</span>
                 <% } %>
-                <span class="sender">Burbuja</span>
-                <span class="receiver">Burbuja</span>
             </div>
                 
             <div class="newMsg">

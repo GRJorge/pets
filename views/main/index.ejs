@@ -1,6 +1,6 @@
     <%- include('../partials/bar.ejs',{title: "Home", css: "main/home.css"}) %>
     
-    <main>
+    <main selfId="<%= selfId %>">
         <section class="friends">
             <div class="mine">
                 <a href="/user/profile/<%= profile._id %>"><img class="shadow" src="/images/profiles/<%= profile.picture %>" alt=""><%= profile.name %> <%= profile.lastname %></a>

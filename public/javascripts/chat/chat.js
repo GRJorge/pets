@@ -46,7 +46,16 @@ function sendMsg() {
 
 document.querySelectorAll("#chatProfile").forEach((chat) => {
     chat.addEventListener("click", () => {
-        socket.emit("getMsgs", chat.getAttribute("chatId"));
-        chat.classList.add("chatActive")
+        socket.emit("getMsgs", chat.getAttribute("chatId"), selfId);
+        chat.classList.add("chatActive");
+        btnSend.setAttribute("idReceiver", chat.getAttribute("userId"));
     });
+});
+
+socket.on("fillMsgs", (chatMsgs) => {
+    messages.innerHTML = "";
+
+    for (const msg of chatMsgs) {
+        messages.innerHTML += `<span class="${msg.class}">${msg.msg}</span>`;
+    }
 });

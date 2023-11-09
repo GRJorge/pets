@@ -6,8 +6,14 @@ require("../config/db");
 module.exports = (server) => {
     const io = require("socket.io")(server);
 
+    const sockets = {};
+
     io.on("connection", (socket) => {
-        /* USER */
+        //GUARDAR SOCKET
+        socket.on("userConnected", async (selfId) => {
+            sockets[selfId] = socket;
+        });
+        /*--- USER ---*/
         //SEGUIR USUARIOS
         socket.on("follow", async (_id, selfId) => {
             if (_id != selfId) {
@@ -101,12 +107,30 @@ module.exports = (server) => {
             }
         });
         //OBTENER MENSAJES
-        socket.on("getMsgs", async (chatId) => {
+        socket.on("getMsgs", async (chatId , selfId) => {
             let chatMsgs = await Chat.findById(chatId).select("msgs").lean();
-            chatMsgs = chatMsgs.msgs
+            chatMsgs = chatMsgs.msgs;
 
-            console.log(chatMsgs)
-        })
+            for(const msg of chatMsgs){
+                if(msg.sender.toString() == selfId){
+                    msg.class = "sender"
+                }else{
+                    msg.class = "receiver"
+                }
+
+                delete msg._id
+                delete msg.sender
+            }
+
+            socket.emit("fillMsgs", chatMsgs)
+        });
+
+        socket.on("disconnect", () => {
+            const userKey = Object.keys(sockets).find((key) => sockets[key] === socket);
+            if (userKey) {
+                delete sockets[userKey];
+            }
+        });
     });
 };
 
