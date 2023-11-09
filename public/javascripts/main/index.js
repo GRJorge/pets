@@ -3,8 +3,6 @@ const postSubmit = document.querySelector("#postSubmit");
 const multimediaButton = document.querySelector("#multimedia");
 const gallery = document.querySelector("#gallery");
 
-socket.emit("userConnected",document.querySelector("main").getAttribute("selfId"));
-
 //TEXTAREA AUTORESIZABLE
 description.addEventListener("input", () => {
     descriptionAutoresizable();

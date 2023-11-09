@@ -105,24 +105,28 @@ module.exports = (server) => {
                     ],
                 }).save();
             }
+
+            if (sockets[receiverId]) {
+                sockets[receiverId].emit("receiveNewMsg", senderId, msg);
+            }
         });
         //OBTENER MENSAJES
-        socket.on("getMsgs", async (chatId , selfId) => {
+        socket.on("getMsgs", async (chatId, selfId) => {
             let chatMsgs = await Chat.findById(chatId).select("msgs").lean();
             chatMsgs = chatMsgs.msgs;
 
-            for(const msg of chatMsgs){
-                if(msg.sender.toString() == selfId){
-                    msg.class = "sender"
-                }else{
-                    msg.class = "receiver"
+            for (const msg of chatMsgs) {
+                if (msg.sender.toString() == selfId) {
+                    msg.class = "sender";
+                } else {
+                    msg.class = "receiver";
                 }
 
-                delete msg._id
-                delete msg.sender
+                delete msg._id;
+                delete msg.sender;
             }
 
-            socket.emit("fillMsgs", chatMsgs)
+            socket.emit("fillMsgs", chatMsgs);
         });
 
         socket.on("disconnect", () => {

@@ -16,7 +16,7 @@
                             </div>
                             <div>
                                 <span class="chatName"><%= chat.user.name %> <%= chat.user.lastname %></span>
-                                <span><% if (chat.lastMsg.sender.toString() == selfId) { %><i class="fi fi-sr-bullet"></i> <% } %><%= chat.lastMsg.msg %></span>
+                                <span id="lastMsg"><% if (chat.lastMsg.sender.toString() == selfId) { %><i class="fi fi-sr-bullet"></i> <% } %><%= chat.lastMsg.msg %></span>
                             </div>
                         </div>
                         <div class="deleteChat">
