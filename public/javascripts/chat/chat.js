@@ -70,7 +70,9 @@ socket.on("fillMsgs", (chatMsgs) => {
     messages.innerHTML = "";
 
     for (const msg of chatMsgs) {
-        messages.innerHTML += `<span class="${msg.class}">${msg.msg}</span>`;
+        if(msg.msg !== ""){
+            messages.innerHTML += `<span class="${msg.class}">${msg.msg}</span>`;
+        }
     }
 
     scrollMessages();

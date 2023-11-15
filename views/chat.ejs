@@ -1,6 +1,7 @@
 <%- include("../views/partials/bar.ejs",{ title: "Chat", css: "chat.css" }) %>
 
 <main selfId="<%= selfId %>">
+    <button id="test">Test</button>
     <section class="chat shadow">
         <section class="friends">
             <div class="searchChat">
@@ -8,35 +9,37 @@
                 <input class="text sm textPrimary" type="text" id="searchChat" placeholder="Buscar chat...">
             </div>
             <div class="chatProfiles">
-                <% for( const chat of chats ) { %>
-                    <button id="chatProfile" class="chatProfile" chatId="<%= chat._id %>" userId="<%= chat.user._id %>">
-                        <div>
+                <% if (chats.length > 0) { %>
+                    <% for( const chat of chats ) { %>
+                        <button id="chatProfile" class="chatProfile" chatId="<%= chat._id %>" userId="<%= chat.user._id %>">
                             <div>
-                                <img class="shadow" src="/images/profiles/<%= chat.user.picture %>">
+                                <div>
+                                    <img class="shadow" src="/images/profiles/<%= chat.user.picture %>">
+                                </div>
+                                <div>
+                                    <span class="chatName"><%= chat.user.name %> <%= chat.user.lastname %></span>
+                                    <span id="lastMsg"><% if (chat.lastMsg.sender.toString() == selfId) { %><i class="fi fi-sr-bullet"></i> <% } %><%= chat.lastMsg.msg %></span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="chatName"><%= chat.user.name %> <%= chat.user.lastname %></span>
-                                <span id="lastMsg"><% if (chat.lastMsg.sender.toString() == selfId) { %><i class="fi fi-sr-bullet"></i> <% } %><%= chat.lastMsg.msg %></span>
+                            <div class="deleteChat">
+                                <span><i class="fi fi-sr-trash-xmark"></i></span>
                             </div>
-                        </div>
-                        <div class="deleteChat">
-                            <span><i class="fi fi-sr-trash-xmark"></i></span>
-                        </div>
-                    </button>
+                        </button>
+                    <% } %>
+                <% } else { %>
+                    <p class="notChats">Aun no has iniciado ningun chat<span>Puedes iniciarla en el perfil de la persona</span></p>
                 <% } %>
             </div>
         </section>
 
         <section class="conversation">
             <div id="messages" class="messages">
-                <% if (!initChatProfile) { %>
-                    <span class="notChat"><i class="fi fi-sr-hand-wave"></i> Da click en un chat para comenzar a conversar...</span>
-                <% } %>
+                <span class="notChat"><i class="fi fi-sr-hand-wave"></i> Da click en un chat para comenzar a conversar...</span>
             </div>
                 
             <div class="newMsg">
                 <input id="newMsgInput" class="text sm textLight" type="text" placeholder="Mensaje...">
-                <button id="btnSendMsg"  idReceiver="<% if(initChatProfile){ %><%= initChatProfile._id %><% } %>" class="btn sm btnDark2"><i class="fi fi-rr-paper-plane"></i></button>
+                <button id="btnSendMsg"  idReceiver="" class="btn sm btnDark2"><i class="fi fi-rr-paper-plane"></i></button>
             </div>
         </section>
     </section>

@@ -51,6 +51,15 @@ main {
 .chatProfiles {
     gap: 8px;
 }
+.chatProfiles .notChats{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+.chatProfiles .notChats span{
+    font-size: 12px;
+    font-style: italic;
+}
 .chatProfile {
     display: flex;
     justify-content: space-between;

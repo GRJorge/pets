@@ -6,10 +6,24 @@ require("../config/db");
 module.exports = {
     viewChat: function (req, res) {
         global.ifSession(req, res, async () => {
-            //OBTENER DATOS CUANDO SE INICIA DESDE UN PERFIL
-            let initChatProfile = null;
             if (req.params.id != "home") {
-                initChatProfile = await User.findById(req.params.id).select("name lastname picture").lean();
+                const searchInitProfile = await Chat.find({
+                    $or: [{ userOne: req.params.id }, { userTwo: req.session.user }],
+                    $or: [{ userOne: req.session.user }, { userTwo: req.params.id }],
+                });
+
+                if (searchInitProfile.length == 0) {
+                    await new Chat({
+                        userOne: req.session.user,
+                        userTwo: req.params.id,
+                        msgs: [
+                            {
+                                sender: req.session.user,
+                                msg: '',
+                            },
+                        ],
+                    }).save();
+                }
             }
 
             //OBTENER TODOS LOS CHATS
@@ -37,7 +51,7 @@ module.exports = {
                 delete chat.msgs;
             }
 
-            res.render("chat", { initChatProfile, chats, selfId: req.session.user });
+            res.render("chat", { initUserId: req.params.id, chats, selfId: req.session.user });
         });
     },
 };
