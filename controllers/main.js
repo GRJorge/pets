@@ -93,8 +93,6 @@ module.exports = {
                 }
             }
 
-            console.log(topPhoto);
-
             //TIP ALEATORIO
             let tip = await Tips.find({}).lean();
             tip = tip[Math.floor(Math.random() * tip.length)].text;

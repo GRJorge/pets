@@ -1,14 +1,13 @@
 <%- include("../views/partials/bar.ejs",{ title: "Chat", css: "chat.css" }) %>
 
 <main selfId="<%= selfId %>">
-    <button id="test">Test</button>
     <section class="chat shadow">
         <section class="friends">
             <div class="searchChat">
                 <label for="searchChat"><i class="fi fi-rr-search"></i></label>
                 <input class="text sm textPrimary" type="text" id="searchChat" placeholder="Buscar chat...">
             </div>
-            <div class="chatProfiles">
+            <div id="chatProfiles" class="chatProfiles" initUserId="<%= initUserId %>">
                 <% if (chats.length > 0) { %>
                     <% for( const chat of chats ) { %>
                         <button id="chatProfile" class="chatProfile" chatId="<%= chat._id %>" userId="<%= chat.user._id %>">

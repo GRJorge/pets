@@ -56,6 +56,14 @@ document.querySelectorAll("#chatProfile").forEach((chat) => {
         chat.classList.add("chatActive");
         btnSend.setAttribute("idReceiver", chat.getAttribute("userId"));
     });
+    //INICIAR CHAT INICIAL SI SE EJECUTA DESDE UN PERFIL
+    const initUserId = document.querySelector("#chatProfiles").getAttribute("initUserId")
+    if (initUserId != "home") {
+        if(chat.getAttribute("userId") == initUserId){
+            chat.classList.add("chatActive")
+            chat.click()
+        }
+    }
 });
 //OBTENER NUEVO MENSAJE RECIBIDO
 socket.on("receiveNewMsg", (senderId, msg) => {
@@ -70,7 +78,7 @@ socket.on("fillMsgs", (chatMsgs) => {
     messages.innerHTML = "";
 
     for (const msg of chatMsgs) {
-        if(msg.msg !== ""){
+        if (msg.msg !== "") {
             messages.innerHTML += `<span class="${msg.class}">${msg.msg}</span>`;
         }
     }
