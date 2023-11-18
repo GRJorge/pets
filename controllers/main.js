@@ -2,6 +2,7 @@ const global = require("../config/global");
 const Publication = require("../models/publication");
 const User = require("../models/user");
 const Tips = require("../models/tips");
+const Chat = require("../models/chat");
 const mongoose = require("mongoose");
 require("../config/db");
 
@@ -97,6 +98,17 @@ module.exports = {
             let tip = await Tips.find({}).lean();
             tip = tip[Math.floor(Math.random() * tip.length)].text;
 
+            //ULTIMOS CHATS
+            let lastChats = await Chat.find({
+                $or: [{ userOne: req.session.user }, { userTwo: req.session.user }],
+            })
+                .sort({ updateAt: -1 })
+                .populate("userOne userTwo","name lastname picture")
+                .select("userOne userTwo")
+                .lean();
+
+            lastChats = lastChats.slice(0,5)
+
             res.render("main/index", {
                 profile: await User.findById(req.session.user).select("name lastname picture").lean(), //PERFIL
                 lastPublications, //MIS ULTIMAS PUBLICACIONES
@@ -106,6 +118,7 @@ module.exports = {
                 followingPublications, //PUBLICACIONES DE QUIENES SIGO
                 generalPublications, //PUBLICACIONES GENERELES
                 moreLikePhoto, //FOTO DEL DIA
+                lastChats, //ULTIMOS CHATS
             });
 
             function addIsLiked(query) {

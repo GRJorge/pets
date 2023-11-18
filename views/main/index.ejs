@@ -2,19 +2,33 @@
     
     <main selfId="<%= selfId %>">
         <section class="friends">
-            <div class="mine">
-                <a href="/user/profile/<%= profile._id %>"><img class="shadow" src="/images/profiles/<%= profile.picture %>" alt=""><%= profile.name %> <%= profile.lastname %></a>
-            </div>
-            <div class="follows">
-                <span>Siguiendo</span>
-                <% if (followings.length == 0) { %>
-                    <p>Aun no sigues a nadie...</p>
-                <% } else { %>
-                    <% for(const person of followings){ %>
-                        <a href="/user/profile/<%= person._id %>"><img class="shadow" src="/images/profiles/<%= person.picture %>"><%= person.name %> <%= person.lastname %></a>
+            <div>
+                <div class="mine">
+                    <a href="/user/profile/<%= profile._id %>"><img class="shadow" src="/images/profiles/<%= profile.picture %>" alt=""><%= profile.name %> <%= profile.lastname %></a>
+                </div>
+                <div class="follows">
+                    <span>Siguiendo</span>
+                    <% if (followings.length == 0) { %>
+                        <p>Aun no sigues a nadie...</p>
+                    <% } else { %>
+                        <% for(const person of followings){ %>
+                            <a href="/user/profile/<%= person._id %>"><img class="shadow" src="/images/profiles/<%= person.picture %>"><%= person.name %> <%= person.lastname %></a>
+                        <% } %>
                     <% } %>
-                <% } %>
+                </div>
             </div>
+            <% if (lastChats.length > 0) { %>
+                <div class="chats">
+                    <span>Ultimos chats:</span>
+                    <% for (const chat of lastChats) { %>
+                        <% if (chat.userOne._id.toString() !== selfId.toString()) { %>
+                            <a href="/chat/<%= chat.userOne._id %>"><img class="shadow" src="/images/profiles/<%= chat.userOne.picture %>"><%= chat.userOne.name %> <%= chat.userOne.lastname %></a>
+                        <% } else { %>
+                            <a href="/chat/<%= chat.userTwo._id %>"><img class="shadow" src="/images/profiles/<%= chat.userTwo.picture %>"><%= chat.userTwo.name %> <%= chat.userTwo.lastname %></a>
+                        <% } %>
+                    <% } %>
+                </div>
+            <% } %>
         </section>
         <section class="posts">
             <!-- NUEVA PUBLICACION -->
