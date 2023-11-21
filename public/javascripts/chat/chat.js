@@ -57,11 +57,11 @@ document.querySelectorAll("#chatProfile").forEach((chat) => {
         btnSend.setAttribute("idReceiver", chat.getAttribute("userId"));
     });
     //INICIAR CHAT INICIAL SI SE EJECUTA DESDE UN PERFIL
-    const initUserId = document.querySelector("#chatProfiles").getAttribute("initUserId")
+    const initUserId = document.querySelector("#chatProfiles").getAttribute("initUserId");
     if (initUserId != "home") {
-        if(chat.getAttribute("userId") == initUserId){
-            chat.classList.add("chatActive")
-            chat.click()
+        if (chat.getAttribute("userId") == initUserId) {
+            chat.classList.add("chatActive");
+            chat.click();
         }
     }
 });
@@ -105,3 +105,15 @@ function updateLastMessage(userId, msg, selfMsg) {
         }
     }
 }
+//BUSQUEDA DE CHATS
+const searchChat = document.querySelector("#searchChat");
+
+searchChat.addEventListener("input", () => {
+    document.querySelectorAll("#chatProfile").forEach((chat) => {
+        chat.style.display = "none";
+        if (chat.querySelector(".chatName").innerHTML.toString().toLowerCase().includes(searchChat.value.toLowerCase())) {
+            chat.style.display = "revert";
+            return true;
+        }
+    });
+});
