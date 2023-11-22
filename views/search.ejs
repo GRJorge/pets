@@ -1,0 +1,25 @@
+    <%- include('./partials/bar.ejs',{title: "Busqueda", css: "search.css"}) %>
+
+    <main>
+        <section id="searchSections" class="searchSections">
+            <button class="btn sm btnPrimary">Personas</button>
+            <button class="btn sm btnLight2">Publicaciones</button>
+            <button class="btn sm btnLight2">Fotos</button>
+        </section>
+        <section id="searchContent" class="searchContent">
+            <div class="profiles">
+                <a href=""><img class="shadow" src="/images/profiles/default.jpg">Nombre de la persona</a>
+                <a href=""><img class="shadow" src="/images/profiles/default.jpg">Nombre de la persona</a>
+            </div>
+            <div class="pubs">
+                <p>Publicaciones</p>
+            </div>
+            <div class="photos">
+                <p>Fotos</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="/javascripts/search.js"></script>
+</body>
+</html>

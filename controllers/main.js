@@ -103,11 +103,11 @@ module.exports = {
                 $or: [{ userOne: req.session.user }, { userTwo: req.session.user }],
             })
                 .sort({ updateAt: -1 })
-                .populate("userOne userTwo","name lastname picture")
+                .populate("userOne userTwo", "name lastname picture")
                 .select("userOne userTwo")
                 .lean();
 
-            lastChats = lastChats.slice(0,5)
+            lastChats = lastChats.slice(0, 5);
 
             res.render("main/index", {
                 profile: await User.findById(req.session.user).select("name lastname picture").lean(), //PERFIL
@@ -127,5 +127,17 @@ module.exports = {
                 }
             }
         });
+    },
+    generalSearch: async function (req, res) {
+        //BUSQUEDA DE COINCIDENCIAS USANDO EXPRESIONES REGULARES
+        const searchUser = await User.find({
+            $or: [{ name: new RegExp(req.body.search, "i") }, { lastname: new RegExp(req.body.search, "i") }],
+        });
+
+        const searchPubs = await Publication.find({
+            description: new RegExp(req.body.search, "i"),
+        });
+
+        res.render("search");
     },
 };

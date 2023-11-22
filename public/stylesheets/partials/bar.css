@@ -37,7 +37,7 @@
     color: var(--light);
     outline: none;
 }
-.bar .search div {
+.bar .search form {
     background-color: var(--dark2);
     border-radius: 8px;
     padding: 6px;
@@ -83,6 +83,10 @@
     top: 3px;
     color: var(--light);
 }
+#generalSearchBtn {
+    display: none;
+}
+
 @media screen and (max-width: 650px) {
     .bar .search div{
         width: 80%;

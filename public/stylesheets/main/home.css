@@ -1,6 +1,8 @@
+@import url("../global.css");
 @import url("../partials/publication.css");
 @import url("../partials/slider.css");
 @import url("../partials/comments.css");
+@import url("../partials/search.css");
 
 body {
     display: flex;

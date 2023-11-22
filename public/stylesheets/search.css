@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+main {
+    flex-direction: column;
+    align-self: center;
+    width: 60%;
+    gap: 16px;
+}
+.searchSections,
+.searchContent div {
+    justify-content: center;
+    background-color: var(--light);
+    padding: 16px;
+    border-radius: 16px;
+    gap: 8px;
+}
+.searchContent{
+    flex-direction: column;
+}
+.searchContent div{
+    display: none;
+}
+.searchContent div:first-child{
+    display: flex;
+}
+.profiles{
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.profiles a{
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    background-color: var(--light2);
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+.profiles a img{
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 16px;
+}

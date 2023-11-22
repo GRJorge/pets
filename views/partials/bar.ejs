@@ -15,10 +15,11 @@
             <a href="/"><img src="/images/profiles/default.jpg" alt="Home"></a>
         </div>
         <div class="search">
-            <div>
-                <label for="search"><i class="fi fi-rr-search"></i></label>
-                <input type="text" id="search" placeholder="Buscar...">
-            </div>
+            <form action="/search" method="post">
+                <label for="generalSearchInput"><i class="fi fi-rr-search"></i></label>
+                <input type="text" name="search" id="generalSearchInput" placeholder="Buscar...">
+                <button type="submit" id="generalSearchBtn" class="btn btnDark2"><i class="fi fi-rr-angle-right"></i></button>
+            </form>
         </div>
         <div class="sections">
             <a href="/"><i class="fi fi-rr-home"></i></a>
