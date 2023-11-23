@@ -1,6 +1,6 @@
 document.querySelector("#searchSections").querySelectorAll("button").forEach((button, btnIndex) => {
     button.addEventListener("click",() => {
-        document.querySelector("#searchContent").querySelectorAll("div").forEach((section, scIndex) => {
+        document.querySelector("#searchContent").querySelectorAll("#section").forEach((section, scIndex) => {
             if(btnIndex == scIndex){
                 section.style.display = "flex"
                 resetButtons(btnIndex)

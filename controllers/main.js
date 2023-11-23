@@ -132,12 +132,21 @@ module.exports = {
         //BUSQUEDA DE COINCIDENCIAS USANDO EXPRESIONES REGULARES
         const searchUser = await User.find({
             $or: [{ name: new RegExp(req.body.search, "i") }, { lastname: new RegExp(req.body.search, "i") }],
-        });
+        })
+            .select("name lastname picture")
+            .lean();
 
         const searchPubs = await Publication.find({
             description: new RegExp(req.body.search, "i"),
-        });
+        })
+            .select("user description multimedia likes comments createdAt")
+            .populate("user", "name lastname picture")
+            .lean();
 
-        res.render("search");
+        res.render("search", {
+            selfId: req.session.user,
+            searchUser,
+            searchPubs,
+        });
     },
 };

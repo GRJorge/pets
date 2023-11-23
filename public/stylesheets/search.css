@@ -1,3 +1,7 @@
+@import url("partials/publication.css");
+@import url("partials/slider.css");
+@import url("partials/comments.css");
+
 body {
     display: flex;
     flex-direction: column;
@@ -10,7 +14,8 @@ main {
     gap: 16px;
 }
 .searchSections,
-.searchContent div {
+.profiles,
+.photos{
     justify-content: center;
     background-color: var(--light);
     padding: 16px;
@@ -20,10 +25,10 @@ main {
 .searchContent{
     flex-direction: column;
 }
-.searchContent div{
+.searchContent > div{
     display: none;
 }
-.searchContent div:first-child{
+.searchContent > div:first-child{
     display: flex;
 }
 .profiles{

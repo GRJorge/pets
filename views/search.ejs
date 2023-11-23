@@ -1,25 +1,38 @@
     <%- include('./partials/bar.ejs',{title: "Busqueda", css: "search.css"}) %>
 
     <main>
-        <section id="searchSections" class="searchSections">
+        <section id="searchSections" class="searchSections shadow">
             <button class="btn sm btnPrimary">Personas</button>
             <button class="btn sm btnLight2">Publicaciones</button>
-            <button class="btn sm btnLight2">Fotos</button>
         </section>
         <section id="searchContent" class="searchContent">
-            <div class="profiles">
-                <a href=""><img class="shadow" src="/images/profiles/default.jpg">Nombre de la persona</a>
-                <a href=""><img class="shadow" src="/images/profiles/default.jpg">Nombre de la persona</a>
+            <div id="section" class="profiles shadow">
+                <% if (searchUser.length > 0) { %>
+                    <% for (const user of searchUser) { %>
+                        <a href="/user/profile/<%= user._id %>"><img class="shadow" src="/images/profiles/<%= user.picture %>"><%= user.name %> <%= user.lastname %></a>
+                    <% } %>
+                <% } else { %>
+                    No hay personas por mostrar...
+                <% } %>
             </div>
-            <div class="pubs">
-                <p>Publicaciones</p>
-            </div>
-            <div class="photos">
-                <p>Fotos</p>
+            <div id="section" class="pubs">
+                <% if (searchPubs.length > 0) { %>
+                    <% for (const publication of searchPubs) { %>
+                        <%- include("partials/publication",{ publication, self: false }) %>
+                    <% } %>
+                <% } else { %>
+                    No hay publicaciones por mostrar...
+                <% } %>
             </div>
         </section>
     </main>
 
+    <%- include("partials/slider.ejs") %>
+    <%- include("partials/comments.ejs") %>
+
+    <script src="/socket.io/socket.io.js"></script>
     <script src="/javascripts/search.js"></script>
+    <script src="/javascripts/partials/publication.js"></script>
+    <script src="/javascripts/partials/comments.js"></script>
 </body>
 </html>
