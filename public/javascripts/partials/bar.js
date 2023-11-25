@@ -8,3 +8,11 @@ searchInput.addEventListener("input", () => {
         searchBtn.style.display = "none";
     }
 });
+
+//NOTIFICACIONES
+const btnNot = document.querySelector("#btnNotifications");
+const notifications = document.querySelector("#notifications");
+
+btnNot.addEventListener("click", () => {
+    notifications.classList.toggle("hide");
+});
