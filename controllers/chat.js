@@ -8,8 +8,7 @@ module.exports = {
         global.ifSession(req, res, async () => {
             if (req.params.id != "home") {
                 const searchInitProfile = await Chat.find({
-                    $or: [{ userOne: req.params.id }, { userTwo: req.session.user }],
-                    $or: [{ userOne: req.session.user }, { userTwo: req.params.id }],
+                    $or: [{ userOne: req.params.id }, { userTwo: req.session.user }, { userOne: req.session.user }, { userTwo: req.params.id }],
                 });
 
                 if (searchInitProfile.length == 0) {
@@ -19,7 +18,7 @@ module.exports = {
                         msgs: [
                             {
                                 sender: req.session.user,
-                                msg: '',
+                                msg: "",
                             },
                         ],
                     }).save();
