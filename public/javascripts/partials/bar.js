@@ -16,3 +16,8 @@ const notifications = document.querySelector("#notifications");
 btnNot.addEventListener("click", () => {
     notifications.classList.toggle("hide");
 });
+
+socket.on("newNot", (person, text) => {
+    const nots = document.querySelector("#notifications");
+    nots.innerHTML += `<a class="notification shadow" href="/chat/${person._id}"><img class="shadow" src="/images/profiles/${person.picture}">${text}${person.name} ${person.lastname}<button><i class="fi fi-sr-circle-xmark"></i></button></a>`
+});

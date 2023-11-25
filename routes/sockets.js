@@ -83,8 +83,7 @@ module.exports = (server) => {
         socket.on("sendMsg", async (senderId, receiverId, msg) => {
             //Comprueba si ya existe el chat
             const ifChatExist = await Chat.find({
-                $or: [{ userOne: senderId }, { userOne: receiverId }],
-                $or: [{ userTwo: senderId }, { userTwo: receiverId }],
+                $or: [{ userOne: senderId }, { userOne: receiverId }, { userTwo: receiverId }, { userTwo: senderId }],
             });
 
             if (ifChatExist.length > 0) {
@@ -108,6 +107,10 @@ module.exports = (server) => {
 
             if (sockets[receiverId]) {
                 sockets[receiverId].emit("receiveNewMsg", senderId, msg);
+
+                const person = await User.findById(senderId).select("name lastname picture").lean();
+
+                sockets[receiverId].emit("newNot", person, "Nuevo mensaje de ");
             }
         });
         //OBTENER MENSAJES
