@@ -101,6 +101,9 @@
     top: 64px;
     right: 8px;
 }
+.notifications div{
+    justify-content: flex-end;
+}
 .notification {
     display: flex;
     color: var(--light2);
@@ -116,6 +119,22 @@
     height: 32px;
     object-fit: cover;
     border-radius: 50%;
+}
+.notification button{
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+.notification button i{
+    color: var(--light2);
+    font-size: 16px;
+    position: relative;
+    top: 2px;
+    margin-left: 8px;
+}
+.notification button i:hover{
+    color: var(--dark);
 }
 .notification:hover{
     outline: 1px solid var(--primary);
