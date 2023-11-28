@@ -33,4 +33,9 @@ module.exports = {
             res.redirect("/");
         }
     },
+    delete: async function (req,res) {
+        await Publication.findByIdAndRemove(req.params.id)
+
+        res.redirect("/")
+    }
 };

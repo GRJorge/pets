@@ -36,8 +36,8 @@
         </div>
     </div>
     <% if (self) { %>
-        <div id="pubOptions" class="pubOptions hide">
+        <form id="pubOptions" class="pubOptions hide" method="post" action="/publication/delete/<%= publication._id %>">
             <button class="btn sm btnAlert"><i class="fi fi-rr-trash-xmark"></i>Eliminar</button>
-        </div>
+        </form>
     <% } %>
 </div>
