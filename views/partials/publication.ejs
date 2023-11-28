@@ -30,7 +30,14 @@
             <button id="btnComments"><i class="fi fi-rr-comment-alt"></i><span><% if(publication.comments.length > 0){ %><%= publication.comments.length %><% } %></span></button>
         </div>
         <div>
-            <button><i class="fi fi-rr-menu-dots"></i></button>
+            <% if (self) { %>
+                <button id="pubOptionsBtn"><i class="fi fi-rr-menu-dots"></i></button>
+            <% } %>
         </div>
     </div>
+    <% if (self) { %>
+        <div id="pubOptions" class="pubOptions hide">
+            <button class="btn sm btnAlert"><i class="fi fi-rr-trash-xmark"></i>Eliminar</button>
+        </div>
+    <% } %>
 </div>

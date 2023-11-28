@@ -35,3 +35,10 @@ d.querySelectorAll("#btnComments").forEach((btnComments) => {
         socket.emit("onFillComments", comments.getAttribute("pubId"));
     });
 });
+
+//SECCION DE OPCIONES
+d.querySelectorAll(".pub").forEach(pub => {
+    pub.querySelector("#pubOptionsBtn").addEventListener("click",() => {
+        pub.querySelector("#pubOptions").classList.toggle("hide")
+    })
+})

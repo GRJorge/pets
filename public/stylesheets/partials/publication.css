@@ -8,16 +8,16 @@
     gap: 16px;
     width: 100%;
 }
-.pubs .msgFinish{
+.pubs .msgFinish {
     font-size: 22px;
     justify-content: center;
 }
-.pubs .msgFinish i{
+.pubs .msgFinish i {
     color: var(--success);
     position: relative;
     top: 3px;
 }
-.pubs .pubsTitle{
+.pubs .pubsTitle {
     border-bottom: 1px solid var(--dark2);
     padding-bottom: 8px;
 }
@@ -83,7 +83,7 @@
 .pub .reactions {
     justify-content: space-between;
 }
-.pub .reactions div{
+.pub .reactions div {
     gap: 8px;
 }
 .pub .reactions button {
@@ -102,6 +102,13 @@
 }
 .liked {
     color: var(--alert);
+}
+
+.pubOptions {
+    justify-content: flex-end;
+}
+.hide {
+    display: none;
 }
 
 @media screen and (max-width: 900px) {
